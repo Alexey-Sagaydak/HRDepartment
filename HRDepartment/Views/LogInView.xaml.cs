@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace HRDepartment
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LogInView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LogInView : Window
     {
-        public MainWindow()
+        public LogInView()
         {
             InitializeComponent();
         }

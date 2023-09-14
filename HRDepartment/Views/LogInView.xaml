@@ -1,0 +1,32 @@
+﻿<Window x:Class="HRDepartment.LogInView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HRDepartment"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/RussianLocalization.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.Title>
+        <StaticResource ResourceKey="LogInViewTitle" />
+    </Window.Title>
+
+    <Grid VerticalAlignment="Center">
+        <StackPanel>
+            <TextBlock Text="{StaticResource ARMName}" FontSize="25" FontWeight="Bold" Margin="10 10 0 10" />
+
+            <TextBox x:Name="TextBoxLogin" FontSize="15" Margin="10 2" materialDesign:HintAssist.Hint="{StaticResource LoginViewHint}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <PasswordBox x:Name="TextPassBox" FontSize="15" Margin="10 0" materialDesign:HintAssist.Hint="{StaticResource PasswordHint}" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+
+            <Button Content="{StaticResource LogIn}" FontSize="15" Margin="10 20" />
+        </StackPanel>
+    </Grid>
+</Window>
