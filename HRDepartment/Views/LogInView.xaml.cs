@@ -23,6 +23,17 @@ namespace HRDepartment
         public LogInView()
         {
             InitializeComponent();
+            DataContext = new LogInViewModel();
+
+            // DELELE LATER
+            using (var dbContext = new DBContext())
+            {
+                var repository = new SpecialtiesRepository(dbContext);
+
+                // Пример использования репозитория:
+                var specialty = repository.GetSpecialty(5);
+                Console.WriteLine($"{specialty.id} {specialty.name}");
+            }
         }
     }
 }
