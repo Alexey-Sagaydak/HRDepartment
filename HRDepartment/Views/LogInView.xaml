@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HRDepartment"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="../Resources/logo.ico">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,10 +23,14 @@
         <StackPanel>
             <TextBlock Text="{StaticResource ARMName}" FontSize="25" FontWeight="Bold" Margin="10 10 0 10" />
 
-            <TextBox x:Name="TextBoxLogin" FontSize="15" Margin="10 2" materialDesign:HintAssist.Hint="{StaticResource LoginViewHint}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-            <PasswordBox x:Name="TextPassBox" FontSize="15" Margin="10 0" materialDesign:HintAssist.Hint="{StaticResource PasswordHint}" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+            <TextBox x:Name="TextBoxLogin" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" FontSize="15" Margin="10 2" materialDesign:HintAssist.Hint="{StaticResource LoginViewHint}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordChanged" FontSize="15" Margin="10 0" materialDesign:HintAssist.Hint="{StaticResource PasswordHint}" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                <PasswordBox.DataContext>
+                    <local:LogInViewModel/>
+                </PasswordBox.DataContext>
+            </PasswordBox>
 
-            <Button Content="{StaticResource LogIn}" FontSize="15" Margin="10 20" />
+            <Button Content="{StaticResource LogIn}" Command="{Binding EnterCommand}" IsEnabled="{Binding IsEmailValid}" FontSize="15" Margin="10 20" />
         </StackPanel>
     </Grid>
 </Window>

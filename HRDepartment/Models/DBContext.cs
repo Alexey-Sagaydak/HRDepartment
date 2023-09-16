@@ -11,6 +11,7 @@ namespace HRDepartment
     public class DBContext : DbContext
     {
         public virtual DbSet<Specialty> specialties { get; set; }
+        public virtual DbSet<AuthData> employees { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

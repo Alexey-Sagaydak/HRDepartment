@@ -1,20 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRDepartment
 {
     public class Specialty
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        [Column("id")]
+        public int Id { get; set; }
 
-        public Specialty(int id, string name)
-        {
-            this.id = id;
-            this.name = name;
-        }
+        [Column("name")]
+        public string Name { get; set; }
     }
 }
