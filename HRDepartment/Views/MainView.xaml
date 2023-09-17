@@ -1,12 +1,82 @@
-﻿<Window x:Class="HRDepartment.MainView"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HRDepartment"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="HRDepartment.MainView"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
+        Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="../Resources/logo.ico">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/RussianLocalization.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="MenuItemStyle" TargetType="MenuItem">
+                <Setter Property="Height" Value="20"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="IsSubmenuOpen" Value="True"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Window.Title>
+        <StaticResource ResourceKey="MainViewTitle" />
+    </Window.Title>
+    
     <Grid>
-        
+        <Menu VerticalAlignment="Top" Height="22" >
+            <MenuItem Header="{StaticResource Other}" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="{StaticResource Settings}" Style="{StaticResource MenuItemStyle}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Settings"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator Height="2"/>
+                <MenuItem Header="{StaticResource ChangePassword}" Click="ChangePasswordMenuItemClick" Style="{StaticResource MenuItemStyle}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="PasswordReset"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator Height="2"/>
+                <MenuItem Header="{StaticResource Exit}" Click="ExitMenuItemClick" Style="{StaticResource MenuItemStyle}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ExitToApp"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="{StaticResource Employees}" Style="{StaticResource MenuItemStyle}"/>
+            <MenuItem Header="{StaticResource Orders}"  Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="{StaticResource ImposedPenalties}" Style="{StaticResource MenuItemStyle}"/>
+                <MenuItem Header="{StaticResource Encouragements}" Style="{StaticResource MenuItemStyle}"/>
+            </MenuItem>
+
+            <MenuItem Header="{StaticResource Documents}" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="{StaticResource Document1}" Style="{StaticResource MenuItemStyle}"/>
+                <MenuItem Header="{StaticResource Document2}" Style="{StaticResource MenuItemStyle}"/>
+            </MenuItem>
+
+            <MenuItem Header="{StaticResource References}" Style="{StaticResource MenuItemStyle}">
+                
+            </MenuItem>
+            <MenuItem Header="{StaticResource Help}" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="{StaticResource Content}" Style="{StaticResource MenuItemStyle}" Click="ContentMenuItemClick">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="HelpCircleOutline"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator Height="2"/>
+                <MenuItem Header="{StaticResource About}" Click="AboutMenuItemClick" Style="{StaticResource MenuItemStyle}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="InformationCircleOutline"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

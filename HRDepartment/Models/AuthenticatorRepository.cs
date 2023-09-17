@@ -10,6 +10,7 @@ namespace HRDepartment
     {
         private DBContext DBContext => Context as DBContext;
         private PasswordHash passwordHash = new PasswordHash("3yYQv8xx5MjR63RFwWxLxaXR");
+
         public AuthenticatorRepository(DBContext dBContext) : base(dBContext) { }
 
         public int FindEmployee(string email, string password)
@@ -19,6 +20,20 @@ namespace HRDepartment
                         .Select(e => e.Id)
                         .FirstOrDefault();
             return id;
+        }
+
+        public bool ChangePassword(int id, string previousPassword, string newPassword)
+        {
+            AuthData user = DBContext.employees.FirstOrDefault(u => u.Id == id);
+
+            if (user != null && user.PasswordHash == passwordHash.HashPassword(previousPassword))
+            {
+                user.PasswordHash = passwordHash.HashPassword(newPassword);
+                DBContext.SaveChanges();
+                return true;
+            }
+
+            return false;
         }
     }
 }

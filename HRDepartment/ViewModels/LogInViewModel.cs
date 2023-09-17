@@ -21,8 +21,10 @@ namespace HRDepartment
 
         public LogInViewModel()
         {
-            email = string.Empty;
-            password = string.Empty;
+            email = "admin@a.aa";
+            password = "admin";
+            //email = string.Empty;
+            //password = string.Empty;
             authenticatorRepository = new AuthenticatorRepository(new DBContext());
             navigationService = new NavigationService(Application.Current.MainWindow);
         }

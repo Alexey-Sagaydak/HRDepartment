@@ -3,8 +3,37 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="LogIn">Войти</system:String>
     <system:String x:Key="LogInViewTitle">Вход в систему</system:String>
+    <system:String x:Key="MainViewTitle">АИС Отдел кадров. Сотрудник id: 0</system:String>
     <system:String x:Key="LoginViewHint">Введите e-mail</system:String>
     <system:String x:Key="PasswordHint">Введите пароль</system:String>
     <system:String x:Key="ARMName">АИС Отдел кадров</system:String>
     <system:String x:Key="EnterLoginAndPassword">Введите логин и пароль</system:String>
+    
+    <!--Menu Items-->
+    <system:String x:Key="Other">Разное</system:String>
+    <system:String x:Key="Settings">Настройки</system:String>
+    <system:String x:Key="ChangePassword">Сменить пароль</system:String>
+    <system:String x:Key="Exit">Выход</system:String>
+    <system:String x:Key="Employees">Сотрудники</system:String>
+    <system:String x:Key="Orders">Приказы</system:String>
+    <system:String x:Key="ImposedPenalties">Наложенные взыскания</system:String>
+    <system:String x:Key="Encouragements">Поощрения</system:String>
+    <system:String x:Key="Documents">Документы</system:String>
+    <system:String x:Key="Document1">Документ 1</system:String>
+    <system:String x:Key="Document2">Документ 2</system:String>
+    <system:String x:Key="References">Справочники</system:String>
+    <system:String x:Key="Help">Справка</system:String>
+    <system:String x:Key="Content">Содержание</system:String>
+    <system:String x:Key="About">О программе</system:String>
+    
+    <!--AboutView-->
+    <system:String x:Key="Author">Автор: Сагайдак А.Е., гр. АВТ-113</system:String>
+    <system:String x:Key="Version">Версия программы: 1.0</system:String>
+    
+    <!--ChangePasswordView-->
+    <system:String x:Key="ChangePasswordTitle">Смена пароля</system:String>
+    <system:String x:Key="PreviousPassword">Текущий пароль</system:String>
+    <system:String x:Key="NewPassword">Новый пароль</system:String>
+    <system:String x:Key="ConfirmPassword">Подтвердите</system:String>
+    <system:String x:Key="SaveNewPassword">Сохранить</system:String>
 </ResourceDictionary>

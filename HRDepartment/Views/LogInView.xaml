@@ -19,6 +19,10 @@
         <StaticResource ResourceKey="LogInViewTitle" />
     </Window.Title>
 
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding EnterCommand}" />
+    </Window.InputBindings>
+
     <Grid VerticalAlignment="Center">
         <StackPanel>
             <TextBlock Text="{StaticResource ARMName}" FontSize="25" FontWeight="Bold" Margin="10 10 0 10" />

@@ -24,7 +24,32 @@ namespace HRDepartment
         {
             InitializeComponent();
             currentEmployeeId = id;
-            this.Title = $"АИС Отдел кадров. Сотрудник id: {id}";
+            Title = $"АИС Отдел кадров. Сотрудник id: {id}";
+        }
+
+        private void AboutMenuItemClick(object sender, RoutedEventArgs e)
+        {
+            AboutView aboutView = new AboutView();
+            aboutView.ShowDialog();
+        }
+
+        private void ContentMenuItemClick(object sender, RoutedEventArgs e)
+        {
+            ContentView contentView = new ContentView();
+            contentView.ShowDialog();
+        }
+
+        private void ChangePasswordMenuItemClick(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordView changePasswordView = new ChangePasswordView(currentEmployeeId);
+            changePasswordView.ShowDialog();
+        }
+
+        private void ExitMenuItemClick(object sender, RoutedEventArgs e)
+        {
+            LogInView logInView = new LogInView();
+            logInView.Show();
+            Close();
         }
     }
 }
