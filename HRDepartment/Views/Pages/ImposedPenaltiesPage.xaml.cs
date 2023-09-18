@@ -20,20 +20,9 @@ namespace HRDepartment
     /// </summary>
     public partial class ImposedPenaltiesPage : Page
     {
-        private MainView parentWindow;
-        private string title;
-
-        public ImposedPenaltiesPage(string title, MainView parentWindow)
+        public ImposedPenaltiesPage()
         {
             InitializeComponent();
-            this.title = title;
-            this.parentWindow = parentWindow;
-            textBlock.Text = title;
-        }
-
-        private void ClosePage_Click(object sender, RoutedEventArgs e)
-        {
-            parentWindow.RemoveOpenedPage(title);
         }
     }
 }

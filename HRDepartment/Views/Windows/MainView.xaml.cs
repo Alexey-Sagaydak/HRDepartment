@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -67,28 +68,30 @@ namespace HRDepartment
             windowsMenuItem.Items.Add(menuItem);
 
             mainFrame.NavigationService.Navigate(page);
+            mainFrame.Tag = openedPage;
+
+            ChangeCloseButtonEnableStatus();
         }
 
-        public void RemoveOpenedPage(string title)
+        private void RemoveOpenedPage()
         {
-            foreach (var openPage in  openedPages)
-            {
-                if (openPage.Title == title)
-                {
-                    openedPages.Remove(openPage);
-                    break;
-                }
-            }
+            OpenedPage openedPage = mainFrame.Tag as OpenedPage;
+            openedPages.Remove(openedPage);
 
             foreach (var menuItem in windowsMenuItem.Items.OfType<MenuItem>())
             {
-                if (menuItem.Header.ToString() == title)
+                if (menuItem.Tag == openedPage)
                 {
                     windowsMenuItem.Items.Remove(menuItem);
                     mainFrame.Content = null;
+                    mainFrame.Tag = null;
 
                     if (openedPages.Count > 0)
+                    {
                         mainFrame.NavigationService.Navigate(openedPages[openedPages.Count - 1].PageInstance);
+                        mainFrame.Tag = openedPages[openedPages.Count - 1];
+                    }
+                    ChangeCloseButtonEnableStatus();
                     break;
                 }
             }
@@ -111,15 +114,25 @@ namespace HRDepartment
         {
             string title = AddNumberToPageString("Наложенные взыскания");
 
-            Page page = new ImposedPenaltiesPage(title, this);
+            Page page = new ImposedPenaltiesPage();
             AddOpenedPage(title, page);
         }
 
         private void OpenEncouragementsPage(object sender, RoutedEventArgs e)
         {
             string title = AddNumberToPageString("Поощрения");
-            Page page = new EncouragementsPage(title, this);
+            Page page = new EncouragementsPage();
             AddOpenedPage(title, page);
+        }
+
+        private void RemoveOpenedPage_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveOpenedPage();
+        }
+
+        private void ChangeCloseButtonEnableStatus()
+        {
+            closeButton.IsEnabled = mainFrame.Tag != null;
         }
     }
 }

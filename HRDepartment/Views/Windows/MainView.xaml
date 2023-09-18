@@ -15,6 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Menu Background="WhiteSmoke" VerticalAlignment="Top" Grid.Row="0" ItemContainerStyle="{StaticResource MenuItemStyle}" Height="22">
@@ -69,5 +70,7 @@
         </Menu>
 
         <Frame x:Name="mainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+
+        <Button x:Name="closeButton" Grid.Row="2" Content="{StaticResource Close}" IsEnabled="false" Click="RemoveOpenedPage_Click" FontSize="15" Margin="5 5" HorizontalAlignment="Right" />
     </Grid>
 </Window>

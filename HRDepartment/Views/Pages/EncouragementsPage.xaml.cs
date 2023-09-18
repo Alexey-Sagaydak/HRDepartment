@@ -20,20 +20,9 @@ namespace HRDepartment
     /// </summary>
     public partial class EncouragementsPage : Page
     {
-        private MainView parentWindow;
-        private string title;
-
-        public EncouragementsPage(string title, MainView parentWindow)
+        public EncouragementsPage()
         {
             InitializeComponent();
-            this.title = title;
-            this.parentWindow = parentWindow;
-            textBlock.Text = title;
-        }
-
-        private void ClosePage_Click(object sender, RoutedEventArgs e)
-        {
-            parentWindow.RemoveOpenedPage(title);
         }
     }
 }
