@@ -6,15 +6,7 @@
         xmlns:local="clr-namespace:HRDepartment"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="../Resources/logo.ico">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resources/RussianLocalization.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-
+        Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="../../Resources/logo.ico">
     <Window.Title>
         <StaticResource ResourceKey="LogInViewTitle" />
     </Window.Title>

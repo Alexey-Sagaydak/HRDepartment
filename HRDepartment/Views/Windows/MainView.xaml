@@ -6,30 +6,18 @@
         xmlns:local="clr-namespace:HRDepartment"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="HRDepartment.MainView"
         mc:Ignorable="d"
-        Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="../Resources/logo.ico">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resources/RussianLocalization.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-            <Style x:Key="MenuItemStyle" TargetType="MenuItem">
-                <Setter Property="Height" Value="20"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="IsSubmenuOpen" Value="True"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-        </ResourceDictionary>
-    </Window.Resources>
-    
+        Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="../../Resources/logo.ico">
     <Window.Title>
         <StaticResource ResourceKey="MainViewTitle" />
     </Window.Title>
     
     <Grid>
-        <Menu VerticalAlignment="Top" Height="22" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Menu Background="WhiteSmoke" VerticalAlignment="Top" Grid.Row="0" ItemContainerStyle="{StaticResource MenuItemStyle}" Height="22">
             <MenuItem Header="{StaticResource Other}" Style="{StaticResource MenuItemStyle}">
                 <MenuItem Header="{StaticResource Settings}" Style="{StaticResource MenuItemStyle}">
                     <MenuItem.Icon>
@@ -52,8 +40,8 @@
 
             <MenuItem Header="{StaticResource Employees}" Style="{StaticResource MenuItemStyle}"/>
             <MenuItem Header="{StaticResource Orders}"  Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="{StaticResource ImposedPenalties}" Style="{StaticResource MenuItemStyle}"/>
-                <MenuItem Header="{StaticResource Encouragements}" Style="{StaticResource MenuItemStyle}"/>
+                <MenuItem Header="{StaticResource ImposedPenalties}" Click="OpenImposedPenaltiesPage" Style="{StaticResource MenuItemStyle}"/>
+                <MenuItem Header="{StaticResource Encouragements}" Click="OpenEncouragementsPage" Style="{StaticResource MenuItemStyle}"/>
             </MenuItem>
 
             <MenuItem Header="{StaticResource Documents}" Style="{StaticResource MenuItemStyle}">
@@ -61,9 +49,10 @@
                 <MenuItem Header="{StaticResource Document2}" Style="{StaticResource MenuItemStyle}"/>
             </MenuItem>
 
-            <MenuItem Header="{StaticResource References}" Style="{StaticResource MenuItemStyle}">
-                
-            </MenuItem>
+            <MenuItem Header="{StaticResource References}" Style="{StaticResource MenuItemStyle}"/>
+            <MenuItem x:Name="windowsMenuItem" Header="{StaticResource OpenedWindows}" Click="WindowMenuItem_Click" ItemContainerStyle="{StaticResource MenuItemStyle}"/>
+
+
             <MenuItem Header="{StaticResource Help}" Style="{StaticResource MenuItemStyle}">
                 <MenuItem Header="{StaticResource Content}" Style="{StaticResource MenuItemStyle}" Click="ContentMenuItemClick">
                     <MenuItem.Icon>
@@ -78,5 +67,7 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
+
+        <Frame x:Name="mainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

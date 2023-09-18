@@ -25,18 +25,6 @@ namespace HRDepartment
             
             InitializeComponent();
             DataContext = new LogInViewModel();
-
-            //PasswordHash passwordHash = new PasswordHash("3yYQv8xx5MjR63RFwWxLxaXR");
-            //Console.WriteLine(passwordHash.HashPassword("admin"));
-            // DELELE LATER
-            //using (var dbContext = new DBContext())
-            //{
-            //    var repository = new SpecialtiesRepository(dbContext);
-
-            //    // Пример использования репозитория:
-            //    var specialty = repository.GetSpecialty(5);
-            //    Console.WriteLine($"{specialty.Id} {specialty.Name}");
-            //}
         }
 
         private void PasswordChanged(object sender, RoutedEventArgs e)

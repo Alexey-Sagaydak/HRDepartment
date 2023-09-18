@@ -6,15 +6,7 @@
         xmlns:local="clr-namespace:HRDepartment"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Height="240" Topmost="True" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="../Resources/logo.ico">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resources/RussianLocalization.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-
+        Height="240" Topmost="True" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="../../Resources/logo.ico">
     <Window.Title>
         <StaticResource ResourceKey="About" />
     </Window.Title>
@@ -28,7 +20,7 @@
         <TextBlock Text="{StaticResource About}" FontSize="17" FontWeight="Bold" Margin="5" TextAlignment="Center"/>
 
         <StackPanel Grid.Row="1" Margin="0">
-            <Image Height="50" Source="../Resources/logo.png" />
+            <Image Height="50" Source="../../Resources/logo.png" />
             <TextBlock Text="{StaticResource ARMName}" FontWeight="SemiBold" FontSize="15" Margin="5" TextAlignment="Center"/>
             <TextBlock Text="{StaticResource Version}" FontSize="15" Margin="5" TextAlignment="Center"/>
             <TextBlock Text="{StaticResource Author}" FontSize="15" Margin="5" TextAlignment="Center"/>
