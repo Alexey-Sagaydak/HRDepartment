@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRDepartment.Models
+namespace HRDepartment
 {
-    internal class Employee
+    public class Employee
     {
     }
 }

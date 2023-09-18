@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRDepartment
 {
-    public class AuthenticatorRepository : Repository<AuthData>
+    public class AuthenticatorRepository : Repository<AuthData>, IAuthenticatorRepository
     {
         private DBContext DBContext => Context as DBContext;
         private PasswordHash passwordHash = new PasswordHash("3yYQv8xx5MjR63RFwWxLxaXR");

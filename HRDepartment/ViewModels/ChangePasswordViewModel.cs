@@ -17,7 +17,7 @@ namespace HRDepartment
         private string newPassword1;
         private string newPassword2;
 
-        private AuthenticatorRepository authenticatorRepository;
+        private IAuthenticatorRepository authenticatorRepository;
         private readonly INavigationService navigationService;
 
         private RelayCommand saveCommand;
