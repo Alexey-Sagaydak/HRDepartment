@@ -42,22 +42,7 @@ namespace HRDepartment
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem selectedItem = (ComboBoxItem)LanguageComboBox.SelectedItem;
-            if (selectedItem != null)
-            {
-                string selectedCulture = selectedItem.Tag.ToString();
-
-                // Устанавливаем выбранную локализацию для всего приложения.
-                CultureInfo newCulture = new CultureInfo(selectedCulture);
-                Thread.CurrentThread.CurrentCulture = newCulture;
-                Thread.CurrentThread.CurrentUICulture = newCulture;
-
-                // Обновляем ресурсы локализации для всех элементов интерфейса.
-                ResourceDictionary dict = new ResourceDictionary();
-                dict.Source = new Uri($"/HRDepartment;component/Resources/Localization-{selectedCulture}.xaml", UriKind.Relative);
-                Application.Current.Resources.MergedDictionaries.Clear();
-                Application.Current.Resources.MergedDictionaries.Add(dict);
-            }
+            Console.WriteLine("Я НЕ РАБОТАЮ!!!!!!!!!!!!!!!!");
         }
     }
 }
