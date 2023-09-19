@@ -20,7 +20,7 @@
 
         <Menu Background="WhiteSmoke" VerticalAlignment="Top" Grid.Row="0" ItemContainerStyle="{StaticResource MenuItemStyle}" Height="22">
             <MenuItem Header="{StaticResource Other}" Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="{StaticResource Settings}" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="{StaticResource Settings}" Click="SettingsMenuItemClick" Style="{StaticResource MenuItemStyle}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Settings"/>
                     </MenuItem.Icon>

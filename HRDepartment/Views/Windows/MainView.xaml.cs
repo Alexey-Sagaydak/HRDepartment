@@ -134,5 +134,11 @@ namespace HRDepartment
         {
             closeButton.IsEnabled = mainFrame.Tag != null;
         }
+
+        private void SettingsMenuItemClick(object sender, RoutedEventArgs e)
+        {
+            SettingsView settingsView = new SettingsView();
+            settingsView.ShowDialog();
+        }
     }
 }

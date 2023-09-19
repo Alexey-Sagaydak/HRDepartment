@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 
 namespace HRDepartment
 {
@@ -16,9 +17,17 @@ namespace HRDepartment
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "Host=localhost;Port=5432;Username=admin;Password=admin;Database=HRDepartmentDB;";
+            string connectionString = ReadStringFromFile(@"Resources\DBConnectionString.txt");
 
             optionsBuilder.UseNpgsql(connectionString);
+        }
+
+        private static string ReadStringFromFile(string filePath)
+        {
+            if (File.Exists(filePath))
+                return File.ReadAllText(filePath);
+            else
+                throw new FileNotFoundException("Не найден файл со строкой подключения к БД", filePath);
         }
     }
 }

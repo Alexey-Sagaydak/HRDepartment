@@ -6,9 +6,34 @@
         xmlns:local="clr-namespace:HRDepartment"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="HRDepartment.SettingsView"
         mc:Ignorable="d"
-        Title="SettingsView" Height="450" Width="800">
+        Height="220" Width="350" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="../../Resources/logo.ico">
+    <Window.Title>
+        <StaticResource ResourceKey="Settings" />
+    </Window.Title>
+    
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="{StaticResource Settings}" FontSize="20" FontWeight="Bold" Margin="5" TextAlignment="Center"/>
 
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0">
+            <TextBlock Text="{StaticResource AppLanguage}" FontSize="18" Margin="10" TextAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox x:Name="LanguageComboBox" Style="{StaticResource MaterialDesignComboBox}" FontSize="15" SelectedValue="0" VerticalAlignment="Center">
+                <ComboBoxItem Content="ENG" Tag="en-US"/>
+                <ComboBoxItem Content="РУС" Tag="ru-RU"/>
+            </ComboBox>
+        </StackPanel>
 
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0">
+            <TextBlock Grid.Row="2" Text="{StaticResource DBConnectionString}" FontSize="18" Margin="10" VerticalAlignment="Center"/>
+            <Button Grid.Row="3" Content="{StaticResource Open}" Click="OpenButtonClick" FontSize="12" Margin="0" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <Button Grid.Row="3" Content="{StaticResource SaveNewPassword}" Click="SaveButtonClick" FontSize="15" Margin="10" />
     </Grid>
 </Window>

@@ -38,4 +38,8 @@
     <system:String x:Key="NewPassword">Новый пароль</system:String>
     <system:String x:Key="ConfirmPassword">Подтвердите</system:String>
     <system:String x:Key="SaveNewPassword">Сохранить</system:String>
+    
+    <system:String x:Key="AppLanguage">Язык приложения: </system:String>
+    <system:String x:Key="DBConnectionString">Строка подключения к БД: </system:String>
+    <system:String x:Key="Open">Открыть</system:String>
 </ResourceDictionary>
