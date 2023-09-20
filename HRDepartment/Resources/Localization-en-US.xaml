@@ -1,45 +1,45 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <system:String x:Key="LogIn">Log In</system:String>
+    <system:String x:Key="LogIn">Enter</system:String>
     <system:String x:Key="LogInViewTitle">Login</system:String>
     <system:String x:Key="MainViewTitle">HR Department Information System. Employee id: 0</system:String>
     <system:String x:Key="LoginViewHint">Enter your e-mail</system:String>
     <system:String x:Key="PasswordHint">Enter your password</system:String>
-    <system:String x:Key="ARMName">HR Department Information System</system:String>
+    <system:String x:Key="ARMName">HR Department</system:String>
     <system:String x:Key="EnterLoginAndPassword">Enter login and password</system:String>
 
     <!--Menu Items-->
     <system:String x:Key="Other">Other</system:String>
     <system:String x:Key="Settings">Settings</system:String>
-    <system:String x:Key="ChangePassword">Change Password</system:String>
+    <system:String x:Key="ChangePassword">Change password</system:String>
     <system:String x:Key="Exit">Exit</system:String>
     <system:String x:Key="Employees">Employees</system:String>
     <system:String x:Key="Orders">Orders</system:String>
-    <system:String x:Key="ImposedPenalties">Imposed Penalties</system:String>
+    <system:String x:Key="ImposedPenalties">Imposed penalties</system:String>
     <system:String x:Key="Encouragements">Encouragements</system:String>
     <system:String x:Key="Documents">Documents</system:String>
     <system:String x:Key="Document1">Document 1</system:String>
     <system:String x:Key="Document2">Document 2</system:String>
     <system:String x:Key="References">References</system:String>
-    <system:String x:Key="OpenedWindows">Window</system:String>
+    <system:String x:Key="OpenedWindows">Windows</system:String>
     <system:String x:Key="Help">Help</system:String>
     <system:String x:Key="Content">Contents</system:String>
     <system:String x:Key="About">About</system:String>
     <system:String x:Key="Close">Close</system:String>
 
     <!--AboutView-->
-    <system:String x:Key="Author">Author: Sagaydak A.E., group AVT-113</system:String>
+    <system:String x:Key="Author">Author: Sagaidak A.E., group AVT-113</system:String>
     <system:String x:Key="Version">Program Version: 1.0</system:String>
 
     <!--ChangePasswordView-->
-    <system:String x:Key="ChangePasswordTitle">Change Password</system:String>
-    <system:String x:Key="PreviousPassword">Current Password</system:String>
-    <system:String x:Key="NewPassword">New Password</system:String>
+    <system:String x:Key="ChangePasswordTitle">Change password</system:String>
+    <system:String x:Key="PreviousPassword">Current password</system:String>
+    <system:String x:Key="NewPassword">New password</system:String>
     <system:String x:Key="ConfirmPassword">Confirm</system:String>
     <system:String x:Key="SaveNewPassword">Save</system:String>
 
-    <system:String x:Key="AppLanguage">Application Language:</system:String>
-    <system:String x:Key="DBConnectionString">Database Connection String:</system:String>
+    <system:String x:Key="AppLanguage">App Language:</system:String>
+    <system:String x:Key="DBConnectionString">Db connection string:</system:String>
     <system:String x:Key="Open">Open</system:String>
 </ResourceDictionary>

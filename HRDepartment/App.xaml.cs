@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.IO.Packaging;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,11 +22,21 @@ namespace HRDepartment
             base.OnStartup(e);
 
             ResourceDictionary newResourceDictionary = new ResourceDictionary();
+            string filePath = @"Resources\Language.txt";
+            string localizationString;
+            Uri resourceUri;
 
-            // TODO: сделать здесь выбор локализации
-            Uri resourceUri = new Uri("pack://application:,,,/HRDepartment;component/Resources/Localization-ru-RU.xaml");
+            if (File.Exists(filePath))
+            {
+                localizationString = $"pack://application:,,,/HRDepartment;component/Resources/Localization-{File.ReadAllText(filePath)}.xaml";
+                resourceUri = new Uri(localizationString);
+            }
+            else
+            {
+                throw new FileNotFoundException("Не найден файл со строкой подключения к БД", filePath);
+            }
 
-            using (var stream = Application.GetResourceStream(resourceUri).Stream)
+            using (var stream = GetResourceStream(resourceUri).Stream)
             {
                 newResourceDictionary = (ResourceDictionary)XamlReader.Load(stream);
             }

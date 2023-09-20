@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -42,7 +43,32 @@ namespace HRDepartment
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Я НЕ РАБОТАЮ!!!!!!!!!!!!!!!!");
+            ComboBoxItem selectedComboBoxItem = (ComboBoxItem)LanguageComboBox.SelectedItem;
+
+            if (selectedComboBoxItem != null)
+            {
+                object tagValue = selectedComboBoxItem.Tag;
+
+                if (tagValue != null)
+                {
+                    string tagAsString = tagValue.ToString();
+
+                    WriteTextToFile(@"Resources\Language.txt", tagAsString);
+                    MessageBox.Show("Изменение языка вступит в силе после перезапуска приложения", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
+
+        public static void WriteTextToFile(string filePath, string textToWrite)
+        {
+            try
+            {
+                File.WriteAllText(filePath, textToWrite);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при записи в файл: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
