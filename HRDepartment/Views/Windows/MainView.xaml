@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <Menu Background="WhiteSmoke" VerticalAlignment="Top" Grid.Row="0" ItemContainerStyle="{StaticResource MenuItemStyle}" Height="22">
-            <MenuItem Header="{StaticResource Other}" Style="{StaticResource MenuItemStyle}">
+            <MenuItem Header="{StaticResource  Other}" Style="{StaticResource MenuItemStyle}">
                 <MenuItem Header="{StaticResource Settings}" Click="SettingsMenuItemClick" Style="{StaticResource MenuItemStyle}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Settings"/>
@@ -50,7 +50,14 @@
                 <MenuItem Header="{StaticResource Document2}" Style="{StaticResource MenuItemStyle}"/>
             </MenuItem>
 
-            <MenuItem Header="{StaticResource References}" Style="{StaticResource MenuItemStyle}"/>
+            <MenuItem Header="{StaticResource References}" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="{StaticResource Divisions}" Style="{StaticResource MenuItemStyle}"/>
+                <MenuItem Header="{StaticResource Positions}" Style="{StaticResource MenuItemStyle}"/>
+                <MenuItem Header="{StaticResource Additional}" Style="{StaticResource MenuItemStyle}">
+                    <MenuItem Header="{StaticResource Specialties}" Style="{StaticResource MenuItemStyle}"/>
+                    <MenuItem Header="{StaticResource EducationalInstitutions}" Style="{StaticResource MenuItemStyle}"/>
+                </MenuItem>
+            </MenuItem>
             <MenuItem x:Name="windowsMenuItem" Header="{StaticResource OpenedWindows}" Click="WindowMenuItem_Click" ItemContainerStyle="{StaticResource MenuItemStyle}"/>
 
 

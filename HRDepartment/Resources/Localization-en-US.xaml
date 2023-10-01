@@ -27,6 +27,11 @@
     <system:String x:Key="Content">Contents</system:String>
     <system:String x:Key="About">About</system:String>
     <system:String x:Key="Close">Close</system:String>
+    <system:String x:Key="Divisions">Divisions</system:String>
+    <system:String x:Key="Positions">Positions</system:String>
+    <system:String x:Key="Specialties">Specialties</system:String>
+    <system:String x:Key="Additional">Additional</system:String>
+    <system:String x:Key="EducationalInstitutions">Educational institutions</system:String>
 
     <!--AboutView-->
     <system:String x:Key="Author">Author: Sagaidak A.E., group AVT-113</system:String>

@@ -27,6 +27,11 @@
     <system:String x:Key="Content">Содержание</system:String>
     <system:String x:Key="About">О программе</system:String>
     <system:String x:Key="Close">Закрыть</system:String>
+    <system:String x:Key="Divisions">Подразделения</system:String>
+    <system:String x:Key="Positions">Должности</system:String>
+    <system:String x:Key="Specialties">Спедиальности</system:String>
+    <system:String x:Key="Additional">Дополнительно</system:String>
+    <system:String x:Key="EducationalInstitutions">Образовательные организации</system:String>
     
     <!--AboutView-->
     <system:String x:Key="Author">Автор: Сагайдак А.Е., гр. АВТ-113</system:String>
