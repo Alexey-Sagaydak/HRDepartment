@@ -110,18 +110,24 @@ namespace HRDepartment
             return $"{openedPages.Count + 1}. {str}";
         }
 
-        private void OpenImposedPenaltiesPage(object sender, RoutedEventArgs e)
+        private void OpenOrdersPage(object sender, RoutedEventArgs e)
         {
-            string title = AddNumberToPageString("Наложенные взыскания");
-
-            Page page = new ImposedPenaltiesPage();
+            string title = AddNumberToPageString("Приказы");
+            Page page = new OrdersPage();
+            AddOpenedPage(title, page);
+        }
+        
+        private void OpenEmployeesPage(object sender, RoutedEventArgs e)
+        {
+            string title = AddNumberToPageString("Сотрудники");
+            Page page = new EmployeesPage();
             AddOpenedPage(title, page);
         }
 
-        private void OpenEncouragementsPage(object sender, RoutedEventArgs e)
+        private void OpenPassportsPage(object sender, RoutedEventArgs e)
         {
-            string title = AddNumberToPageString("Поощрения");
-            Page page = new EncouragementsPage();
+            string title = AddNumberToPageString("Паспорта");
+            Page page = new PassportsPage();
             AddOpenedPage(title, page);
         }
 

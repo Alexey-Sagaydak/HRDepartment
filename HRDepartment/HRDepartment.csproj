@@ -40,6 +40,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OrderPage\OrderPage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\logo.ico" />
   </ItemGroup>
 
@@ -53,6 +57,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Pages\PassportsPage.xaml.cs">
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 

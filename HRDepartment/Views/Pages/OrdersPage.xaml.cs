@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace HRDepartment
 {
     /// <summary>
-    /// Логика взаимодействия для ImposedPenaltiesPage.xaml
+    /// Логика взаимодействия для EncouragementsPage.xaml
     /// </summary>
-    public partial class EmployeesPage : Page
+    public partial class OrdersPage : Page
     {
-        public EmployeesPage()
+        public OrdersPage()
         {
             InitializeComponent();
         }

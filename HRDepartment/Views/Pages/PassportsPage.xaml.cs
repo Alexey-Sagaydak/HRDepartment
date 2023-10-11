@@ -18,9 +18,9 @@ namespace HRDepartment
     /// <summary>
     /// Логика взаимодействия для ImposedPenaltiesPage.xaml
     /// </summary>
-    public partial class EmployeesPage : Page
+    public partial class PassportsPage : Page
     {
-        public EmployeesPage()
+        public PassportsPage()
         {
             InitializeComponent();
         }

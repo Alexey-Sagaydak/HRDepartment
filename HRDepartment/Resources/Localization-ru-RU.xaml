@@ -19,8 +19,8 @@
     <system:String x:Key="ImposedPenalties">Наложенные взыскания</system:String>
     <system:String x:Key="Encouragements">Поощрения</system:String>
     <system:String x:Key="Documents">Документы</system:String>
-    <system:String x:Key="Document1">Документ 1</system:String>
-    <system:String x:Key="Document2">Документ 2</system:String>
+    <system:String x:Key="Passports">Паспорта</system:String>
+    <system:String x:Key="EduDocs">Документы об образовании</system:String>
     <system:String x:Key="References">Справочники</system:String>
     <system:String x:Key="OpenedWindows">Окно</system:String>
     <system:String x:Key="Help">Справка</system:String>
@@ -28,10 +28,13 @@
     <system:String x:Key="About">О программе</system:String>
     <system:String x:Key="Close">Закрыть</system:String>
     <system:String x:Key="Divisions">Подразделения</system:String>
+    <system:String x:Key="Addresses">Адреса</system:String>
     <system:String x:Key="Positions">Должности</system:String>
     <system:String x:Key="Specialties">Спедиальности</system:String>
     <system:String x:Key="Additional">Дополнительно</system:String>
     <system:String x:Key="EducationalInstitutions">Образовательные организации</system:String>
+    <system:String x:Key="OrganizationsNames">Организации</system:String>
+    <system:String x:Key="OrdersTypes">Типы приказов</system:String>
     
     <!--AboutView-->
     <system:String x:Key="Author">Автор: Сагайдак А.Е., гр. АВТ-113</system:String>

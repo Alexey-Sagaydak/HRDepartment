@@ -18,9 +18,9 @@ namespace HRDepartment
     /// <summary>
     /// Логика взаимодействия для EncouragementsPage.xaml
     /// </summary>
-    public partial class EncouragementsPage : Page
+    public partial class OrdersPage : Page
     {
-        public EncouragementsPage()
+        public OrdersPage()
         {
             InitializeComponent();
         }
