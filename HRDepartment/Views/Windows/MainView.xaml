@@ -14,11 +14,27 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Menu Background="WhiteSmoke" VerticalAlignment="Top" Grid.Row="0" ItemContainerStyle="{StaticResource MenuItemStyle}" Height="22">
+        <Menu Grid.Row="0" ItemsSource="{Binding MenuItems}">
+            <Menu.ItemContainerStyle>
+                <Style TargetType="MenuItem">
+                    <Setter Property="Header" Value="{Binding Header}" />
+                    <Setter Property="Command" Value="{Binding Command}" />
+                    <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
+                    <Setter Property="ItemsSource" Value="{Binding MenuItems}" />
+                </Style>
+            </Menu.ItemContainerStyle>
+        </Menu>
+
+        <Menu Grid.Row="1">
+            <MenuItem x:Name="windowsMenuItem" Header="{StaticResource OpenedWindows}" Click="WindowMenuItem_Click"/>
+        </Menu>
+        
+        <!--<Menu Background="WhiteSmoke" VerticalAlignment="Top" Grid.Row="0" ItemContainerStyle="{StaticResource MenuItemStyle}" Height="22">
             <MenuItem Header="{StaticResource  Other}" Style="{StaticResource MenuItemStyle}">
                 <MenuItem Header="{StaticResource Settings}" Click="SettingsMenuItemClick" Style="{StaticResource MenuItemStyle}">
                     <MenuItem.Icon>
@@ -73,10 +89,10 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-        </Menu>
+        </Menu>-->
 
-        <Frame x:Name="mainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="mainFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
 
-        <Button x:Name="closeButton" Grid.Row="2" Content="{StaticResource Close}" IsEnabled="false" Click="RemoveOpenedPage_Click" FontSize="15" Margin="5 5" HorizontalAlignment="Right" />
+        <Button x:Name="closeButton" Grid.Row="3" Content="{StaticResource Close}" IsEnabled="false" Click="RemoveOpenedPage_Click" FontSize="15" Margin="5 5" HorizontalAlignment="Right" />
     </Grid>
 </Window>

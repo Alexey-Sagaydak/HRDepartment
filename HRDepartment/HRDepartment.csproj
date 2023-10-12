@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderPage\OrderPage.csproj" />
+    <ProjectReference Include="..\OrderPage\OrdersPage.csproj" />
   </ItemGroup>
 
   <ItemGroup>

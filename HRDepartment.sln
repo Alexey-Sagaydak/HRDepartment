@@ -8,7 +8,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRDepartment", "HRDepartmen
 		{8AA6AFCB-AA1F-4367-87D2-A9904E32341A} = {8AA6AFCB-AA1F-4367-87D2-A9904E32341A}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderPage", "OrderPage\OrderPage.csproj", "{8AA6AFCB-AA1F-4367-87D2-A9904E32341A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersPage", "OrderPage\OrdersPage.csproj", "{8AA6AFCB-AA1F-4367-87D2-A9904E32341A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

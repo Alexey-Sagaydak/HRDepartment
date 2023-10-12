@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static HRDepartment.MainViewModel;
 
 namespace HRDepartment
 {
@@ -28,6 +30,8 @@ namespace HRDepartment
             InitializeComponent();
             currentEmployeeId = id;
             Title = $"АИС Отдел кадров. Сотрудник id: {id}";
+            DataContext = new MainViewModel(currentEmployeeId);
+            ((MainViewModel)DataContext).SomeEvent += OpenPage;
         }
 
         private void AboutMenuItemClick(object sender, RoutedEventArgs e)
@@ -108,6 +112,11 @@ namespace HRDepartment
         private string AddNumberToPageString(string str)
         {
             return $"{openedPages.Count + 1}. {str}";
+        }
+
+        private void OpenPage(string title, Page page)
+        {
+            AddOpenedPage(AddNumberToPageString(title), page);
         }
 
         private void OpenOrdersPage(object sender, RoutedEventArgs e)

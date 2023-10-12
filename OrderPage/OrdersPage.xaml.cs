@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HRDepartment
+namespace Orders
 {
     /// <summary>
     /// Логика взаимодействия для EncouragementsPage.xaml
