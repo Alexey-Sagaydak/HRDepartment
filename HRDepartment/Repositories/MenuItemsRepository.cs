@@ -27,7 +27,8 @@ namespace HRDepartment
             {
                 menuItemsInfo = new List<MenuItemInfo>
                 {
-                    new MenuItemInfo(4, 3, "Паспорта", "PassportsPage.dll", "Passports.PassportsPage", 0)
+                    new MenuItemInfo(4, 3, "Паспорта", "PassportsPage.dll", "Passports.PassportsPage", 0),
+                    new MenuItemInfo(5, 3, "Документы об образовании", "EduDocsPage.dll", "EduDocs.EduDocsPage", 1)
                 };
             }
                     
