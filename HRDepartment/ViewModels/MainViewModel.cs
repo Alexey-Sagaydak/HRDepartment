@@ -42,7 +42,10 @@ namespace HRDepartment
             {
                 if (menuItem.DLLName == null && menuItem.ClassName == null)
                 {
-                    
+                    currentMenuItemsCollection.Add(new MenuItemViewModel(menuItem.Name, null, null));
+                    var newCollection = new ObservableCollection<MenuItemViewModel>();
+                    currentMenuItemsCollection.Last().MenuItems = newCollection;
+                    CreateMenu(newCollection, menuItem.Id);
                 }
                 else
                 {

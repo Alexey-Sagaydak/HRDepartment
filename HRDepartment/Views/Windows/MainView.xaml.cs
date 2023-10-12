@@ -69,6 +69,7 @@ namespace HRDepartment
             menuItem.Header = title;
             menuItem.Tag = openedPage;
             menuItem.Click += WindowMenuItem_Click;
+            menuItem.Height = 22;
             windowsMenuItem.Items.Add(menuItem);
 
             mainFrame.NavigationService.Navigate(page);
@@ -123,20 +124,6 @@ namespace HRDepartment
         {
             string title = AddNumberToPageString("Приказы");
             Page page = new OrdersPage();
-            AddOpenedPage(title, page);
-        }
-        
-        private void OpenEmployeesPage(object sender, RoutedEventArgs e)
-        {
-            string title = AddNumberToPageString("Сотрудники");
-            Page page = new EmployeesPage();
-            AddOpenedPage(title, page);
-        }
-
-        private void OpenPassportsPage(object sender, RoutedEventArgs e)
-        {
-            string title = AddNumberToPageString("Паспорта");
-            Page page = new PassportsPage();
             AddOpenedPage(title, page);
         }
 

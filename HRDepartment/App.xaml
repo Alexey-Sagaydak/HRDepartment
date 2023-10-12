@@ -18,6 +18,7 @@
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
                         <Setter Property="IsSubmenuOpen" Value="True"/>
+                        <Setter Property="FocusManager.FocusedElement" Value="{Binding RelativeSource={RelativeSource Self}}" />
                     </Trigger>
                 </Style.Triggers>
             </Style>

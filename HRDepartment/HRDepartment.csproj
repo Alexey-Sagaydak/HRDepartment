@@ -40,7 +40,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EmployeesPage\EmployeesPage.csproj" />
     <ProjectReference Include="..\OrderPage\OrdersPage.csproj" />
+    <ProjectReference Include="..\PassportsPage\PassportsPage.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,9 +59,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Pages\PassportsPage.xaml.cs">
-      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 

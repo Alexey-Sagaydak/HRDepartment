@@ -14,47 +14,70 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" ItemsSource="{Binding MenuItems}">
-            <Menu.ItemContainerStyle>
-                <Style TargetType="MenuItem">
-                    <Setter Property="Header" Value="{Binding Header}" />
-                    <Setter Property="Command" Value="{Binding Command}" />
-                    <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
-                    <Setter Property="ItemsSource" Value="{Binding MenuItems}" />
-                </Style>
-            </Menu.ItemContainerStyle>
-        </Menu>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="WhiteSmoke">
+            <Menu ItemContainerStyle="{StaticResource MenuItemStyle}">
+                <MenuItem Header="{StaticResource  Other}" Style="{StaticResource MenuItemStyle}">
+                    <MenuItem Header="{StaticResource Settings}" Click="SettingsMenuItemClick" Style="{StaticResource MenuItemStyle}">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="Settings"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator Height="2"/>
+                    <MenuItem Header="{StaticResource ChangePassword}" Click="ChangePasswordMenuItemClick" Style="{StaticResource MenuItemStyle}">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="PasswordReset"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator Height="2"/>
+                    <MenuItem Header="{StaticResource Exit}" Click="ExitMenuItemClick" Style="{StaticResource MenuItemStyle}">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ExitToApp"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
 
-        <Menu Grid.Row="1">
-            <MenuItem x:Name="windowsMenuItem" Header="{StaticResource OpenedWindows}" Click="WindowMenuItem_Click"/>
-        </Menu>
+            <Menu Background="WhiteSmoke" Height="22" ItemsSource="{Binding MenuItems}">
+                <Menu.ItemContainerStyle>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Header" Value="{Binding Header}" />
+                        <Setter Property="Command" Value="{Binding Command}" />
+                        <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
+                        <Setter Property="ItemsSource" Value="{Binding MenuItems}" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="IsSubmenuOpen" Value="True"/>
+                                <Setter Property="FocusManager.FocusedElement" Value="{Binding RelativeSource={RelativeSource Self}}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Menu.ItemContainerStyle>
+            </Menu>
+
+            <Menu Background="WhiteSmoke" ItemContainerStyle="{StaticResource MenuItemStyle}" Height="22">
+                <MenuItem x:Name="windowsMenuItem" Style="{StaticResource MenuItemStyle}" Header="{StaticResource OpenedWindows}" Click="WindowMenuItem_Click"/>
+                <MenuItem Header="{StaticResource Help}" Style="{StaticResource MenuItemStyle}">
+                    <MenuItem Header="{StaticResource Content}" Style="{StaticResource MenuItemStyle}" Click="ContentMenuItemClick">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="HelpCircleOutline"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator Height="2"/>
+                    <MenuItem Header="{StaticResource About}" Click="AboutMenuItemClick" Style="{StaticResource MenuItemStyle}">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="InformationCircleOutline"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        
         
         <!--<Menu Background="WhiteSmoke" VerticalAlignment="Top" Grid.Row="0" ItemContainerStyle="{StaticResource MenuItemStyle}" Height="22">
-            <MenuItem Header="{StaticResource  Other}" Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="{StaticResource Settings}" Click="SettingsMenuItemClick" Style="{StaticResource MenuItemStyle}">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="Settings"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <Separator Height="2"/>
-                <MenuItem Header="{StaticResource ChangePassword}" Click="ChangePasswordMenuItemClick" Style="{StaticResource MenuItemStyle}">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="PasswordReset"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <Separator Height="2"/>
-                <MenuItem Header="{StaticResource Exit}" Click="ExitMenuItemClick" Style="{StaticResource MenuItemStyle}">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="ExitToApp"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-            </MenuItem>
-
             <MenuItem Header="{StaticResource Employees}" Click="OpenEmployeesPage" Style="{StaticResource MenuItemStyle}"/>
             <MenuItem Header="{StaticResource Orders}" Click="OpenOrdersPage" Style="{StaticResource MenuItemStyle}"/>
 
@@ -74,25 +97,10 @@
                     <MenuItem Header="{StaticResource OrdersTypes}" Style="{StaticResource MenuItemStyle}"/>
                 </MenuItem>
             </MenuItem>
-            <MenuItem x:Name="windowsMenuItem" Header="{StaticResource OpenedWindows}" Click="WindowMenuItem_Click" ItemContainerStyle="{StaticResource MenuItemStyle}"/>
-
-            <MenuItem Header="{StaticResource Help}" Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="{StaticResource Content}" Style="{StaticResource MenuItemStyle}" Click="ContentMenuItemClick">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="HelpCircleOutline"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <Separator Height="2"/>
-                <MenuItem Header="{StaticResource About}" Click="AboutMenuItemClick" Style="{StaticResource MenuItemStyle}">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="InformationCircleOutline"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-            </MenuItem>
         </Menu>-->
 
-        <Frame x:Name="mainFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="mainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
 
-        <Button x:Name="closeButton" Grid.Row="3" Content="{StaticResource Close}" IsEnabled="false" Click="RemoveOpenedPage_Click" FontSize="15" Margin="5 5" HorizontalAlignment="Right" />
+        <Button x:Name="closeButton" Grid.Row="2" Content="{StaticResource Close}" IsEnabled="false" Click="RemoveOpenedPage_Click" FontSize="15" Margin="5 5" HorizontalAlignment="Right" />
     </Grid>
 </Window>

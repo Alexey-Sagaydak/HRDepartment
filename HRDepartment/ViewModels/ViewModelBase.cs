@@ -14,9 +14,6 @@ namespace HRDepartment
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            Console.WriteLine("Hiii");
-            Console.WriteLine(propertyName);
-            Console.WriteLine("Hiii");
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
