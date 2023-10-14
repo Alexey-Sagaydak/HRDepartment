@@ -20,9 +20,22 @@ namespace References
     /// </summary>
     public partial class AddressesPage : Page
     {
+        IAccessRights accessRights;
+        string title;
         public AddressesPage()
         {
             InitializeComponent();
+            IOpenedPage openedPage = Tag as IOpenedPage;
+            if (openedPage != null )
+            {
+                accessRights = openedPage.AccessRights;
+                title = openedPage.Title;
+                Console.WriteLine(accessRights.Read);
+                Console.WriteLine(accessRights.Wright);
+                Console.WriteLine(accessRights.Edit);
+                Console.WriteLine(accessRights.Delete);
+            }
+            Console.WriteLine("dfdfdf");
         }
     }
 }

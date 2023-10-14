@@ -9,6 +9,6 @@
       Title="AddressesPage">
 
     <Grid Background="White">
-        <TextBlock x:Name="textBlock" Grid.Row="0" Text="Подразделения" FontSize="40" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock x:Name="textBlock" Grid.Row="0" Text="Адреса" FontSize="40" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Page>

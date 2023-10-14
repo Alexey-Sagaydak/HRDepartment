@@ -48,6 +48,7 @@
                         <Setter Property="Command" Value="{Binding Command}" />
                         <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
                         <Setter Property="ItemsSource" Value="{Binding MenuItems}" />
+                        <Setter Property="IsEnabled" Value="{Binding AccessRights.Read}" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="IsSubmenuOpen" Value="True"/>

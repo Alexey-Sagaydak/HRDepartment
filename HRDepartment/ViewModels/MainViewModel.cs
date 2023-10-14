@@ -41,7 +41,7 @@ namespace HRDepartment
             {
                 if (menuItem.DLLName == null && menuItem.ClassName == null)
                 {
-                    currentMenuItemsCollection.Add(new MenuItemViewModel(menuItem.Name, null, null));
+                    currentMenuItemsCollection.Add(new MenuItemViewModel(menuItem.Name, null, null, menuItemsRepository.GetAccessRights(currentEmployeeID, menuItem.Id)));
                     var newCollection = new ObservableCollection<MenuItemViewModel>();
                     currentMenuItemsCollection.Last().MenuItems = newCollection;
                     CreateMenu(newCollection, menuItem.Id);
@@ -73,8 +73,12 @@ namespace HRDepartment
 
                 if (type != null)
                 {
+                    AccessRights accessRights = menuItemsRepository.GetAccessRights(currentEmployeeID, menuItemInfo.Id);
+
                     page = (Page)Activator.CreateInstance(type);
-                    menuItemVM = new MenuItemViewModel(menuItemInfo.Name, RaiseAddPageEvent, new PageInfo(menuItemInfo.Name, page));
+                    page.Tag = accessRights;
+
+                    menuItemVM = new MenuItemViewModel(menuItemInfo.Name, RaiseAddPageEvent, new PageInfo(menuItemInfo.Name, page, accessRights), accessRights);
                     
                     return menuItemVM;
                 }
@@ -90,6 +94,7 @@ namespace HRDepartment
         private void RaiseAddPageEvent(object parameter)
         {
             PageInfo pageInfo = parameter as PageInfo;
+            pageInfo.Page.Tag = pageInfo.AccessRights;
             SomeEvent?.Invoke(pageInfo.Title, pageInfo.Page);
         }
     }

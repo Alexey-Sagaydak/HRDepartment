@@ -61,7 +61,8 @@ namespace HRDepartment
 
         private void AddOpenedPage(string title, Page page)
         {
-            var openedPage = new OpenedPage(title, page);
+            var openedPage = new OpenedPage(title, page, (AccessRights)page.Tag);
+            Console.WriteLine(((AccessRights)page.Tag).Edit);
             openedPages.Add(openedPage);
 
             MenuItem menuItem = new MenuItem();
@@ -118,13 +119,6 @@ namespace HRDepartment
         private void OpenPage(string title, Page page)
         {
             AddOpenedPage(AddNumberToPageString(title), page);
-        }
-
-        private void OpenOrdersPage(object sender, RoutedEventArgs e)
-        {
-            string title = AddNumberToPageString("Приказы");
-            Page page = new OrdersPage();
-            AddOpenedPage(title, page);
         }
 
         private void RemoveOpenedPage_Click(object sender, RoutedEventArgs e)

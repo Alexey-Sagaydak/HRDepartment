@@ -54,5 +54,11 @@ namespace HRDepartment
             }
             return menuItemsInfo;
         }
+
+        public AccessRights GetAccessRights(int userId, int menuItemId)
+        {
+            AccessRights accessRights = new AccessRights(userId, menuItemId, true, true, true, true);
+            return accessRights;
+        }
     }
 }

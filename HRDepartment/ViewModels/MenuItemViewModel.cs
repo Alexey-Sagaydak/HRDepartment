@@ -11,15 +11,15 @@ namespace HRDepartment
     {
         private readonly RelayCommand _command;
         public ObservableCollection<MenuItemViewModel> MenuItems { get; set; }
-        public bool AvailabilityStatus { get; set; }
+        public AccessRights AccessRights { get; set; }
         public PageInfo CommandParameter { get; set; }
         public Action<PageInfo> Func {get; set;}
         public string Header { get; set; }
 
-        public MenuItemViewModel(string header, Action<PageInfo> func, PageInfo commandParameter, bool availabilityStatus = true)
+        public MenuItemViewModel(string header, Action<PageInfo> func, PageInfo commandParameter, AccessRights accessRights)
         {
             Header = header;
-            AvailabilityStatus = availabilityStatus;
+            AccessRights = accessRights;
             Func = func;
             CommandParameter = commandParameter;
         }
