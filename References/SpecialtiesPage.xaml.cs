@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Documents
+namespace References
 {
     /// <summary>
-    /// Логика взаимодействия для EduDocsPage.xaml
+    /// Логика взаимодействия для SpecialtiesPage.xaml
     /// </summary>
-    public partial class EduDocsPage : Page
+    public partial class SpecialtiesPage : Page
     {
-        public EduDocsPage()
+        public SpecialtiesPage()
         {
             InitializeComponent();
         }

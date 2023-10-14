@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Documents
 {
     /// <summary>
-    /// Логика взаимодействия для EduDocsPage.xaml
+    /// Логика взаимодействия для ImposedPenaltiesPage.xaml
     /// </summary>
-    public partial class EduDocsPage : Page
+    public partial class PassportsPage : Page
     {
-        public EduDocsPage()
+        public PassportsPage()
         {
             InitializeComponent();
         }

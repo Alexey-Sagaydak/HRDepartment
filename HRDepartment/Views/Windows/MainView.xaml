@@ -75,29 +75,6 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        
-        
-        <!--<Menu Background="WhiteSmoke" VerticalAlignment="Top" Grid.Row="0" ItemContainerStyle="{StaticResource MenuItemStyle}" Height="22">
-            <MenuItem Header="{StaticResource Employees}" Click="OpenEmployeesPage" Style="{StaticResource MenuItemStyle}"/>
-            <MenuItem Header="{StaticResource Orders}" Click="OpenOrdersPage" Style="{StaticResource MenuItemStyle}"/>
-
-            <MenuItem Header="{StaticResource Documents}" Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="{StaticResource Passports}" Click="OpenPassportsPage" Style="{StaticResource MenuItemStyle}"/>
-                <MenuItem Header="{StaticResource EduDocs}" Style="{StaticResource MenuItemStyle}"/>
-            </MenuItem>
-
-            <MenuItem Header="{StaticResource References}" Style="{StaticResource MenuItemStyle}">
-                <MenuItem Header="{StaticResource Divisions}" Style="{StaticResource MenuItemStyle}"/>
-                <MenuItem Header="{StaticResource Addresses}" Style="{StaticResource MenuItemStyle}"/>
-                <MenuItem Header="{StaticResource Positions}" Style="{StaticResource MenuItemStyle}"/>
-                <MenuItem Header="{StaticResource Additional}" Style="{StaticResource MenuItemStyle}">
-                    <MenuItem Header="{StaticResource Specialties}" Style="{StaticResource MenuItemStyle}"/>
-                    <MenuItem Header="{StaticResource EducationalInstitutions}" Style="{StaticResource MenuItemStyle}"/>
-                    <MenuItem Header="{StaticResource OrganizationsNames}" Style="{StaticResource MenuItemStyle}"/>
-                    <MenuItem Header="{StaticResource OrdersTypes}" Style="{StaticResource MenuItemStyle}"/>
-                </MenuItem>
-            </MenuItem>
-        </Menu>-->
 
         <Frame x:Name="mainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
 

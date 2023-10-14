@@ -40,10 +40,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EduDocsPage\EduDocsPage.csproj" />
+    <ProjectReference Include="..\EduDocsPage\Documents.csproj" />
     <ProjectReference Include="..\EmployeesPage\EmployeesPage.csproj" />
     <ProjectReference Include="..\OrderPage\OrdersPage.csproj" />
-    <ProjectReference Include="..\PassportsPage\PassportsPage.csproj" />
+    <ProjectReference Include="..\References\References.csproj" />
   </ItemGroup>
 
   <ItemGroup>

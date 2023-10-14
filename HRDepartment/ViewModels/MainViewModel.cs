@@ -31,7 +31,6 @@ namespace HRDepartment
             MenuItems = new ObservableCollection<MenuItemViewModel>();
             menuItemsRepository = new MenuItemsRepository(new DBContext());
             CreateMenu(MenuItems, 0);
-            Console.WriteLine(MenuItems[0].Header);
         }
 
         private void CreateMenu(ObservableCollection<MenuItemViewModel> currentMenuItemsCollection, int ParentId)
