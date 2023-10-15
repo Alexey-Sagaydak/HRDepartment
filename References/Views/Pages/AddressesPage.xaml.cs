@@ -20,22 +20,16 @@ namespace References
     /// </summary>
     public partial class AddressesPage : Page
     {
-        IAccessRights accessRights;
+        public IAccessRights accessRights;
         string title;
         public AddressesPage()
         {
             InitializeComponent();
-            IAccessRights accessRights = Tag as IAccessRights;
-            Console.WriteLine(accessRights);
-            textBlock.Text = this.GetHashCode().ToString("X");
-            if (accessRights != null )
-            {
-                Console.WriteLine(accessRights.Read);
-                Console.WriteLine(accessRights.Wright);
-                Console.WriteLine(accessRights.Edit);
-                Console.WriteLine(accessRights.Delete);
-            }
-            Console.WriteLine("dfdfdf");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine(Tag);
         }
     }
 }

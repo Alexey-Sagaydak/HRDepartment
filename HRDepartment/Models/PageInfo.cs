@@ -9,16 +9,14 @@ namespace HRDepartment
 {
     public class PageInfo
     {
-        public PageInfo(string title, Page page, AccessRights accessRights, Type pageType)
+        public PageInfo(string title, AccessRights accessRights, Type pageType)
         {
             Title = title;
-            Page = page;
             AccessRights = accessRights;
             PageType = pageType;
         }
 
         public string Title { get; set; }
-        public Page Page { get; set; }
         public AccessRights AccessRights { get; set; }
         public Type PageType { get; set; }
     }

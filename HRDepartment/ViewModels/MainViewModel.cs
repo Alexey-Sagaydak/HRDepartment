@@ -20,7 +20,7 @@ namespace HRDepartment
         private int currentEmployeeID;
         private IMenuItemsRepository menuItemsRepository;
 
-        public delegate void AddPageEventHandler(string title, Page page, Type type);
+        public delegate void AddPageEventHandler(string title, IAccessRights accessRights, Type type);
         public event AddPageEventHandler SomeEvent;
 
         public ObservableCollection<MenuItemViewModel> MenuItems { get; set; }
@@ -75,10 +75,7 @@ namespace HRDepartment
                 {
                     AccessRights accessRights = menuItemsRepository.GetAccessRights(currentEmployeeID, menuItemInfo.Id);
 
-                    page = (Page)Activator.CreateInstance(type);
-                    page.Tag = accessRights;
-
-                    menuItemVM = new MenuItemViewModel(menuItemInfo.Name, RaiseAddPageEvent, new PageInfo(menuItemInfo.Name, page, accessRights, page.GetType()), accessRights);
+                    menuItemVM = new MenuItemViewModel(menuItemInfo.Name, RaiseAddPageEvent, new PageInfo(menuItemInfo.Name, accessRights, type), accessRights);
                     
                     return menuItemVM;
                 }
@@ -94,8 +91,7 @@ namespace HRDepartment
         private void RaiseAddPageEvent(object parameter)
         {
             PageInfo pageInfo = parameter as PageInfo;
-            pageInfo.Page.Tag = pageInfo.AccessRights;
-            SomeEvent?.Invoke(pageInfo.Title, pageInfo.Page, pageInfo.PageType);
+            SomeEvent?.Invoke(pageInfo.Title, pageInfo.AccessRights, pageInfo.PageType);
         }
     }
 }

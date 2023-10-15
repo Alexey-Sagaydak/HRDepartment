@@ -11,9 +11,9 @@ namespace HRDepartment
     {
         public string Title { get; set; }
         public Page PageInstance { get; set; }
-        public AccessRights AccessRights { get; set; }
+        public IAccessRights AccessRights { get; set; }
 
-        public OpenedPage(string title, Page page, AccessRights accessRights)
+        public OpenedPage(string title, Page page, IAccessRights accessRights)
         {
             Title = title;
             PageInstance = page;

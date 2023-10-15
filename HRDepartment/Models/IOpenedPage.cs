@@ -4,7 +4,7 @@ namespace HRDepartment
 {
     public interface IOpenedPage
     {
-        AccessRights AccessRights { get; set; }
+        IAccessRights AccessRights { get; set; }
         Page PageInstance { get; set; }
         string Title { get; set; }
     }
