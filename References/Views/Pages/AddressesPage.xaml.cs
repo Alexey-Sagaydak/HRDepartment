@@ -25,11 +25,11 @@ namespace References
         public AddressesPage()
         {
             InitializeComponent();
-            IOpenedPage openedPage = Tag as IOpenedPage;
-            if (openedPage != null )
+            IAccessRights accessRights = Tag as IAccessRights;
+            Console.WriteLine(accessRights);
+            textBlock.Text = this.GetHashCode().ToString("X");
+            if (accessRights != null )
             {
-                accessRights = openedPage.AccessRights;
-                title = openedPage.Title;
                 Console.WriteLine(accessRights.Read);
                 Console.WriteLine(accessRights.Wright);
                 Console.WriteLine(accessRights.Edit);

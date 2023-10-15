@@ -59,10 +59,11 @@ namespace HRDepartment
             Close();
         }
 
-        private void AddOpenedPage(string title, Page page)
+        private void AddOpenedPage(string title, Page page, Type type)
         {
-            var openedPage = new OpenedPage(title, page, (AccessRights)page.Tag);
-            Console.WriteLine(((AccessRights)page.Tag).Edit);
+            Page page1 = (Page)Activator.CreateInstance(type);
+            page1.Tag = page.Tag;
+            var openedPage = new OpenedPage(title, page1, (AccessRights)page.Tag);
             openedPages.Add(openedPage);
 
             MenuItem menuItem = new MenuItem();
@@ -73,7 +74,7 @@ namespace HRDepartment
             menuItem.Height = 22;
             windowsMenuItem.Items.Add(menuItem);
 
-            mainFrame.NavigationService.Navigate(page);
+            mainFrame.NavigationService.Navigate(page1);
             mainFrame.Tag = openedPage;
 
             ChangeCloseButtonEnableStatus();
@@ -116,9 +117,9 @@ namespace HRDepartment
             return $"{openedPages.Count + 1}. {str}";
         }
 
-        private void OpenPage(string title, Page page)
+        private void OpenPage(string title, Page page, Type type)
         {
-            AddOpenedPage(AddNumberToPageString(title), page);
+            AddOpenedPage(AddNumberToPageString(title), page, type);
         }
 
         private void RemoveOpenedPage_Click(object sender, RoutedEventArgs e)
