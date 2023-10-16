@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MenuItems", "MenuItems", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documents", "EduDocsPage\Documents.csproj", "{052CC387-E6F6-48E6-A375-31F4CCE344EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "References", "References\References.csproj", "{C90D76B6-F6C0-40FB-9387-BC51831B5B24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "References", "References\References.csproj", "{C90D76B6-F6C0-40FB-9387-BC51831B5B24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonClasses", "CommonClasses\CommonClasses.csproj", "{D40FDC44-BD53-4980-AD34-693E415AC48C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{C90D76B6-F6C0-40FB-9387-BC51831B5B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C90D76B6-F6C0-40FB-9387-BC51831B5B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C90D76B6-F6C0-40FB-9387-BC51831B5B24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D40FDC44-BD53-4980-AD34-693E415AC48C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D40FDC44-BD53-4980-AD34-693E415AC48C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D40FDC44-BD53-4980-AD34-693E415AC48C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D40FDC44-BD53-4980-AD34-693E415AC48C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
