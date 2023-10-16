@@ -40,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommonClasses\CommonClasses.csproj" />
     <ProjectReference Include="..\EduDocsPage\Documents.csproj" />
     <ProjectReference Include="..\EmployeesPage\EmployeesPage.csproj" />
     <ProjectReference Include="..\OrderPage\OrdersPage.csproj" />

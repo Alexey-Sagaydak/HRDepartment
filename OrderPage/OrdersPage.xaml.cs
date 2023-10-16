@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace Orders
     /// </summary>
     public partial class OrdersPage : Page
     {
+        public IAccessRights accessRights;
+
         public OrdersPage()
         {
             InitializeComponent();
+            accessRights = DataStore.AccessRightsData;
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CommonClasses;
 
 namespace Documents
 {
@@ -20,9 +21,12 @@ namespace Documents
     /// </summary>
     public partial class PassportsPage : Page
     {
+        public IAccessRights accessRights;
+
         public PassportsPage()
         {
             InitializeComponent();
+            accessRights = DataStore.AccessRightsData;
         }
     }
 }

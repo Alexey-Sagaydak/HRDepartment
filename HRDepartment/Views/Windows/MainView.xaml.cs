@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static HRDepartment.MainViewModel;
+using CommonClasses;
 
 namespace HRDepartment
 {
@@ -61,10 +62,10 @@ namespace HRDepartment
 
         private void AddOpenedPage(string title, IAccessRights accessRights, Type type)
         {
+            DataStore.AccessRightsData = accessRights;
             Page page = (Page)Activator.CreateInstance(type);
-            page.Tag = 5;
-            //Console.WriteLine(((IAccessRights)page.Tag).Edit);
-            var openedPage = new OpenedPage(title, page, accessRights);
+            
+            OpenedPage openedPage = new OpenedPage(title, page, accessRights);
             openedPages.Add(openedPage);
 
             MenuItem menuItem = new MenuItem();

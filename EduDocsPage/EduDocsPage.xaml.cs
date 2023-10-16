@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace Documents
     /// </summary>
     public partial class EduDocsPage : Page
     {
+        public IAccessRights accessRights;
+
         public EduDocsPage()
         {
             InitializeComponent();
+            accessRights = DataStore.AccessRightsData;
         }
     }
 }

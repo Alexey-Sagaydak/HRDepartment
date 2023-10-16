@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using CommonClasses;
+using System.Windows.Controls;
 
 namespace HRDepartment
 {

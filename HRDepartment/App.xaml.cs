@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Resources;
+using CommonClasses;
 
 namespace HRDepartment
 {
@@ -17,6 +18,8 @@ namespace HRDepartment
     /// </summary>
     public partial class App : Application
     {
+        public static IAccessRights accessRightsData { get; set; }
+        
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

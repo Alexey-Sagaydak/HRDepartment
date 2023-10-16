@@ -9,6 +9,6 @@
 
     <Grid Background="White">
         <TextBlock x:Name="textBlock" Grid.Row="0" Text="Адреса" FontSize="40" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Content="aaaaaaaaa" Click="Button_Click"/>
+        <Button Content="aaaaaaaaa"/>
     </Grid>
 </Page>

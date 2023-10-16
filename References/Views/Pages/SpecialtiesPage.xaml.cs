@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CommonClasses;
 
 namespace References
 {
@@ -20,9 +21,12 @@ namespace References
     /// </summary>
     public partial class SpecialtiesPage : Page
     {
+        public IAccessRights accessRights;
+
         public SpecialtiesPage()
         {
             InitializeComponent();
+            accessRights = DataStore.AccessRightsData;
         }
     }
 }

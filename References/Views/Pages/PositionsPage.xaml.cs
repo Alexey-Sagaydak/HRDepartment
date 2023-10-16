@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace References
     /// </summary>
     public partial class PositionsPage : Page
     {
+        public IAccessRights accessRights;
+
         public PositionsPage()
         {
             InitializeComponent();
+            accessRights = DataStore.AccessRightsData;
         }
     }
 }

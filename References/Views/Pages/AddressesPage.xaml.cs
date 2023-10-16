@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CommonClasses;
 
 namespace References
 {
@@ -21,15 +22,11 @@ namespace References
     public partial class AddressesPage : Page
     {
         public IAccessRights accessRights;
-        string title;
+        
         public AddressesPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine(Tag);
+            accessRights = DataStore.AccessRightsData;
         }
     }
 }

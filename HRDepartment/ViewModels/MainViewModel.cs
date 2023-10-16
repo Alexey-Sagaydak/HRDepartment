@@ -12,6 +12,7 @@ using Orders;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Reflection.Metadata;
 using System.ComponentModel;
+using CommonClasses;
 
 namespace HRDepartment
 {
