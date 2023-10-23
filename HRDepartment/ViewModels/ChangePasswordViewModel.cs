@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
+using CommonClasses;
 
 namespace HRDepartment
 {

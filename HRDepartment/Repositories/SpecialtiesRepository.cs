@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using Microsoft.EntityFrameworkCore;
+using CommonClasses;
 
 namespace HRDepartment
 {

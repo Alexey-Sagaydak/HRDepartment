@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRDepartment
+namespace CommonClasses
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

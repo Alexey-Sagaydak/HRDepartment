@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 using System.Text.RegularExpressions;
+using CommonClasses;
 
 namespace HRDepartment
 {

@@ -7,8 +7,9 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
+using CommonClasses;
 
-namespace HRDepartment
+namespace CommonClasses
 {
     public class DBContext : DbContext
     {

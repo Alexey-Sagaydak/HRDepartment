@@ -9,6 +9,16 @@
       Title="SpecialtiesPage">
 
     <Grid Background="White">
-        <TextBlock x:Name="textBlock" Grid.Row="0" Text="Специальности" FontSize="40" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" x:Name="textBlock" Text="Специальности" FontSize="40" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <DataGrid Grid.Row="1" SelectedItem="{Binding SelectedSpecialization}" ItemsSource="{Binding Specializations}" AutoGenerateColumns="True" />
+        <Button Grid.Row="2" Content="Добавить" Command="{Binding AddSpecializationCommand}" />
+        <Button Grid.Row="3" Content="Удалить" Command="{Binding DeleteSpecializationCommand}" />
     </Grid>
 </Page>
