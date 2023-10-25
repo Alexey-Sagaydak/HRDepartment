@@ -20,18 +20,22 @@
             <Button Width="32" Height="32" Margin="2 5" IsEnabled="{Binding CanAddNewItem, UpdateSourceTrigger=PropertyChanged}" Command="{Binding AddSpecialtyCommand}" VerticalAlignment="Center" Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
             </Button>
-            
-            <Button Width="32" Height="32" Margin="2 5" Command="{Binding DeleteSpecialtyCommand}" Padding="0,0,0,0">
+
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding DeleteSpecialtyCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="Delete" Width="24" Height="24" />
             </Button>
 
             <Button Width="32" Height="32" Margin="2 5" Command="{Binding SaveCommand}" Padding="0,0,0,0">
                 <materialDesign:PackIcon Kind="ContentSave" Width="24" Height="24" />
             </Button>
+
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding ReloadCommand}" Padding="0,0,0,0">
+                <materialDesign:PackIcon Kind="Reload" Width="24" Height="24" />
+            </Button>
         </StackPanel>
-        
+
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <DataGrid IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Specialties}" AutoGenerateColumns="False" Foreground="#000000">
+            <DataGrid Name="dataGrid" SelectedItem="{Binding SelectedSpecialty}" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Specialties}" AutoGenerateColumns="False" Foreground="#000000">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название специальности" Binding="{Binding Name}" />
                 </DataGrid.Columns>

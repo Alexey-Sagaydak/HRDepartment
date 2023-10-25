@@ -1,4 +1,5 @@
 ﻿using CommonClasses;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,19 @@ namespace References
             return DBContext.specialties.ToList();
         }
 
-        public void AddSpecialty(Specialty specialty)
+        public Specialty AddSpecialty(string specialty)
         {
-            DBContext.specialties.Add(specialty);
+            int maxId = DBContext.specialties.Any() ? DBContext.specialties.Max(s => s.Id) : 0;
+
+            Specialty newSpecialty = new Specialty
+            {
+                Id = maxId + 1,
+                Name = specialty
+            };
+
+            DBContext.specialties.Add(newSpecialty);
+
+            return newSpecialty;
         }
 
         public void DeleteSpecialty(Specialty specialty)

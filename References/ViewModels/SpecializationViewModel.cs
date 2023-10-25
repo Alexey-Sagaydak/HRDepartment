@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using CommonClasses;
 
@@ -18,6 +19,17 @@ namespace References
         private bool IsUnsaved;
         private string newItem;
         private bool canAddNewItem;
+        private Specialty selectedSpecialty;
+
+        public Specialty SelectedSpecialty
+        {
+            get { return selectedSpecialty; }
+            set
+            {
+                selectedSpecialty = value;
+                OnPropertyChanged(nameof(SelectedSpecialty));
+            }
+        }
 
         public bool CanAddNewItem
         {
@@ -53,6 +65,7 @@ namespace References
         public RelayCommand AddSpecialtyCommand { get; private set; }
         public RelayCommand DeleteSpecialtyCommand { get; private set; }
         public RelayCommand SaveCommand { get; private set; }
+        public RelayCommand ReloadCommand { get; private set; }
 
         public SpecialtiesViewModel()
         {
@@ -62,8 +75,9 @@ namespace References
             CanAddNewItem = false;
 
             AddSpecialtyCommand = new RelayCommand(AddSpecialty);
-            DeleteSpecialtyCommand = new RelayCommand(DeleteSpecialty);
+            DeleteSpecialtyCommand = new RelayCommand(DeleteSpecialty, CanDeleteSelectedSpecialty);
             SaveCommand = new RelayCommand(SaveCommandExecute, CanSaveCommandExecute);
+            ReloadCommand = new RelayCommand(LoadSpecialties);
 
             LoadSpecialties();
         }
@@ -71,6 +85,11 @@ namespace References
         private bool CanSaveCommandExecute(object obj)
         {
             return IsUnsaved;
+        }
+
+        private bool CanDeleteSelectedSpecialty(object obj)
+        {
+            return SelectedSpecialty != null;
         }
 
         public void CanAddNewItemCheck()
@@ -99,7 +118,7 @@ namespace References
             IsUnsaved = false;
         }
 
-        private void LoadSpecialties()
+        private void LoadSpecialties(object obj = null)
         {
             List<Specialty> loadedSpecialties = repository.GetSpecialties();
             Specialties = new ObservableCollection<Specialty>(loadedSpecialties);
@@ -108,14 +127,23 @@ namespace References
         private void AddSpecialty(object obj)
         {
             IsUnsaved = true;
-            Console.WriteLine(NewItem);
-            // Обработка добавления специальности, добавьте здесь логику.
+            Specialties.Add(repository.AddSpecialty(NewItem));
+            NewItem = string.Empty;
         }
 
         private void DeleteSpecialty(object obj)
         {
             IsUnsaved = true;
-            // Обработка удаления специальности, добавьте здесь логику.
+            repository.DeleteSpecialty(SelectedSpecialty);
+            foreach (var item in Specialties)
+            {
+                if (item.Id == SelectedSpecialty.Id)
+                {
+                    Specialties.Remove(item);
+                    break;
+                }
+            }
+            SelectedSpecialty = null;
         }
     }
 }

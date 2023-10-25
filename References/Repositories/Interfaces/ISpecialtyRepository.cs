@@ -5,7 +5,7 @@ namespace References
 {
     public interface ISpecialtyRepository
     {
-        void AddSpecialty(Specialty specialty);
+        Specialty AddSpecialty(string specialty);
         void DeleteSpecialty(Specialty specialty);
         void SaveChanges();
         List<Specialty> GetSpecialties();
