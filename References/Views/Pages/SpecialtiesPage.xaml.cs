@@ -27,7 +27,7 @@ namespace References
         {
             InitializeComponent();
             accessRights = DataStore.AccessRightsData;
-            DataContext = new SpecializationViewModel();
+            DataContext = new SpecialtiesViewModel();
         }
     }
 }

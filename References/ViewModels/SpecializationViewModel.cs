@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,85 +11,111 @@ using CommonClasses;
 
 namespace References
 {
-    public class SpecializationViewModel : ViewModelBase
+    public class SpecialtiesViewModel : ViewModelBase
     {
-        private ObservableCollection<Specialization> specializations;
-        private Specialization selectedSpecialization;
+        private ObservableCollection<Specialty> specialties;
+        private ISpecialtyRepository repository;
+        private bool IsUnsaved;
+        private string newItem;
+        private bool canAddNewItem;
 
-        public ObservableCollection<Specialization> Specializations
+        public bool CanAddNewItem
         {
-            get { return specializations; }
+            get => canAddNewItem;
             set
             {
-                specializations = value;
-                OnPropertyChanged();
+                canAddNewItem = value;
+                OnPropertyChanged("CanAddNewItem");
             }
         }
 
-        public SpecializationViewModel()
+        public ObservableCollection<Specialty> Specialties
         {
-            Specializations = new ObservableCollection<Specialization>(GetSpecializationsFromDatabase());
-        }
-
-        private List<Specialization> GetSpecializationsFromDatabase()
-        {
-            // Здесь вам нужно реализовать код для получения специальностей из базы данных.
-            // Верните список специальностей в форме List<Specialization>.
-            List<Specialization> specializations = new List<Specialization>
-        {
-            new Specialization { Id = 1, Name = "Specialization 1" },
-            new Specialization { Id = 2, Name = "Specialization 2" },
-            // Добавьте остальные специальности
-        };
-            return specializations;
-        }
-
-        public Specialization SelectedSpecialization
-        {
-            get { return selectedSpecialization; }
+            get { return specialties; }
             set
             {
-                selectedSpecialization = value;
-                OnPropertyChanged();
+                specialties = value;
+                OnPropertyChanged(nameof(Specialties));
             }
         }
 
-        // Команда для добавления специальности
-        public ICommand AddSpecializationCommand
+        public string NewItem
         {
-            get { return new RelayCommand(AddSpecialization, CanAddSpecialization); }
-        }
-
-        // Команда для удаления специальности
-        public ICommand DeleteSpecializationCommand
-        {
-            get { return new RelayCommand(DeleteSpecialization, CanDeleteSpecialization); }
-        }
-
-        private void AddSpecialization(object parameter)
-        {
-            // Создайте новую специальность и добавьте её в коллекцию
-            Specialization newSpecialization = new Specialization { Name = "New Specialization" };
-            Specializations.Add(newSpecialization);
-        }
-
-        private bool CanAddSpecialization(object parameter)
-        {
-            return true; // Всегда разрешено добавление специальности
-        }
-
-        private void DeleteSpecialization(object parameter)
-        {
-            // Удалите выбранную специальность из коллекции
-            if (SelectedSpecialization != null)
+            get => newItem;
+            set
             {
-                Specializations.Remove(SelectedSpecialization);
+                newItem = value;
+                CanAddNewItemCheck();
+                OnPropertyChanged("NewItem");
             }
         }
 
-        private bool CanDeleteSpecialization(object parameter)
+        public RelayCommand AddSpecialtyCommand { get; private set; }
+        public RelayCommand DeleteSpecialtyCommand { get; private set; }
+        public RelayCommand SaveCommand { get; private set; }
+
+        public SpecialtiesViewModel()
         {
-            return SelectedSpecialization != null; // Разрешено удаление, если есть выбранная специальность
+            repository = new SpecialtyRepository(new DBContext());
+            IsUnsaved = false;
+            NewItem = string.Empty;
+            CanAddNewItem = false;
+
+            AddSpecialtyCommand = new RelayCommand(AddSpecialty);
+            DeleteSpecialtyCommand = new RelayCommand(DeleteSpecialty);
+            SaveCommand = new RelayCommand(SaveCommandExecute, CanSaveCommandExecute);
+
+            LoadSpecialties();
+        }
+
+        private bool CanSaveCommandExecute(object obj)
+        {
+            return IsUnsaved;
+        }
+
+        public void CanAddNewItemCheck()
+        {
+            if (NewItem != "")
+            {
+                foreach (var item in Specialties)
+                {
+                    if (item.Name == NewItem)
+                    {
+                        CanAddNewItem = false;
+                        return;
+                    }
+                }
+                CanAddNewItem = true;
+            }
+            else
+            {
+                CanAddNewItem = false;
+            }
+        }
+
+        private void SaveCommandExecute(object obj)
+        {
+            repository.SaveChanges();
+            IsUnsaved = false;
+        }
+
+        private void LoadSpecialties()
+        {
+            List<Specialty> loadedSpecialties = repository.GetSpecialties();
+            Specialties = new ObservableCollection<Specialty>(loadedSpecialties);
+        }
+
+        private void AddSpecialty(object obj)
+        {
+            IsUnsaved = true;
+            Console.WriteLine(NewItem);
+            // Обработка добавления специальности, добавьте здесь логику.
+        }
+
+        private void DeleteSpecialty(object obj)
+        {
+            IsUnsaved = true;
+            // Обработка удаления специальности, добавьте здесь логику.
         }
     }
 }

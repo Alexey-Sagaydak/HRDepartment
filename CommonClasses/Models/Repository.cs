@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace HRDepartment
+namespace CommonClasses
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {

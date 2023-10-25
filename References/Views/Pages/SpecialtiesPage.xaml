@@ -3,22 +3,39 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:References"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SpecialtiesPage">
 
-    <Grid Background="White">
+    <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.9*"/>
         </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBox FontSize="15" x:Name="NewItem" Text="{Binding NewItem, UpdateSourceTrigger=PropertyChanged}" Margin="10 2" materialDesign:HintAssist.Hint="Новая специальность" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+            <Button Width="32" Height="32" Margin="2 5" IsEnabled="{Binding CanAddNewItem, UpdateSourceTrigger=PropertyChanged}" Command="{Binding AddSpecialtyCommand}" VerticalAlignment="Center" Padding="0,0,0,0">
+                <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
+            </Button>
+            
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding DeleteSpecialtyCommand}" Padding="0,0,0,0">
+                <materialDesign:PackIcon Kind="Delete" Width="24" Height="24" />
+            </Button>
+
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding SaveCommand}" Padding="0,0,0,0">
+                <materialDesign:PackIcon Kind="ContentSave" Width="24" Height="24" />
+            </Button>
+        </StackPanel>
         
-        <TextBlock Grid.Row="0" x:Name="textBlock" Text="Специальности" FontSize="40" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <DataGrid Grid.Row="1" SelectedItem="{Binding SelectedSpecialization}" ItemsSource="{Binding Specializations}" AutoGenerateColumns="True" />
-        <Button Grid.Row="2" Content="Добавить" Command="{Binding AddSpecializationCommand}" />
-        <Button Grid.Row="3" Content="Удалить" Command="{Binding DeleteSpecializationCommand}" />
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <DataGrid IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Specialties}" AutoGenerateColumns="False" Foreground="#000000">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название специальности" Binding="{Binding Name}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
     </Grid>
 </Page>

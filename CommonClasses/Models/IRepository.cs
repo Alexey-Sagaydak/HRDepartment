@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace HRDepartment
+namespace CommonClasses
 {
     public interface IRepository<TEntity> where TEntity : class
     {
