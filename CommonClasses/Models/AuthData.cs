@@ -12,6 +12,9 @@ namespace CommonClasses
         [Column("id")]
         public int Id { get; set; }
 
+        [Column("employee_id")]
+        public int EmployeeId { get; set; }
+
         [Column("email")]
         public string Email { get; set; }
 

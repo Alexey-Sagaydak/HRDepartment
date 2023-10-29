@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+
+namespace CommonClasses
+{
+    public enum AcademicDegree
+    {
+        none,
+        candidate_of_sciences,
+        doctor_of_sciences
+    }
+
+    public enum AcademicTitle
+    {
+        none,
+        associate_professor,
+        professor
+    }
+
+    public class Employee
+    {
+        [Column("id")]
+        public long Id { get; set; }
+
+        [Column("fiasguid")]
+        public long FiasGuid { get; set; }
+
+        [Column("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [Column("academic_degree")]
+        [EnumDataType(typeof(AcademicDegree))]
+        public AcademicDegree AcademicDegree { get; set; }
+
+        [Column("academic_title")]
+        [EnumDataType(typeof(AcademicTitle))]
+        public AcademicTitle AcademicTitle { get; set; }
+
+        [Column("snils")]
+        public string Snils { get; set; }
+
+        [Column("inn")]
+        public string Inn { get; set; }
+
+        [Column("email")]
+        public string Email { get; set; }
+
+        // Добавьте другие свойства с атрибутами [Column] для всех полей, как требуется.
+
+        public List<Passport> Passports { get; set; }
+        public List<Workplace> Workplaces { get; set; }
+        public List<EduDocument> EduDocuments { get; set; }
+        public List<Order> Orders { get; set; }
+    }
+}

@@ -17,15 +17,15 @@ namespace HRDepartment
         public int FindEmployee(string email, string password)
         {
 
-            int id = DBContext.employees.Where(e => e.Email == email && e.PasswordHash == passwordHash.HashPassword(password))
-                        .Select(e => e.Id)
+            int id = DBContext.hr_app_users.Where(e => e.Email == email && e.PasswordHash == passwordHash.HashPassword(password))
+                        .Select(e => e.EmployeeId)
                         .FirstOrDefault();
             return id;
         }
 
         public bool ChangePassword(int id, string previousPassword, string newPassword)
         {
-            AuthData user = DBContext.employees.FirstOrDefault(u => u.Id == id);
+            AuthData user = DBContext.hr_app_users.FirstOrDefault(u => u.Id == id);
 
             if (user != null && user.PasswordHash == passwordHash.HashPassword(previousPassword))
             {
