@@ -1,5 +1,4 @@
 ﻿using CommonClasses;
-using EmployeesPage.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +27,21 @@ namespace Employees
         {
             InitializeComponent();
             accessRights = DataStore.AccessRightsData;
+            DataContext = new EmployeesViewModel(accessRights);
+            ((EmployeesViewModel)DataContext).NewEmployeeAdded += AddNewEmployee;
 
-            var dbContext = new DBContext(); // Создайте экземпляр вашего DBContext
-            var employeeRepository = new EmployeeRepository(dbContext);
+            //var dbContext = new DBContext(); // Создайте экземпляр вашего DBContext
+            //var employeeRepository = new EmployeeRepository(dbContext);
 
-            long employeeId = 1; // Замените на ID сотрудника, которого вы хотите получить
-            var employee = employeeRepository.GetEmployeeById(employeeId);
+            //long employeeId = 1; // Замените на ID сотрудника, которого вы хотите получить
+            //var employee = employeeRepository.GetEmployeeById(employeeId);
+        }
+
+        private void AddNewEmployee(Employee employee)
+        {
+            Console.WriteLine("sssvdfsvfd");
+            EditEmployeeInfo editEmployeeInfoPage = new EditEmployeeInfo(employee);
+            NavigationService.Navigate(editEmployeeInfoPage);
         }
     }
 }

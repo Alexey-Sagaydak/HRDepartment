@@ -3,12 +3,42 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Employees"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EmployeesPage">
 
-    <Grid Background="White">
-        <TextBlock x:Name="textBlock" Grid.Row="0" Text="Сотрудники" FontSize="40" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding AddNewEmployeeCommand}" VerticalAlignment="Center" Padding="0,0,0,0">
+                <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
+            </Button>
+
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding OpenEmployeeInfoCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
+                <materialDesign:PackIcon Kind="Edit" Width="24" Height="24" />
+            </Button>
+
+            <Button Width="32" Height="32" Margin="2 5" Command="{Binding ReloadCommand, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,0,0">
+                <materialDesign:PackIcon Kind="Reload" Width="24" Height="24" />
+            </Button>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <DataGrid Name="dataGrid" SelectedItem="{Binding SelectedEmployee}" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" Foreground="#000000">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Passports[0].Surname}" />
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Passports[0].Name}" />
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding Passports[0].MiddleName}" />
+                    <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}" />
+                    <DataGridTextColumn Header="e-mail" Binding="{Binding Email}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
     </Grid>
 </Page>

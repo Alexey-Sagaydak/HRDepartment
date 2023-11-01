@@ -51,11 +51,17 @@ namespace CommonClasses
         [Column("email")]
         public string Email { get; set; }
 
-        // Добавьте другие свойства с атрибутами [Column] для всех полей, как требуется.
-
         public List<Passport> Passports { get; set; }
         public List<Workplace> Workplaces { get; set; }
         public List<EduDocument> EduDocuments { get; set; }
         public List<Order> Orders { get; set; }
+
+        public Employee()
+        {
+            Passports = new List<Passport>();
+            Workplaces = new List<Workplace>();
+            EduDocuments = new List<EduDocument>();
+            Orders = new List<Order>();
+        }
     }
 }

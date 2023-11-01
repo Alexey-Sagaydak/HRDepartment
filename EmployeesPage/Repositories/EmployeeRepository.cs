@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeesPage.Models
+namespace Employees
 {
-    public class EmployeeRepository : Repository<Employee>
+    public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
     {
         private DBContext DBContext => Context as DBContext;
 
@@ -27,6 +27,7 @@ namespace EmployeesPage.Models
         {
             var passports = DBContext.passports
                 .Where(p => p.EmployeeId == employeeId)
+                .OrderByDescending(p => p.DateOfIssue)
                 .ToList();
 
             return passports;
@@ -50,7 +51,6 @@ namespace EmployeesPage.Models
             {
                 if (workplace.OrderId != null)
                 {
-                    Console.WriteLine(workplace.OrderId);
                     workplace.Order = GetOrderById(workplace.OrderId);
                 }
             }
@@ -59,10 +59,23 @@ namespace EmployeesPage.Models
 
         public Order GetOrderById(long? orderId)
         {
-            // Используйте метод Find для поиска приказа по его ID
             Order order = DBContext.orders.Find(orderId);
 
             return order;
+        }
+
+        public List<Employee> GetEmployees()
+        {
+            List<Employee> employees = DBContext.employees.ToList();
+
+            foreach (Employee employee in employees)
+            {
+                employee.Passports = GetPassportsForEmployee(employee.Id);
+                employee.EduDocuments = GetEduDocumentsForEmployee(employee.Id);
+                employee.Workplaces = GetPlacesOfWorkForEmployee(employee.Id);
+            }
+
+            return employees;
         }
     }
 }

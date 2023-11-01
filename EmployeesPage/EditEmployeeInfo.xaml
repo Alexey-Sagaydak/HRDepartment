@@ -1,0 +1,36 @@
+﻿<Page x:Class="Employees.EditEmployeeInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Employees"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditEmployeeInfo">
+
+    <Grid Background="WhiteSmoke">
+        <TabControl Width="Auto">
+            <TabItem Header="Общая информация">
+                <Grid Background="#FFE5E5E5">
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Паспорта">
+                <Grid Background="#FFE5E5E5">
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Документы об образовании">
+                <Grid Background="#FFE5E5E5">
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Места работы">
+                <Grid Background="#FFE5E5E5">
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Page>
