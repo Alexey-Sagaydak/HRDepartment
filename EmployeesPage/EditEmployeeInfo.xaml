@@ -3,32 +3,415 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Employees"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:local="clr-namespace:Employees" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" d:DesignWidth="800"
       Title="EditEmployeeInfo">
 
     <Grid Background="WhiteSmoke">
         <TabControl Width="Auto">
             <TabItem Header="Общая информация">
-                <Grid Background="#FFE5E5E5">
-                    
-                </Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Border Padding="5" BorderBrush="#FF828282" BorderThickness="2" CornerRadius="5">
+                            <Grid Grid.Row="0" Margin="10 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Фамилия:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                    <TextBlock Text="Binding" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="Имя:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                    <TextBlock Text="Binding" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="Отчество:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                    <TextBlock Text="Binding" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="3">
+                                    <TextBlock Text="Дата рождения:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                    <DatePicker FontSize="15" IsEnabled="False" SelectedDate="2023-11-03" Style="{StaticResource MaterialDesignDatePicker}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10 0">
+                            <TextBlock Margin="0 0 10 0" Text="Номер телефона:" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                            <TextBox Width="300" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10 0">
+                            <TextBlock Margin="0 0 10 0" Text="E-mail:" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                            <TextBox Width="300" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10 0">
+                            <TextBlock Margin="0 0 10 0" Text="СНИЛС:" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                            <TextBox Width="300" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10 0">
+                            <TextBlock Margin="0 0 10 0" Text="ИНН:" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                            <TextBox Width="300" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="10 0">
+                            <TextBlock Margin="0 0 10 0" Text="Ученая степень:" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                            <ComboBox FontSize="15" Style="{StaticResource MaterialDesignComboBox}" Width="300">
+                                <ComboBoxItem>Кандидат наук</ComboBoxItem>
+                                <ComboBoxItem>Доктор наук</ComboBoxItem>
+                                <ComboBoxItem>Не имеется</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="10 0">
+                            <TextBlock Margin="0 0 10 0" Text="Ученое звание:" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                            <ComboBox FontSize="15" Style="{StaticResource MaterialDesignComboBox}" Width="300">
+                                <ComboBoxItem>Доцент</ComboBoxItem>
+                                <ComboBoxItem>Профессор</ComboBoxItem>
+                                <ComboBoxItem>Не имеется</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="10 0">
+                            <TextBlock Margin="0 0 10 0" Text="Адрес:" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                            <TextBox Width="300" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 0" HorizontalAlignment="Center">
+                            <Button Margin="5" Content="Удалить сотрудника" Background="#FFB73A3A" BorderBrush="#FFB73A3A"/>
+                            <Button Margin="5" Content="Сохранить"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Паспорта">
-                <Grid Background="#FFE5E5E5">
-                    
-                </Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Row="0" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
+                        </Button>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
+                                <DataGrid Name="dataGrid" SelectedItem="{Binding SelectedEmployee}" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" Foreground="#000000">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Серия" Binding="{Binding Passports[0].Surname}" />
+                                        <DataGridTextColumn Header="Номер" Binding="{Binding Passports[0].Name}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </ScrollViewer>
+
+                            <ScrollViewer Grid.Column="1" Margin="5" VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="10 5">
+                                            <TextBlock Text="Фамилия:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="10 5">
+                                            <TextBlock Text="Имя:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" Margin="10 5">
+                                            <TextBlock Text="Отчество:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="10 0">
+                                            <TextBlock Margin="0 0 10 0" Text="Пол: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                            <ComboBox FontSize="15" Style="{StaticResource MaterialDesignComboBox}" Width="150">
+                                                <ComboBoxItem>Мужской</ComboBoxItem>
+                                                <ComboBoxItem>Женский</ComboBoxItem>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="3" Margin="20 5" Orientation="Horizontal">
+                                            <TextBlock Text="Дата рождения: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                            <DatePicker FontSize="15" SelectedDate="2023-11-03" Style="{StaticResource MaterialDesignDatePicker}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Место рождения: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <TextBox Margin="10 0 10 5" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+
+                                    <StackPanel Grid.Column="3" Margin="10 5" Orientation="Horizontal">
+                                        <TextBlock Text="Дата выдачи: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                        <DatePicker FontSize="15" SelectedDate="2023-11-03" Style="{StaticResource MaterialDesignDatePicker}"/>
+                                    </StackPanel>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Место выдачи: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <TextBox Margin="10 0 10 5" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="10 5">
+                                            <TextBlock Text="Серия:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="10 5">
+                                            <TextBlock Text="Номер:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
+                                        <Button Margin="5" Content="Удалить" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                                        <Button Margin="5" Content="Сохранить"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Документы об образовании">
-                <Grid Background="#FFE5E5E5">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                </Grid>
+                        <Button Grid.Row="0" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
+                        </Button>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
+                                <DataGrid SelectedItem="{Binding SelectedEmployee}" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" Foreground="#000000">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Width="0.4*" Header="Тип" Binding="{Binding Passports[0].Surname}" />
+                                        <DataGridTextColumn Width="0.6*" Header="Организация" Binding="{Binding Passports[0].Name}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </ScrollViewer>
+
+                            <ScrollViewer Grid.Column="1" Margin="5" VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="10 5 10 0" Text="Место выдачи: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
+                                    </ComboBox>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Образовательная организация: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
+                                    </ComboBox>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Специальность: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
+                                    </ComboBox>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="10 5">
+                                            <TextBlock Text="Фамилия:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="10 5">
+                                            <TextBlock Text="Имя:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" Margin="10 5">
+                                            <TextBlock Text="Отчество:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <StackPanel Margin="10 5" Orientation="Horizontal">
+                                        <TextBlock Text="Дата выдачи: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                        <DatePicker FontSize="15" SelectedDate="2023-11-03" Style="{StaticResource MaterialDesignDatePicker}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Margin="10 5" Orientation="Horizontal">
+                                        <TextBlock Text="С отличием: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <CheckBox/>
+                                    </StackPanel>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="10 5">
+                                            <TextBlock Text="Серия:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="10 5">
+                                            <TextBlock Text="Номер:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" Margin="10 5">
+                                            <TextBlock Text="Рег. код:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <TextBox Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
+                                        <Button Margin="5" Content="Удалить" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                                        <Button Margin="5" Content="Сохранить"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Места работы">
-                <Grid Background="#FFE5E5E5">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                </Grid>
+                        <Button Grid.Row="0" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon Kind="Add" Width="24" Height="24" />
+                        </Button>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <ScrollViewer Grid.Column="0" Margin="5" VerticalScrollBarVisibility="Auto">
+                                <DataGrid SelectedItem="{Binding SelectedEmployee}" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" Foreground="#000000">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Width="0.6*" Header="Организация" Binding="{Binding Passports[0].Surname}" />
+                                        <DataGridTextColumn Width="0.4*" Header="Должность" Binding="{Binding Passports[0].Name}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </ScrollViewer>
+
+                            <ScrollViewer Grid.Column="1" Margin="5" VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="10 5 10 0" Text="Организация: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
+                                    </ComboBox>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Должность: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
+                                    </ComboBox>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Вид работы: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <TextBox Margin="10 0 10 5" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+
+                                    <Grid Grid.Row="0" Margin="10 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="0 5 10 5">
+                                            <TextBlock Text="Начало работы:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <DatePicker FontSize="15" SelectedDate="2023-11-03" Style="{StaticResource MaterialDesignDatePicker}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="10 5 5 5">
+                                            <TextBlock Text="Конец работы:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <DatePicker FontSize="15" SelectedDate="2023-11-03" Style="{StaticResource MaterialDesignDatePicker}"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Подразделение: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
+                                    </ComboBox>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Причина увольнения: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <TextBox Margin="10 0 10 5" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Приказ" Style="{StaticResource MaterialDesignHeadline6TextBlock}" VerticalAlignment="Center"/>
+
+                                    <Grid Grid.Row="0" Margin="10 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="0 5 10 5">
+                                            <TextBlock Text="Дата подписания:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <DatePicker FontSize="15" SelectedDate="2023-11-03" Style="{StaticResource MaterialDesignDatePicker}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="10 5 5 5">
+                                            <TextBlock Text="Дата вступления в силу:" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                            <DatePicker FontSize="15" SelectedDate="2023-11-03" Style="{StaticResource MaterialDesignDatePicker}"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <TextBlock Margin="10 5 10 0" Text="Номер приказа: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                    <TextBox Margin="10 0 10 5" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
+
+                                    <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
+                                        <Button Margin="5" Content="Удалить" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                                        <Button Margin="5" Content="Сохранить"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
 

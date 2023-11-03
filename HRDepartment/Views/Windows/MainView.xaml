@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HRDepartment"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="HRDepartment.MainView"
         mc:Ignorable="d"
-        Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="../../Resources/logo.ico">
+        Height="600" Width="1000" WindowStartupLocation="CenterScreen" Icon="../../Resources/logo.ico">
     <Window.Title>
         <StaticResource ResourceKey="MainViewTitle" />
     </Window.Title>
