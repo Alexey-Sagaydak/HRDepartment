@@ -6,20 +6,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace CommonClasses
 {
     public enum AcademicDegree
     {
+        [Description ("Не имеется")]
         none,
+
+        [Description("Кандидат наук")]
         candidate_of_sciences,
+
+        [Description("Доктор наук")]
         doctor_of_sciences
     }
 
     public enum AcademicTitle
     {
+        [Description("Не имеется")]
         none,
+
+        [Description("Доцент")]
         associate_professor,
+
+        [Description("Профессор")]
         professor
     }
 

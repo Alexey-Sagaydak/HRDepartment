@@ -26,7 +26,6 @@ namespace Employees
         {
             InitializeComponent();
             DataContext = new EditEmployeeInfoViewModel(employee);
-            Console.WriteLine("dscvsdfcvsdf");
         }
     }
 }

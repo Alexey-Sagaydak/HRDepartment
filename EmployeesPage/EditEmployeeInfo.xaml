@@ -77,20 +77,12 @@
 
                         <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="10 0">
                             <TextBlock Margin="0 0 10 0" Text="Ученая степень:" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
-                            <ComboBox FontSize="15" Style="{StaticResource MaterialDesignComboBox}" Width="300">
-                                <ComboBoxItem>Кандидат наук</ComboBoxItem>
-                                <ComboBoxItem>Доктор наук</ComboBoxItem>
-                                <ComboBoxItem>Не имеется</ComboBoxItem>
-                            </ComboBox>
+                            <ComboBox FontSize="15" Style="{StaticResource MaterialDesignComboBox}" ItemsSource="{Binding AcademicDegrees}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding AcademicDegree, UpdateSourceTrigger=PropertyChanged}" Width="300"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="10 0">
                             <TextBlock Margin="0 0 10 0" Text="Ученое звание:" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
-                            <ComboBox FontSize="15" Style="{StaticResource MaterialDesignComboBox}" Width="300">
-                                <ComboBoxItem>Доцент</ComboBoxItem>
-                                <ComboBoxItem>Профессор</ComboBoxItem>
-                                <ComboBoxItem>Не имеется</ComboBoxItem>
-                            </ComboBox>
+                            <ComboBox FontSize="15" ItemsSource="{Binding AcademicTitles}" Style="{StaticResource MaterialDesignComboBox}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding AcademicTitle, UpdateSourceTrigger=PropertyChanged}" Width="300"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="10 0">
@@ -169,10 +161,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="10 0">
                                         <TextBlock Margin="0 0 10 0" Text="Пол: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
-                                        <ComboBox FontSize="15" Style="{StaticResource MaterialDesignComboBox}" SelectedItem="{Binding SelectedPassport.Gender, Mode=TwoWay}" Width="150">
-                                            <ComboBoxItem>Мужской</ComboBoxItem>
-                                            <ComboBoxItem>Женский</ComboBoxItem>
-                                        </ComboBox>
+                                        <ComboBox FontSize="15" ItemsSource="{Binding Genders}" Style="{StaticResource MaterialDesignComboBox}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding Gender, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
                                     </StackPanel>
 
                                     <StackPanel Grid.Column="3" Margin="20 5" Orientation="Horizontal">

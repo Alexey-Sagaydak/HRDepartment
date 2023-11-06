@@ -13,10 +13,16 @@ namespace EmployeesPage
         private Passport selectedPassport;
         private EduDocument selectedEduDocument;
         private Workplace selectedWorkplace;
+        private string gender;
+        private string academicDegree;
+        private string academicTitle;
 
         public ObservableCollection<Passport> Passports { get; set; }
         public ObservableCollection<EduDocument> EduDocuments { get; set; }
         public ObservableCollection<Workplace> Workplaces { get; set; }
+        public ObservableCollection<string> Genders { get; set; }
+        public ObservableCollection<string> AcademicDegrees { get; set; }
+        public ObservableCollection<string> AcademicTitles { get; set; }
 
         public Employee Employee { get; set; }
 
@@ -26,7 +32,8 @@ namespace EmployeesPage
             set
             {
                 selectedPassport = value;
-                OnPropertyChanged("SelectedPassport");
+                Gender = EnumHelper.GetDescription(value.Gender);
+                OnPropertyChanged(nameof(SelectedPassport));
             }
         }
 
@@ -36,7 +43,7 @@ namespace EmployeesPage
             set
             {
                 selectedEduDocument = value;
-                OnPropertyChanged("SelectedEduDocument");
+                OnPropertyChanged(nameof(SelectedEduDocument));
             }
         }
 
@@ -46,7 +53,40 @@ namespace EmployeesPage
             set
             {
                 selectedWorkplace = value;
-                OnPropertyChanged("SelectedWorkplace");
+                OnPropertyChanged(nameof(SelectedWorkplace));
+            }
+        }
+
+        public string Gender
+        {
+            get => gender;
+            set
+            {
+                selectedPassport.Gender = EnumHelper.GetEnumValueFromDescription<Gender>(value);
+                gender = value;
+                OnPropertyChanged(nameof(Gender));
+            }
+        }
+
+        public string AcademicDegree
+        {
+            get => academicDegree;
+            set
+            {
+                Employee.AcademicDegree = EnumHelper.GetEnumValueFromDescription<AcademicDegree>(value);
+                academicDegree = value;
+                OnPropertyChanged(nameof(AcademicDegree));
+            }
+        }
+
+        public string AcademicTitle
+        {
+            get => academicTitle;
+            set
+            {
+                Employee.AcademicTitle = EnumHelper.GetEnumValueFromDescription<AcademicTitle>(value);
+                academicTitle = value;
+                OnPropertyChanged(nameof(AcademicTitle));
             }
         }
 
@@ -54,9 +94,15 @@ namespace EmployeesPage
         {
             Employee = employee;
 
+            AcademicDegree = EnumHelper.GetDescription(employee.AcademicDegree);
+            AcademicTitle = EnumHelper.GetDescription(employee.AcademicTitle);
+
             Passports = new ObservableCollection<Passport>(Employee.Passports);
             EduDocuments = new ObservableCollection<EduDocument>(Employee.EduDocuments);
             Workplaces = new ObservableCollection<Workplace>(Employee.Workplaces);
+            Genders = new ObservableCollection<string>(EnumHelper.GetDescriptions<Gender>());
+            AcademicDegrees = new ObservableCollection<string>(EnumHelper.GetDescriptions<AcademicDegree>());
+            AcademicTitles = new ObservableCollection<string>(EnumHelper.GetDescriptions<AcademicTitle>());
         }
     }
 }

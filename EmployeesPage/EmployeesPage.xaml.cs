@@ -39,7 +39,6 @@ namespace Employees
 
         private void AddNewEmployee(Employee employee)
         {
-            Console.WriteLine("sssvdfsvfd");
             EditEmployeeInfo editEmployeeInfoPage = new EditEmployeeInfo(employee);
             NavigationService.Navigate(editEmployeeInfoPage);
         }
