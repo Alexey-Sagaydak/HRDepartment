@@ -6,12 +6,16 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace CommonClasses
 {
     public enum Gender
     {
+        [Description("Мужской")]
         male,
+
+        [Description("Женский")]
         female
     }
     
@@ -40,13 +44,13 @@ namespace CommonClasses
         public DateTime DateOfBirth { get; set; }
 
         [Column("place_of_birth")]
-        public string PlaceOfBirth { get; set; }
+        public string? PlaceOfBirth { get; set; }
 
         [Column("date_of_issue")]
         public DateTime DateOfIssue { get; set; }
 
         [Column("place_of_issue")]
-        public string PlaceOfIssue { get; set; }
+        public string? PlaceOfIssue { get; set; }
 
         [Column("series")]
         public int Series { get; set; }

@@ -77,7 +77,7 @@
             </Menu>
         </StackPanel>
 
-        <Frame Name="mainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Frame Name="mainFrame" Grid.Row="1" NavigationUIVisibility="Visible"/>
 
         <Button x:Name="closeButton" Grid.Row="2" Content="{StaticResource Close}" IsEnabled="false" Click="RemoveOpenedPage_Click" FontSize="15" Margin="5 5" HorizontalAlignment="Right" />
     </Grid>

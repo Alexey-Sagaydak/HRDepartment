@@ -34,7 +34,7 @@ namespace Employees
             set
             {
                 selectedEmployee = value;
-                OnPropertyChanged(nameof(selectedEmployee));
+                OnPropertyChanged(nameof(SelectedEmployee));
             }
         }
 
@@ -48,9 +48,20 @@ namespace Employees
 
             ReloadCommand = new RelayCommand(LoadEmployees);
             AddNewEmployeeCommand = new RelayCommand(AddNewEmployee);
+            OpenEmployeeInfoCommand = new RelayCommand(OpenEmployeeInfo, CanOpenEmployeeInfo);
 
             this.accessRights = accessRights;
             LoadEmployees();
+        }
+
+        private bool CanOpenEmployeeInfo(object obj)
+        {
+            return SelectedEmployee != null;
+        }
+
+        private void OpenEmployeeInfo(object obj)
+        {
+            OnNewEmployeeAdded(SelectedEmployee);
         }
 
         private void LoadEmployees(object obj = null)
