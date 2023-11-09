@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace References
+namespace CommonClasses
 {
     public class SpecialtyRepository : Repository<Specialty>, ISpecialtyRepository
     {
@@ -17,6 +17,11 @@ namespace References
         public List<Specialty> GetSpecialties()
         {
             return DBContext.specialties.ToList();
+        }
+
+        public List<Specialty> GetSpecialtiesLike(string pattern)
+        {
+            return DBContext.specialties.Where(data => data.Name.Contains(pattern)).ToList();
         }
 
         public Specialty AddSpecialty(string specialty)

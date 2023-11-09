@@ -1,7 +1,7 @@
 ﻿using CommonClasses;
 using System.Collections.Generic;
 
-namespace References
+namespace CommonClasses
 {
     public interface ISpecialtyRepository
     {
@@ -9,5 +9,6 @@ namespace References
         void DeleteSpecialty(Specialty specialty);
         void SaveChanges();
         List<Specialty> GetSpecialties();
+        List<Specialty> GetSpecialtiesLike(string pattern);
     }
 }

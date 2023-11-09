@@ -392,7 +392,7 @@
                                 <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
                                 </ComboBox>
 
-                                <TextBlock Margin="10 5 10 0" Text="Причина увольнения: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                <TextBlock Margin="10 5 10 0" Text="Причина: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
                                 <TextBox Text="{Binding SelectedWorkplace.Reason}" FontSize="15" Margin="10 0 10 5" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
 
                                 <TextBlock Margin="10 5 10 0" Text="Приказ" Style="{StaticResource MaterialDesignHeadline6TextBlock}" VerticalAlignment="Center"/>

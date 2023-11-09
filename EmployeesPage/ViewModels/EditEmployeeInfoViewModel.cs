@@ -10,6 +10,8 @@ namespace EmployeesPage
 {
     public class EditEmployeeInfoViewModel : ViewModelBase
     {
+        private DBContext DBContext;
+        private ISpecialtyRepository specialtyRepository;
         private Passport selectedPassport;
         private EduDocument selectedEduDocument;
         private Workplace selectedWorkplace;
@@ -20,6 +22,7 @@ namespace EmployeesPage
         public ObservableCollection<Passport> Passports { get; set; }
         public ObservableCollection<EduDocument> EduDocuments { get; set; }
         public ObservableCollection<Workplace> Workplaces { get; set; }
+        public ObservableCollection<Specialty> Specialties { get; set; }
         public ObservableCollection<string> Genders { get; set; }
         public ObservableCollection<string> AcademicDegrees { get; set; }
         public ObservableCollection<string> AcademicTitles { get; set; }
@@ -92,6 +95,8 @@ namespace EmployeesPage
 
         public EditEmployeeInfoViewModel(Employee employee)
         {
+            DBContext = new DBContext();
+
             Employee = employee;
 
             AcademicDegree = EnumHelper.GetDescription(employee.AcademicDegree);
@@ -103,6 +108,13 @@ namespace EmployeesPage
             Genders = new ObservableCollection<string>(EnumHelper.GetDescriptions<Gender>());
             AcademicDegrees = new ObservableCollection<string>(EnumHelper.GetDescriptions<AcademicDegree>());
             AcademicTitles = new ObservableCollection<string>(EnumHelper.GetDescriptions<AcademicTitle>());
+
+            specialtyRepository = new SpecialtyRepository(DBContext);
+            
+            foreach (var v in specialtyRepository.GetSpecialtiesLike("аб"))
+            {
+                Console.WriteLine(v.Name);
+            }
         }
     }
 }
