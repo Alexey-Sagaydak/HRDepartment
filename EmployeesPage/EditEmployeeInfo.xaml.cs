@@ -27,5 +27,20 @@ namespace Employees
             InitializeComponent();
             DataContext = new EditEmployeeInfoViewModel(employee);
         }
+
+        private void specialtyComboBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string inputText = comboBox.Text;
+
+            if (!((EditEmployeeInfoViewModel)DataContext).Specialties.Any(s => s.Name.Equals(inputText, StringComparison.OrdinalIgnoreCase)))
+            {
+                specialtyComboBox.Background = Brushes.IndianRed;
+            }
+            else
+            {
+                specialtyComboBox.Background = Brushes.Transparent;
+            }
+        }
     }
 }

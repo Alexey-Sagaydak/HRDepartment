@@ -15,6 +15,7 @@ namespace EmployeesPage
         private Passport selectedPassport;
         private EduDocument selectedEduDocument;
         private Workplace selectedWorkplace;
+        private Specialty selectedSpecialty;
         private string gender;
         private string academicDegree;
         private string academicTitle;
@@ -22,7 +23,9 @@ namespace EmployeesPage
         public ObservableCollection<Passport> Passports { get; set; }
         public ObservableCollection<EduDocument> EduDocuments { get; set; }
         public ObservableCollection<Workplace> Workplaces { get; set; }
+
         public ObservableCollection<Specialty> Specialties { get; set; }
+
         public ObservableCollection<string> Genders { get; set; }
         public ObservableCollection<string> AcademicDegrees { get; set; }
         public ObservableCollection<string> AcademicTitles { get; set; }
@@ -57,6 +60,16 @@ namespace EmployeesPage
             {
                 selectedWorkplace = value;
                 OnPropertyChanged(nameof(SelectedWorkplace));
+            }
+        }
+        
+        public Specialty SelectedSpecialty
+        {
+            get => selectedSpecialty;
+            set
+            {
+                selectedSpecialty = value;
+                OnPropertyChanged(nameof(SelectedSpecialty));
             }
         }
 
@@ -110,11 +123,8 @@ namespace EmployeesPage
             AcademicTitles = new ObservableCollection<string>(EnumHelper.GetDescriptions<AcademicTitle>());
 
             specialtyRepository = new SpecialtyRepository(DBContext);
-            
-            foreach (var v in specialtyRepository.GetSpecialtiesLike("аб"))
-            {
-                Console.WriteLine(v.Name);
-            }
+
+            Specialties = new ObservableCollection<Specialty>(specialtyRepository.GetSpecialties());
         }
     }
 }

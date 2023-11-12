@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\Localization-en-US.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
