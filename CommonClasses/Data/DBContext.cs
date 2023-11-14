@@ -15,6 +15,10 @@ namespace CommonClasses
     {
         public virtual DbSet<Specialty> specialties { get; set; }
         public virtual DbSet<EduInstitution> educational_institutions { get; set; }
+        public virtual DbSet<EduDocumentType> edu_document_types { get; set; }
+        public virtual DbSet<Position> positions { get; set; }
+        public virtual DbSet<Division> divisions { get; set; }
+        public virtual DbSet<OrganizationName> organizations_names { get; set; }
         public virtual DbSet<AuthData> hr_app_users { get; set; }
         public virtual DbSet<Employee> employees { get; set; }
         public virtual DbSet<Passport> passports { get; set; }

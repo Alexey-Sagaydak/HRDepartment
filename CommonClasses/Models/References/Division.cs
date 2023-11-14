@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonClasses
 {
-    public class Specialty : Reference
+    public class Division : Reference
     {
 
     }

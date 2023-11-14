@@ -57,5 +57,65 @@ namespace Employees
                 eduInstitutionsComboBox.Background = Brushes.Transparent;
             }
         }
+
+        private void EduDocumentTypesComboBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string inputText = comboBox.Text;
+
+            if (!((EditEmployeeInfoViewModel)DataContext).EduDocumentTypes.Any(s => s.Name.Equals(inputText, StringComparison.OrdinalIgnoreCase)))
+            {
+                eduDocumentTypesComboBox.Background = Brushes.IndianRed;
+            }
+            else
+            {
+                eduDocumentTypesComboBox.Background = Brushes.Transparent;
+            }
+        }
+
+        private void divisionsComboBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string inputText = comboBox.Text;
+
+            if (!((EditEmployeeInfoViewModel)DataContext).Divisions.Any(s => s.Name.Equals(inputText, StringComparison.OrdinalIgnoreCase)))
+            {
+                divisionsComboBox.Background = Brushes.IndianRed;
+            }
+            else
+            {
+                divisionsComboBox.Background = Brushes.Transparent;
+            }
+        }
+
+        private void positionsComboBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string inputText = comboBox.Text;
+
+            if (!((EditEmployeeInfoViewModel)DataContext).Positions.Any(s => s.Name.Equals(inputText, StringComparison.OrdinalIgnoreCase)))
+            {
+                positionsComboBox.Background = Brushes.IndianRed;
+            }
+            else
+            {
+                positionsComboBox.Background = Brushes.Transparent;
+            }
+        }
+
+        private void organizationNamesComboBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string inputText = comboBox.Text;
+
+            if (!((EditEmployeeInfoViewModel)DataContext).OrganizationNames.Any(s => s.Name.Equals(inputText, StringComparison.OrdinalIgnoreCase)))
+            {
+                organizationNamesComboBox.Background = Brushes.IndianRed;
+            }
+            else
+            {
+                organizationNamesComboBox.Background = Brushes.Transparent;
+            }
+        }
     }
 }

@@ -7,12 +7,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonClasses
 {
-    public class EduInstitution
+    public class EduInstitution : Reference
     {
-        [Column("id")]
-        public int Id { get; set; }
 
-        [Column("name")]
-        public string Name { get; set; }
     }
 }

@@ -220,7 +220,7 @@
 
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.7*"/>
+                            <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
@@ -246,24 +246,15 @@
                         <ScrollViewer Grid.Column="1" Margin="5" VerticalScrollBarVisibility="Auto">
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Margin="10 5 10 0" Text="Тип документа: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
-                                <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
-                                </ComboBox>
+                                <ComboBox x:Name="eduDocumentTypesComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название типа документа" IsEditable="True" ItemsSource="{Binding EduDocumentTypes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedEduDocumentType, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" LostKeyboardFocus='EduDocumentTypesComboBox_LostKeyboardFocus'/>
 
                                 <TextBlock Margin="10 5 10 0" Text="Образовательная организация: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="eduInstitutionsComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название образовательной организации" IsEditable="True" ItemsSource="{Binding EduInstitutions}" SelectedItem="{Binding SelectedEduInstitution}" DisplayMemberPath="Name" LostKeyboardFocus='eduInstitutionsComboBox_LostKeyboardFocus'>
-                                    <ComboBox.Text>
-                                        <Binding Mode="TwoWay" Path="SelectedEduInstitution" UpdateSourceTrigger="PropertyChanged" />
-                                    </ComboBox.Text>
-                                </ComboBox>
+                                <ComboBox x:Name="eduInstitutionsComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название образовательной организации" IsEditable="True" ItemsSource="{Binding EduInstitutions, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedEduInstitution, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" LostKeyboardFocus='eduInstitutionsComboBox_LostKeyboardFocus'/>
 
                                 <TextBlock Margin="10 5 10 0" Text="Специальность: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
 
-                                <ComboBox x:Name="specialtyComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название специальности" IsEditable="True" ItemsSource="{Binding Specialties}" SelectedItem="{Binding SelectedSpecialty}" DisplayMemberPath="Name" LostKeyboardFocus='specialtyComboBox_LostKeyboardFocus'>
-                                    <ComboBox.Text>
-                                        <Binding Mode="TwoWay" Path="SelectedSpecialty" UpdateSourceTrigger="PropertyChanged" />
-                                    </ComboBox.Text>
-                                </ComboBox>
-                                
+                                <ComboBox x:Name="specialtyComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название специальности" IsEditable="True" ItemsSource="{Binding Specialties, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSpecialty, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" LostKeyboardFocus='specialtyComboBox_LostKeyboardFocus'/>
+
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
@@ -342,7 +333,7 @@
 
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.7*"/>
+                            <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
@@ -352,12 +343,12 @@
                                     <DataTemplate>
                                         <StackPanel Margin="5" Orientation="Horizontal">
                                             <StackPanel Margin="5 0">
-                                                <TextBlock FontSize="15" Text="Тип" FontWeight="Bold"/>
-                                                <TextBlock FontSize="15" Text="{Binding Path=Order.KindOfWork}"/>
-                                            </StackPanel>
-                                            <StackPanel Margin="5 0">
                                                 <TextBlock FontSize="15" Text="ID" FontWeight="Bold"/>
                                                 <TextBlock FontSize="15" Text="{Binding Path=Id}"/>
+                                            </StackPanel>
+                                            <StackPanel Margin="5 0">
+                                                <TextBlock FontSize="15" Text="Номер приказа" FontWeight="Bold"/>
+                                                <TextBlock FontSize="15" Text="{Binding Path=Order.NumberOfOrder}"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </DataTemplate>
@@ -368,12 +359,10 @@
                         <ScrollViewer Grid.Column="1" Margin="5" VerticalScrollBarVisibility="Auto">
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Margin="10 5 10 0" Text="Организация: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
-                                <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
-                                </ComboBox>
+                                <ComboBox x:Name="organizationNamesComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название организации" IsEditable="True" ItemsSource="{Binding OrganizationNames, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedOrganizationName, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" LostKeyboardFocus='organizationNamesComboBox_LostKeyboardFocus'/>
 
                                 <TextBlock Margin="10 5 10 0" Text="Должность: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
-                                <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
-                                </ComboBox>
+                                <ComboBox x:Name="positionsComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название должности" IsEditable="True" ItemsSource="{Binding Positions, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedPosition, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" LostKeyboardFocus='positionsComboBox_LostKeyboardFocus'/>
 
                                 <TextBlock Margin="10 5 10 0" Text="Вид работы: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
                                 <TextBox Text="{Binding SelectedWorkplace.KindOfWork}" FontSize="15" Margin="10 0 10 5" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
@@ -396,8 +385,7 @@
                                 </Grid>
 
                                 <TextBlock Margin="10 5 10 0" Text="Подразделение: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
-                                <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
-                                </ComboBox>
+                                <ComboBox x:Name="divisionsComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название подразделения" IsEditable="True" ItemsSource="{Binding Divisions, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDivision, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" LostKeyboardFocus='divisionsComboBox_LostKeyboardFocus'/>
 
                                 <TextBlock Margin="10 5 10 0" Text="Причина: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
                                 <TextBox Text="{Binding SelectedWorkplace.Reason}" FontSize="15" Margin="10 0 10 5" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>

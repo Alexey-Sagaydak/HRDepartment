@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommonClasses;
+using MaterialDesignThemes.Wpf;
 
 namespace EmployeesPage
 {
@@ -13,12 +14,20 @@ namespace EmployeesPage
         private DBContext DBContext;
         private ISpecialtyRepository specialtyRepository;
         private IEduInstitutionsRepository eduInstitutionsRepository;
+        private IEduDocumentTypesRepository eduDocumentTypesRepository;
+        private IDivisionsRepository divisionsRepository;
+        private IPositionsRepository positionsRepository;
+        private IOrganizationNamesRepository organizationNamesRepository;
 
         private Passport selectedPassport;
         private EduDocument selectedEduDocument;
         private Workplace selectedWorkplace;
         private Specialty selectedSpecialty;
         private EduInstitution selectedEduInstitution;
+        private EduDocumentType selectedEduDocumentType;
+        private Division selectedDivision;
+        private Position selectedPosition;
+        private OrganizationName selectedOrganizationName;
 
         private string gender;
         private string academicDegree;
@@ -30,6 +39,10 @@ namespace EmployeesPage
 
         public ObservableCollection<Specialty> Specialties { get; set; }
         public ObservableCollection<EduInstitution> EduInstitutions { get; set; }
+        public ObservableCollection<EduDocumentType> EduDocumentTypes { get; set; }
+        public ObservableCollection<Division> Divisions { get; set; }
+        public ObservableCollection<Position> Positions { get; set; }
+        public ObservableCollection<OrganizationName> OrganizationNames { get; set; }
 
         public ObservableCollection<string> Genders { get; set; }
         public ObservableCollection<string> AcademicDegrees { get; set; }
@@ -54,6 +67,9 @@ namespace EmployeesPage
             set
             {
                 selectedEduDocument = value;
+                SelectedSpecialty = Specialties.FirstOrDefault(spec => spec.Id == value.SpecialtyId);
+                SelectedEduInstitution = EduInstitutions.FirstOrDefault(i => i.Id == value.EduInstitutionId);
+                SelectedEduDocumentType = EduDocumentTypes.FirstOrDefault(i => i.Id == value.EduDocumentTypeId);
                 OnPropertyChanged(nameof(SelectedEduDocument));
             }
         }
@@ -64,6 +80,9 @@ namespace EmployeesPage
             set
             {
                 selectedWorkplace = value;
+                SelectedDivision = Divisions.FirstOrDefault(i => i.Id == value.DivisionId);
+                SelectedPosition = Positions.FirstOrDefault(i => i.Id == value.PositionId);
+                SelectedOrganizationName = OrganizationNames.FirstOrDefault(i => i.Id == value.OrganizationId);
                 OnPropertyChanged(nameof(SelectedWorkplace));
             }
         }
@@ -74,6 +93,7 @@ namespace EmployeesPage
             set
             {
                 selectedSpecialty = value;
+                SelectedEduDocument.SpecialtyId = value.Id;
                 OnPropertyChanged(nameof(SelectedSpecialty));
             }
         }
@@ -84,7 +104,52 @@ namespace EmployeesPage
             set
             {
                 selectedEduInstitution = value;
+                SelectedEduDocument.EduInstitutionId = value.Id;
                 OnPropertyChanged(nameof(SelectedEduInstitution));
+            }
+        }
+
+        public EduDocumentType SelectedEduDocumentType
+        {
+            get => selectedEduDocumentType;
+            set
+            {
+                selectedEduDocumentType = value;
+                SelectedEduDocument.EduDocumentTypeId = value.Id;
+                OnPropertyChanged(nameof(SelectedEduDocumentType));
+            }
+        }
+
+        public Division SelectedDivision
+        {
+            get => selectedDivision;
+            set
+            {
+                selectedDivision = value;
+                SelectedWorkplace.DivisionId = value.Id;
+                OnPropertyChanged(nameof(SelectedDivision));
+            }
+        }
+
+        public Position SelectedPosition
+        {
+            get => selectedPosition;
+            set
+            {
+                selectedPosition = value;
+                SelectedWorkplace.PositionId = value.Id;
+                OnPropertyChanged(nameof(SelectedPosition));
+            }
+        }
+
+        public OrganizationName SelectedOrganizationName
+        {
+            get => selectedOrganizationName;
+            set
+            {
+                selectedOrganizationName = value;
+                SelectedWorkplace.OrganizationId = value.Id;
+                OnPropertyChanged(nameof(SelectedOrganizationName));
             }
         }
 
@@ -139,9 +204,17 @@ namespace EmployeesPage
 
             specialtyRepository = new SpecialtyRepository(DBContext);
             eduInstitutionsRepository = new EduInstitutionsRepository(DBContext);
+            eduDocumentTypesRepository = new EduDocumentTypesRepository(DBContext);
+            divisionsRepository = new DivisionsRepository(DBContext);
+            positionsRepository = new PositionsRepository(DBContext);
+            organizationNamesRepository = new OrganizationNamesRepository(DBContext);
 
             Specialties = new ObservableCollection<Specialty>(specialtyRepository.GetSpecialties());
             EduInstitutions = new ObservableCollection<EduInstitution>(eduInstitutionsRepository.GetEduInstitutions());
+            EduDocumentTypes = new ObservableCollection<EduDocumentType>(eduDocumentTypesRepository.GetEduDocumentTypes());
+            Divisions = new ObservableCollection<Division>(divisionsRepository.GetDivisions());
+            Positions = new ObservableCollection<Position>(positionsRepository.GetPositions());
+            OrganizationNames = new ObservableCollection<OrganizationName>(organizationNamesRepository.GetOrganizationNames());
         }
     }
 }
