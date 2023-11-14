@@ -14,6 +14,7 @@ namespace CommonClasses
     public class DBContext : DbContext
     {
         public virtual DbSet<Specialty> specialties { get; set; }
+        public virtual DbSet<EduInstitution> educational_institutions { get; set; }
         public virtual DbSet<AuthData> hr_app_users { get; set; }
         public virtual DbSet<Employee> employees { get; set; }
         public virtual DbSet<Passport> passports { get; set; }

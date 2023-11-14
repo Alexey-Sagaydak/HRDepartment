@@ -12,10 +12,14 @@ namespace EmployeesPage
     {
         private DBContext DBContext;
         private ISpecialtyRepository specialtyRepository;
+        private IEduInstitutionsRepository eduInstitutionsRepository;
+
         private Passport selectedPassport;
         private EduDocument selectedEduDocument;
         private Workplace selectedWorkplace;
         private Specialty selectedSpecialty;
+        private EduInstitution selectedEduInstitution;
+
         private string gender;
         private string academicDegree;
         private string academicTitle;
@@ -25,6 +29,7 @@ namespace EmployeesPage
         public ObservableCollection<Workplace> Workplaces { get; set; }
 
         public ObservableCollection<Specialty> Specialties { get; set; }
+        public ObservableCollection<EduInstitution> EduInstitutions { get; set; }
 
         public ObservableCollection<string> Genders { get; set; }
         public ObservableCollection<string> AcademicDegrees { get; set; }
@@ -70,6 +75,16 @@ namespace EmployeesPage
             {
                 selectedSpecialty = value;
                 OnPropertyChanged(nameof(SelectedSpecialty));
+            }
+        }
+
+        public EduInstitution SelectedEduInstitution
+        {
+            get => selectedEduInstitution;
+            set
+            {
+                selectedEduInstitution = value;
+                OnPropertyChanged(nameof(SelectedEduInstitution));
             }
         }
 
@@ -123,8 +138,10 @@ namespace EmployeesPage
             AcademicTitles = new ObservableCollection<string>(EnumHelper.GetDescriptions<AcademicTitle>());
 
             specialtyRepository = new SpecialtyRepository(DBContext);
+            eduInstitutionsRepository = new EduInstitutionsRepository(DBContext);
 
             Specialties = new ObservableCollection<Specialty>(specialtyRepository.GetSpecialties());
+            EduInstitutions = new ObservableCollection<EduInstitution>(eduInstitutionsRepository.GetEduInstitutions());
         }
     }
 }

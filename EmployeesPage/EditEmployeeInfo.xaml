@@ -245,12 +245,15 @@
 
                         <ScrollViewer Grid.Column="1" Margin="5" VerticalScrollBarVisibility="Auto">
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Margin="10 5 10 0" Text="Место выдачи: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                <TextBlock Margin="10 5 10 0" Text="Тип документа: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
                                 <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
                                 </ComboBox>
 
                                 <TextBlock Margin="10 5 10 0" Text="Образовательная организация: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
-                                <ComboBox HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" Style="{StaticResource MaterialDesignComboBox}">
+                                <ComboBox x:Name="eduInstitutionsComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Введите название образовательной организации" IsEditable="True" ItemsSource="{Binding EduInstitutions}" SelectedItem="{Binding SelectedEduInstitution}" DisplayMemberPath="Name" LostKeyboardFocus='eduInstitutionsComboBox_LostKeyboardFocus'>
+                                    <ComboBox.Text>
+                                        <Binding Mode="TwoWay" Path="SelectedEduInstitution" UpdateSourceTrigger="PropertyChanged" />
+                                    </ComboBox.Text>
                                 </ComboBox>
 
                                 <TextBlock Margin="10 5 10 0" Text="Специальность: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>

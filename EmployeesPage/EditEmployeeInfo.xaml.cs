@@ -42,5 +42,20 @@ namespace Employees
                 specialtyComboBox.Background = Brushes.Transparent;
             }
         }
+
+        private void eduInstitutionsComboBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string inputText = comboBox.Text;
+
+            if (!((EditEmployeeInfoViewModel)DataContext).EduInstitutions.Any(s => s.Name.Equals(inputText, StringComparison.OrdinalIgnoreCase)))
+            {
+                eduInstitutionsComboBox.Background = Brushes.IndianRed;
+            }
+            else
+            {
+                eduInstitutionsComboBox.Background = Brushes.Transparent;
+            }
+        }
     }
 }
