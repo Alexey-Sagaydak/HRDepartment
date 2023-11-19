@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using CommonClasses;
@@ -33,6 +34,18 @@ namespace EmployeesPage
         private string academicDegree;
         private string academicTitle;
 
+        private RelayCommand addPassportCommand;
+        private RelayCommand addEduDocumentCommand;
+        private RelayCommand addWorkplaceCommand;
+
+        private RelayCommand deletePassportCommand;
+        private RelayCommand deleteEduDocumentCommand;
+        private RelayCommand deleteWorkplaceCommand;
+
+        private RelayCommand savePassportCommand;
+        private RelayCommand saveEduDocumentCommand;
+        private RelayCommand saveWorkplaceCommand;
+
         public ObservableCollection<Passport> Passports { get; set; }
         public ObservableCollection<EduDocument> EduDocuments { get; set; }
         public ObservableCollection<Workplace> Workplaces { get; set; }
@@ -50,6 +63,24 @@ namespace EmployeesPage
 
         public Employee Employee { get; set; }
 
+        #region commands
+        public RelayCommand AddPassportCommand
+        {
+            get => addPassportCommand ??= new RelayCommand(_ => Passports.Insert(0, new Passport(Employee.Id)));
+        }
+
+        public RelayCommand AddEduDocumentCommand
+        {
+            get => addEduDocumentCommand ??= new RelayCommand(_ => EduDocuments.Insert(0, new EduDocument(Employee.Id)));
+        }
+
+        public RelayCommand AddWorkplaceCommand
+        {
+            get => addWorkplaceCommand ??= new RelayCommand(_ => Workplaces.Insert(0, new Workplace(Employee.Id)));
+        }
+        #endregion
+
+        #region selected elements
         public Passport SelectedPassport
         {
             get => selectedPassport;
@@ -163,6 +194,7 @@ namespace EmployeesPage
                 OnPropertyChanged(nameof(Gender));
             }
         }
+        #endregion
 
         public string AcademicDegree
         {

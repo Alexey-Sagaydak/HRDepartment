@@ -9,17 +9,36 @@ namespace CommonClasses
 {
     public class EduDocument
     {
+        public EduDocument() { }
+
+        public EduDocument(long employeeId)
+        {
+            Id = null;
+            EmployeeId = employeeId;
+            EduDocumentTypeId = 0;
+            EduInstitutionId = 0;
+            SpecialtyId = 0;
+            Name = string.Empty;
+            Surname = string.Empty;
+            MiddleName = string.Empty;
+            IsWithHonors = false;
+            Series = string.Empty;
+            Number = string.Empty;
+            RegistrationNumber = string.Empty;
+            DateOfIssue = null;
+        }
+
         [Column("id")]
-        public long Id { get; set; }
+        public long? Id { get; set; }
 
         [Column("employee_id")]
         public long EmployeeId { get; set; }
 
         [Column("edu_document_type_id")]
-        public long EduDocumentTypeId { get; set; }
+        public long? EduDocumentTypeId { get; set; }
 
         [Column("edu_institution_id")]
-        public long EduInstitutionId { get; set; }
+        public long? EduInstitutionId { get; set; }
 
         [Column("specialty_id")]
         public long? SpecialtyId { get; set; }
@@ -46,7 +65,7 @@ namespace CommonClasses
         public string? RegistrationNumber { get; set; }
 
         [Column("date_of_issue")]
-        public DateTime DateOfIssue { get; set; }
+        public DateTime? DateOfIssue { get; set; }
     }
 
 }

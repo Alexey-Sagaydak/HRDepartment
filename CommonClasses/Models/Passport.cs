@@ -21,8 +21,23 @@ namespace CommonClasses
     
     public class Passport
     {
+        public Passport(long employeeId)
+        {
+            Id = null;
+            EmployeeId = employeeId;
+            Name = string.Empty;
+            Surname = string.Empty;
+            MiddleName = string.Empty;
+            DateOfBirth = null;
+            PlaceOfBirth = string.Empty;
+            DateOfIssue = null;
+            PlaceOfIssue = null;
+            Series = null;
+            Number = null;
+        }
+
         [Column("id")]
-        public long Id { get; set; }
+        public long? Id { get; set; }
 
         [Column("employee_id")]
         public long EmployeeId { get; set; }
@@ -41,22 +56,22 @@ namespace CommonClasses
         public Gender Gender { get; set; }
 
         [Column("date_of_birth")]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         [Column("place_of_birth")]
         public string? PlaceOfBirth { get; set; }
 
         [Column("date_of_issue")]
-        public DateTime DateOfIssue { get; set; }
+        public DateTime? DateOfIssue { get; set; }
 
         [Column("place_of_issue")]
         public string? PlaceOfIssue { get; set; }
 
         [Column("series")]
-        public int Series { get; set; }
+        public int? Series { get; set; }
 
         [Column("number")]
-        public int Number { get; set; }
+        public int? Number { get; set; }
     }
 
 }

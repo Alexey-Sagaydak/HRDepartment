@@ -9,8 +9,23 @@ namespace CommonClasses
 {
     public class Workplace
     {
+        public Workplace(long employeeId)
+        {
+            Id = null;
+            EmployeeId = employeeId;
+            OrganizationId = 0;
+            PositionId = 0;
+            KindOfWork = string.Empty;
+            StartOfWork = null;
+            EndOfWork = null;
+            DivisionId = 0;
+            Reason = string.Empty;
+            OrderId = null;
+            Order = null;
+        }
+
         [Column("id")]
-        public long Id { get; set; }
+        public long? Id { get; set; }
 
         [Column("employee_id")]
         public long EmployeeId { get; set; }
