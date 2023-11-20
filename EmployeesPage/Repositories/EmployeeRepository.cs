@@ -23,6 +23,35 @@ namespace Employees
             return employee;
         }
 
+        public void UpdatePassport(Passport passport)
+        {
+            var existingPassport = DBContext.passports
+                .SingleOrDefault(p => p.Id == passport.Id);
+
+            if (existingPassport != null)
+            {
+                existingPassport.DateOfBirth = passport.DateOfBirth;
+                existingPassport.PlaceOfBirth = passport.PlaceOfBirth;
+                existingPassport.DateOfIssue = passport.DateOfIssue;
+                existingPassport.PlaceOfIssue = passport.PlaceOfIssue;
+                existingPassport.Series = passport.Series;
+                existingPassport.Number = passport.Number;
+                existingPassport.Name = passport.Name;
+                existingPassport.Surname = passport.Surname;
+                existingPassport.MiddleName = passport.MiddleName;
+                existingPassport.Gender = passport.Gender;
+
+                DBContext.SaveChanges();
+            }
+            else
+            {
+                long? maxId = DBContext.passports.Any() ? DBContext.passports.Max(s => s.Id) : 0;
+                passport.Id = maxId + 1;
+                DBContext.passports.Add(passport);
+                DBContext.SaveChanges();
+            }
+        }
+
         public List<Passport> GetPassportsForEmployee(long employeeId)
         {
             var passports = DBContext.passports

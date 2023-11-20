@@ -13,10 +13,10 @@ namespace CommonClasses
     public enum Gender
     {
         [Description("Мужской")]
-        male,
+        male = 0,
 
         [Description("Женский")]
-        female
+        female = 1
     }
     
     public class Passport
@@ -28,9 +28,9 @@ namespace CommonClasses
             Name = string.Empty;
             Surname = string.Empty;
             MiddleName = string.Empty;
-            DateOfBirth = null;
+            DateOfBirth = new DateTime(2023, 11, 20, 12, 0, 0, DateTimeKind.Utc); ;
             PlaceOfBirth = string.Empty;
-            DateOfIssue = null;
+            DateOfIssue = new DateTime(2023, 11, 20, 12, 0, 0, DateTimeKind.Utc); ;
             PlaceOfIssue = null;
             Series = null;
             Number = null;

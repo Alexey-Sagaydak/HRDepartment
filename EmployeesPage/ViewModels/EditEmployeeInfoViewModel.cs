@@ -5,7 +5,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using CommonClasses;
+using Employees;
 using MaterialDesignThemes.Wpf;
 
 namespace EmployeesPage
@@ -19,6 +21,7 @@ namespace EmployeesPage
         private IDivisionsRepository divisionsRepository;
         private IPositionsRepository positionsRepository;
         private IOrganizationNamesRepository organizationNamesRepository;
+        private IEmployeeRepository employeeRepository;
 
         private Passport selectedPassport;
         private EduDocument selectedEduDocument;
@@ -77,6 +80,85 @@ namespace EmployeesPage
         public RelayCommand AddWorkplaceCommand
         {
             get => addWorkplaceCommand ??= new RelayCommand(_ => Workplaces.Insert(0, new Workplace(Employee.Id)));
+        }
+
+        public RelayCommand DeletePassportCommand
+        {
+            get => deletePassportCommand ??= new RelayCommand(DeletePassport, (obj) => SelectedPassport != null);
+        }
+
+        private void DeletePassport(object obj)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить паспорт?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Passports.Remove(SelectedPassport);
+                // TODO: сохранить данные в БД
+            }     
+        }
+
+        public RelayCommand DeleteEduDocumentCommand
+        {
+            get => deleteEduDocumentCommand ??= new RelayCommand(DeleteEduDocument, (obj) => SelectedEduDocument != null);
+        }
+
+        private void DeleteEduDocument(object obj)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить документ об образовании?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                EduDocuments.Remove(SelectedEduDocument);
+                // TODO: сохранить данные в БД
+            }
+        }
+
+        public RelayCommand DeleteWorkplaceCommand
+        {
+            get => deleteWorkplaceCommand ??= new RelayCommand(DeleteWorkplace, (obj) => SelectedWorkplace != null);
+        }
+
+        private void DeleteWorkplace(object obj)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить информацию о месте работы?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Workplaces.Remove(SelectedWorkplace);
+                // TODO: сохранить данные в БД
+            }
+        }
+
+        public RelayCommand SavePassportCommand
+        {
+            get => savePassportCommand ??= new RelayCommand(SavePassport, (obj) => SelectedPassport != null);
+        }
+
+        public void SavePassport(object obj)
+        {
+            employeeRepository.UpdatePassport(SelectedPassport);
+            MessageBox.Show("Информация о паспорте сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public RelayCommand SaveEduDocumentCommand
+        {
+            get => saveEduDocumentCommand ??= new RelayCommand(SaveEduDocument, (obj) => SelectedEduDocument != null);
+        }
+
+        public void SaveEduDocument(object obj)
+        {
+            MessageBox.Show("Информация о документе об образовании сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public RelayCommand SaveWorkplaceCommand
+        {
+            get => saveWorkplaceCommand ??= new RelayCommand(SaveWorkplace, (obj) => SelectedWorkplace != null);
+        }
+
+        public void SaveWorkplace(object obj)
+        {
+            MessageBox.Show("Информация о месте работы сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         #endregion
 
@@ -240,6 +322,7 @@ namespace EmployeesPage
             divisionsRepository = new DivisionsRepository(DBContext);
             positionsRepository = new PositionsRepository(DBContext);
             organizationNamesRepository = new OrganizationNamesRepository(DBContext);
+            employeeRepository = new EmployeeRepository(DBContext);
 
             Specialties = new ObservableCollection<Specialty>(specialtyRepository.GetSpecialties());
             EduInstitutions = new ObservableCollection<EduInstitution>(eduInstitutionsRepository.GetEduInstitutions());

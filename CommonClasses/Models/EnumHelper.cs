@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
+using CommonClasses;
 
 public static class EnumHelper
 {
@@ -32,6 +33,8 @@ public static class EnumHelper
                 return value;
             }
         }
+        Console.WriteLine(description);
+        Console.WriteLine(Gender.female.ToString());
         throw new ArgumentException("Description not found for the provided enum value.");
     }
 

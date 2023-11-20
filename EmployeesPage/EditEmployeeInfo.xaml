@@ -199,8 +199,8 @@
                                 </Grid>
 
                                 <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
-                                    <Button Margin="5" Content="Удалить" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
-                                    <Button Margin="5" Content="Сохранить"/>
+                                    <Button Margin="5" Content="Удалить" Command="{Binding DeletePassportCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                                    <Button Margin="5" Content="Сохранить" Command="{Binding SavePassportCommand}"/>
                                 </StackPanel>
                             </StackPanel>
                         </ScrollViewer>
@@ -312,8 +312,8 @@
                                 </Grid>
 
                                 <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
-                                    <Button Margin="5" Content="Удалить" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
-                                    <Button Margin="5" Content="Сохранить"/>
+                                    <Button Margin="5" Content="Удалить" Command="{Binding DeleteEduDocumentCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                                    <Button Margin="5" Content="Сохранить" Command="{Binding SaveEduDocumentCommand}"/>
                                 </StackPanel>
                             </StackPanel>
                         </ScrollViewer>
@@ -413,8 +413,8 @@
                                 <TextBox Text="{Binding SelectedWorkplace.Order.NumberOfOrder}" FontSize="15" Margin="10 0 10 5" Style="{StaticResource MaterialDesignTextBox}" VerticalAlignment="Center"/>
 
                                 <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
-                                    <Button Margin="5" Content="Удалить" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
-                                    <Button Margin="5" Content="Сохранить"/>
+                                    <Button Margin="5" Content="Удалить" Command="{Binding DeleteWorkplaceCommand}" BorderBrush="#FFB73A3A" Background="#FFB73A3A"/>
+                                    <Button Margin="5" Content="Сохранить" Command="{Binding SaveWorkplaceCommand}"/>
                                 </StackPanel>
                             </StackPanel>
                         </ScrollViewer>

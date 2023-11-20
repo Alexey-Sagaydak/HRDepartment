@@ -11,5 +11,6 @@ namespace Employees
         List<Passport> GetPassportsForEmployee(long employeeId);
         List<Workplace> GetPlacesOfWorkForEmployee(long employeeId);
         List<Employee> GetEmployees();
+        void UpdatePassport(Passport passport);
     }
 }

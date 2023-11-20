@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using CommonClasses;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Windows.Controls;
 
 namespace CommonClasses
 {
@@ -28,6 +30,7 @@ namespace CommonClasses
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             string connectionString = ReadStringFromFile(@"Resources\DBConnectionString.txt");
 
             optionsBuilder.UseNpgsql(connectionString);
@@ -43,20 +46,24 @@ namespace CommonClasses
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Passport>()
+                .Property(p => p.Gender)
+                .HasConversion(
+                    g => g.ToString(),           // Конвертация Enum в строку для сохранения в базе данных
+                    g => (Gender)Enum.Parse(typeof(Gender), g)  // Конвертация строки из базы данных в Enum
+                );
+
             modelBuilder
                 .Entity<Employee>()
                 .Property(e => e.AcademicTitle)
-                .HasConversion<string>(); // Преобразование ENUM в строку
+                .HasConversion<string>();
 
             modelBuilder
                 .Entity<Employee>()
                 .Property(e => e.AcademicDegree)
-                .HasConversion<string>(); // Преобразование ENUM в строку
-
-            modelBuilder
-                .Entity<Passport>()
-                .Property(e => e.Gender)
-                .HasConversion<string>(); // Преобразование ENUM в строку
+                .HasConversion<string>();
         }
     }
 }
