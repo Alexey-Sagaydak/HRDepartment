@@ -93,9 +93,9 @@ namespace EmployeesPage
 
             if (result == MessageBoxResult.Yes)
             {
+                employeeRepository.DeletePassport((long)SelectedPassport.Id);
                 Passports.Remove(SelectedPassport);
-                // TODO: сохранить данные в БД
-            }     
+            }
         }
 
         public RelayCommand DeleteEduDocumentCommand
@@ -126,7 +126,6 @@ namespace EmployeesPage
             if (result == MessageBoxResult.Yes)
             {
                 Workplaces.Remove(SelectedWorkplace);
-                // TODO: сохранить данные в БД
             }
         }
 
