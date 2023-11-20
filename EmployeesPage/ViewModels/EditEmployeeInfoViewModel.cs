@@ -85,7 +85,7 @@ namespace EmployeesPage
 
         public RelayCommand DeletePassportCommand
         {
-            get => deletePassportCommand ??= new RelayCommand(DeletePassport, (obj) => SelectedPassport != null);
+            get => deletePassportCommand ??= new RelayCommand(DeletePassport, (obj) => SelectedPassport != null && SelectedPassport?.Id != null);
         }
 
         private void DeletePassport(object obj)
@@ -101,7 +101,7 @@ namespace EmployeesPage
 
         public RelayCommand DeleteEduDocumentCommand
         {
-            get => deleteEduDocumentCommand ??= new RelayCommand(DeleteEduDocument, (obj) => SelectedEduDocument != null);
+            get => deleteEduDocumentCommand ??= new RelayCommand(DeleteEduDocument, (obj) => SelectedEduDocument != null && SelectedEduDocument?.Id != null);
         }
 
         private void DeleteEduDocument(object obj)
@@ -110,14 +110,14 @@ namespace EmployeesPage
 
             if (result == MessageBoxResult.Yes)
             {
+                employeeRepository.DeleteEduDocument((long)SelectedEduDocument.Id);
                 EduDocuments.Remove(SelectedEduDocument);
-                // TODO: сохранить данные в БД
             }
         }
 
         public RelayCommand DeleteWorkplaceCommand
         {
-            get => deleteWorkplaceCommand ??= new RelayCommand(DeleteWorkplace, (obj) => SelectedWorkplace != null);
+            get => deleteWorkplaceCommand ??= new RelayCommand(DeleteWorkplace, (obj) => SelectedWorkplace != null && SelectedWorkplace?.Id != null);
         }
 
         private void DeleteWorkplace(object obj)
@@ -126,6 +126,7 @@ namespace EmployeesPage
 
             if (result == MessageBoxResult.Yes)
             {
+                employeeRepository.DeleteWorkplace((long)SelectedWorkplace.Id);
                 Workplaces.Remove(SelectedWorkplace);
             }
         }
@@ -158,7 +159,23 @@ namespace EmployeesPage
 
         public void SaveEduDocument(object obj)
         {
-            MessageBox.Show("Информация о документе об образовании сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            try
+            {
+                SelectedEduDocument.EduDocumentTypeId = SelectedEduDocumentType.Id;
+                SelectedEduDocument.EduInstitutionId = SelectedEduInstitution.Id;
+                SelectedEduDocument.SpecialtyId = SelectedSpecialty.Id;
+
+                employeeRepository.UpdateEduDocument(SelectedEduDocument);
+                MessageBox.Show("Информация о документе об образовании сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                if (MessageBox.Show("Не удалось сохранить данные. Проверьте, что все обязательные поля заполнены.\n\nПоказать текст ошибки?", "Ошибка", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
+                {
+                    MessageBox.Show($"{ex}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            
         }
 
         public RelayCommand SaveWorkplaceCommand
@@ -168,7 +185,25 @@ namespace EmployeesPage
 
         public void SaveWorkplace(object obj)
         {
-            MessageBox.Show("Информация о месте работы сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            try
+            {
+                SelectedWorkplace.Order.EmployeeId = Employee.Id;
+                SelectedWorkplace.EmployeeId = Employee.Id;
+                SelectedWorkplace.OrganizationId = SelectedOrganizationName.Id;
+                SelectedWorkplace.PositionId = SelectedPosition.Id;
+                SelectedWorkplace.DivisionId = SelectedDivision.Id;
+
+                employeeRepository.UpdateWorkplace(SelectedWorkplace);
+                MessageBox.Show("Информация о месте работы сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                if (MessageBox.Show("Не удалось сохранить данные. Проверьте, что все обязательные поля заполнены.\n\nПоказать текст ошибки?", "Ошибка", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
+                {
+                    MessageBox.Show($"{ex}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            
         }
 
         public RelayCommand SaveMainDataCommand
@@ -182,7 +217,7 @@ namespace EmployeesPage
             try
             {
                 employeeRepository.SaveMainData(Employee);
-                MessageBox.Show("Обрая информация о работнике сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Общая информация о работнике сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {

@@ -9,20 +9,30 @@ namespace CommonClasses
 {
     public class Order
     {
+        public Order()
+        {
+            Id = null;
+            EmployeeId = null;
+            TypeOfOrderId = null;
+            DateOfSigning = null;
+            EffectiveDate = null;
+            NumberOfOrder = string.Empty;
+        }
+
         [Column("id")]
-        public long Id { get; set; }
+        public long? Id { get; set; }
 
         [Column("employee_id")]
         public long? EmployeeId { get; set; }
 
         [Column("type_of_order_id")]
-        public long TypeOfOrderId { get; set; }
+        public long? TypeOfOrderId { get; set; }
 
         [Column("date_of_signing")]
-        public DateTime DateOfSigning { get; set; }
+        public DateTime? DateOfSigning { get; set; }
 
         [Column("effective_date")]
-        public DateTime EffectiveDate { get; set; }
+        public DateTime? EffectiveDate { get; set; }
 
         [Column("number_of_order")]
         public string NumberOfOrder { get; set; }

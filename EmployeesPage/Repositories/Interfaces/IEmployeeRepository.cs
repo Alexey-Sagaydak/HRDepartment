@@ -14,5 +14,10 @@ namespace Employees
         void UpdatePassport(Passport passport);
         void DeletePassport(long passportId);
         void SaveMainData(Employee employee);
+        void UpdateEduDocument(EduDocument eduDocument);
+        void DeleteEduDocument(long eduDocumentId);
+        void UpdateWorkplace(Workplace workplace);
+        void UpdateOrder(Order order);
+        void DeleteWorkplace(long workplaceId);
     }
 }

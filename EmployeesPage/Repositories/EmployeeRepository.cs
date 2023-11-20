@@ -52,6 +52,91 @@ namespace Employees
             }
         }
 
+        public void UpdateEduDocument(EduDocument eduDocument)
+        {
+            var existingEduDocument = DBContext.edu_documents
+                .SingleOrDefault(p => p.Id == eduDocument.Id);
+
+            if (existingEduDocument != null)
+            {
+                existingEduDocument.EduDocumentTypeId = eduDocument.EduDocumentTypeId;
+                existingEduDocument.EduInstitutionId = eduDocument.EduInstitutionId;
+                existingEduDocument.DateOfIssue = eduDocument.DateOfIssue;
+                existingEduDocument.SpecialtyId = eduDocument.SpecialtyId;
+                existingEduDocument.Series = eduDocument.Series;
+                existingEduDocument.Number = eduDocument.Number;
+                existingEduDocument.Name = eduDocument.Name;
+                existingEduDocument.Surname = eduDocument.Surname;
+                existingEduDocument.MiddleName = eduDocument.MiddleName;
+                existingEduDocument.IsWithHonors = eduDocument.IsWithHonors;
+                existingEduDocument.RegistrationNumber = eduDocument.RegistrationNumber;
+
+                DBContext.SaveChanges();
+            }
+            else
+            {
+                long? maxId = DBContext.edu_documents.Any() ? DBContext.edu_documents.Max(s => s.Id) : 0;
+                eduDocument.Id = maxId + 1;
+                DBContext.edu_documents.Add(eduDocument);
+                DBContext.SaveChanges();
+            }
+        }
+
+        public void UpdateWorkplace(Workplace workplace)
+        {
+            var existingWorkplace = DBContext.places_of_work
+                .SingleOrDefault(p => p.Id == workplace.Id);
+
+            UpdateOrder(workplace.Order);
+
+            if (existingWorkplace != null)
+            {
+                existingWorkplace.OrganizationId = workplace.OrganizationId;
+                existingWorkplace.PositionId = workplace.PositionId;
+                existingWorkplace.DivisionId = workplace.DivisionId;
+                existingWorkplace.KindOfWork = workplace.KindOfWork;
+                existingWorkplace.StartOfWork = workplace.StartOfWork;
+                existingWorkplace.EndOfWork = workplace.EndOfWork;
+                existingWorkplace.Reason = workplace.Reason;
+
+                DBContext.SaveChanges();
+            }
+            else
+            {
+                long? maxId = DBContext.places_of_work.Any() ? DBContext.places_of_work.Max(s => s.Id) : 0;
+                workplace.Id = maxId + 1;
+                workplace.OrderId = workplace.Order.Id;
+                DBContext.places_of_work.Add(workplace);
+
+                DBContext.SaveChanges();
+            }
+        }
+
+        public void UpdateOrder(Order order)
+        {
+            var existingOrder = DBContext.orders
+                .SingleOrDefault(p => p.Id == order.Id);
+
+            if (existingOrder != null)
+            {
+                existingOrder.DateOfSigning = order.DateOfSigning;
+                existingOrder.EffectiveDate = order.EffectiveDate;
+                existingOrder.NumberOfOrder = order.NumberOfOrder;
+
+                DBContext.SaveChanges();
+            }
+            else
+            {
+                long? maxId = DBContext.orders.Any() ? DBContext.orders.Max(s => s.Id) : 0;
+                order.Id = maxId + 1;
+                order.TypeOfOrderId = 1;
+
+                DBContext.orders.Add(order);
+
+                DBContext.SaveChanges();
+            }
+        }
+
         public void SaveMainData(Employee employee)
         {
             var existingEmployee = DBContext.employees
@@ -76,6 +161,30 @@ namespace Employees
             if (passportToDelete != null)
             {
                 DBContext.passports.Remove(passportToDelete);
+                DBContext.SaveChanges();
+            }
+        }
+
+        public void DeleteEduDocument(long eduDocumentId)
+        {
+            var eduDocumentToDelete = DBContext.edu_documents
+                .SingleOrDefault(p => p.Id == eduDocumentId);
+
+            if (eduDocumentToDelete != null)
+            {
+                DBContext.edu_documents.Remove(eduDocumentToDelete);
+                DBContext.SaveChanges();
+            }
+        }
+
+        public void DeleteWorkplace(long workplaceId)
+        {
+            var workplaceToDelete = DBContext.places_of_work
+                .SingleOrDefault(p => p.Id == workplaceId);
+
+            if (workplaceToDelete != null)
+            {
+                DBContext.places_of_work.Remove(workplaceToDelete);
                 DBContext.SaveChanges();
             }
         }

@@ -21,7 +21,7 @@ namespace CommonClasses
             DivisionId = 0;
             Reason = string.Empty;
             OrderId = null;
-            Order = null;
+            Order = new Order();
         }
 
         [Column("id")]
