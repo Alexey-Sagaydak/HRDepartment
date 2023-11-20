@@ -13,5 +13,6 @@ namespace Employees
         List<Employee> GetEmployees();
         void UpdatePassport(Passport passport);
         void DeletePassport(long passportId);
+        void SaveMainData(Employee employee);
     }
 }

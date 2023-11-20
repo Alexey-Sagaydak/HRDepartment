@@ -35,7 +35,7 @@
 
                                 <StackPanel Grid.Column="0">
                                     <TextBlock Text="Фамилия" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                                    <TextBlock Text="{Binding Employee.Passports[0].Surname}" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                                    <TextBlock Text="{Binding Employee.Passports[0].Surname, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1">
@@ -92,7 +92,7 @@
 
                         <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 0" HorizontalAlignment="Center">
                             <Button Margin="5" Content="Удалить сотрудника" Background="#FFB73A3A" BorderBrush="#FFB73A3A"/>
-                            <Button Margin="5" Content="Сохранить"/>
+                            <Button Margin="5" Content="Сохранить" Command="{Binding SaveMainDataCommand}"/>
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>

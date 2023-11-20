@@ -13,25 +13,25 @@ namespace CommonClasses
     public enum AcademicDegree
     {
         [Description ("Не имеется")]
-        none,
+        none = 0,
 
         [Description("Кандидат наук")]
-        candidate_of_sciences,
+        candidate_of_sciences = 1,
 
         [Description("Доктор наук")]
-        doctor_of_sciences
+        doctor_of_sciences = 2
     }
 
     public enum AcademicTitle
     {
         [Description("Не имеется")]
-        none,
+        none = 0,
 
         [Description("Доцент")]
-        associate_professor,
+        associate_professor = 1,
 
         [Description("Профессор")]
-        professor
+        professor = 2
     }
 
     public class Employee

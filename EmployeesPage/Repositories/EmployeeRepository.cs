@@ -52,6 +52,22 @@ namespace Employees
             }
         }
 
+        public void SaveMainData(Employee employee)
+        {
+            var existingEmployee = DBContext.employees
+                .SingleOrDefault(e => e.Id == employee.Id);
+
+            existingEmployee.Email = employee.Email;
+            existingEmployee.PhoneNumber = employee.PhoneNumber;
+            existingEmployee.Snils = employee.Snils;
+            existingEmployee.Inn = employee.Inn;
+            existingEmployee.FiasGuid = employee.FiasGuid;
+            existingEmployee.AcademicDegree = employee.AcademicDegree;
+            existingEmployee.AcademicTitle = employee.AcademicTitle;
+
+            DBContext.SaveChanges();
+        }
+
         public void DeletePassport(long passportId)
         {
             var passportToDelete = DBContext.passports

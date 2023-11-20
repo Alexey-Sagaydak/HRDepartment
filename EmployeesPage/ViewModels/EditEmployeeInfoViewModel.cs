@@ -48,6 +48,7 @@ namespace EmployeesPage
         private RelayCommand savePassportCommand;
         private RelayCommand saveEduDocumentCommand;
         private RelayCommand saveWorkplaceCommand;
+        private RelayCommand saveMainDataCommand;
 
         public ObservableCollection<Passport> Passports { get; set; }
         public ObservableCollection<EduDocument> EduDocuments { get; set; }
@@ -136,8 +137,18 @@ namespace EmployeesPage
 
         public void SavePassport(object obj)
         {
-            employeeRepository.UpdatePassport(SelectedPassport);
-            MessageBox.Show("Информация о паспорте сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            try
+            {
+                employeeRepository.UpdatePassport(SelectedPassport);
+                MessageBox.Show("Информация о паспорте сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                if (MessageBox.Show("Не удалось сохранить данные. Проверьте, что все обязательные поля заполнены.\n\nПоказать текст ошибки?", "Ошибка", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
+                {
+                    MessageBox.Show($"{ex}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         public RelayCommand SaveEduDocumentCommand
@@ -158,6 +169,28 @@ namespace EmployeesPage
         public void SaveWorkplace(object obj)
         {
             MessageBox.Show("Информация о месте работы сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public RelayCommand SaveMainDataCommand
+        {
+            get => saveMainDataCommand ??= new RelayCommand(SaveMainData);
+        }
+
+        public void SaveMainData(object obj)
+        {
+
+            try
+            {
+                employeeRepository.SaveMainData(Employee);
+                MessageBox.Show("Обрая информация о работнике сохранена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                if (MessageBox.Show("Не удалось сохранить данные. Проверьте, что все обязательные поля заполнены.\n\nПоказать текст ошибки?", "Ошибка", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
+                {
+                    MessageBox.Show($"{ex}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
         #endregion
 

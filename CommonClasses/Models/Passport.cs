@@ -28,9 +28,9 @@ namespace CommonClasses
             Name = string.Empty;
             Surname = string.Empty;
             MiddleName = string.Empty;
-            DateOfBirth = new DateTime(2023, 11, 20, 12, 0, 0, DateTimeKind.Utc); ;
+            DateOfBirth = null;
             PlaceOfBirth = string.Empty;
-            DateOfIssue = new DateTime(2023, 11, 20, 12, 0, 0, DateTimeKind.Utc); ;
+            DateOfIssue = null;
             PlaceOfIssue = null;
             Series = null;
             Number = null;

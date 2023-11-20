@@ -51,19 +51,23 @@ namespace CommonClasses
             modelBuilder.Entity<Passport>()
                 .Property(p => p.Gender)
                 .HasConversion(
-                    g => g.ToString(),           // Конвертация Enum в строку для сохранения в базе данных
-                    g => (Gender)Enum.Parse(typeof(Gender), g)  // Конвертация строки из базы данных в Enum
+                    g => g.ToString(),
+                    g => (Gender)Enum.Parse(typeof(Gender), g)
                 );
 
-            modelBuilder
-                .Entity<Employee>()
-                .Property(e => e.AcademicTitle)
-                .HasConversion<string>();
+            modelBuilder.Entity<Employee>()
+                .Property(p => p.AcademicTitle)
+                .HasConversion(
+                    t => t.ToString(),
+                    t => (AcademicTitle)Enum.Parse(typeof(AcademicTitle), t)
+                );
 
-            modelBuilder
-                .Entity<Employee>()
-                .Property(e => e.AcademicDegree)
-                .HasConversion<string>();
+            modelBuilder.Entity<Employee>()
+                .Property(p => p.AcademicDegree)
+                .HasConversion(
+                    t => t.ToString(),
+                    t => (AcademicDegree)Enum.Parse(typeof(AcademicDegree), t)
+                );
         }
     }
 }
