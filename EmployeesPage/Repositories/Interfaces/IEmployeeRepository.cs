@@ -19,5 +19,6 @@ namespace Employees
         void UpdateWorkplace(Workplace workplace);
         void UpdateOrder(Order order);
         void DeleteWorkplace(long workplaceId);
+        void DeleteEmployee(long employeeId);
     }
 }

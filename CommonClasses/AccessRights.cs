@@ -13,7 +13,7 @@ namespace CommonClasses
             UserId = userId;
             MenuItemId = menuItemId;
             Read = read;
-            Wright = wright;
+            Write = wright;
             Edit = edit;
             Delete = delete;
         }
@@ -21,7 +21,7 @@ namespace CommonClasses
         public int UserId { get; set; }
         public int MenuItemId { get; set; }
         public bool Read { get; set; }
-        public bool Wright { get; set; }
+        public bool Write { get; set; }
         public bool Edit { get; set; }
         public bool Delete { get; set; }
     }

@@ -14,6 +14,8 @@ namespace EmployeesPage
 {
     public class EditEmployeeInfoViewModel : ViewModelBase
     {
+        private IAccessRights accessRights;
+
         private DBContext DBContext;
         private ISpecialtyRepository specialtyRepository;
         private IEduInstitutionsRepository eduInstitutionsRepository;
@@ -44,6 +46,7 @@ namespace EmployeesPage
         private RelayCommand deletePassportCommand;
         private RelayCommand deleteEduDocumentCommand;
         private RelayCommand deleteWorkplaceCommand;
+        private RelayCommand deleteEmployeeCommand;
 
         private RelayCommand savePassportCommand;
         private RelayCommand saveEduDocumentCommand;
@@ -70,17 +73,35 @@ namespace EmployeesPage
         #region commands
         public RelayCommand AddPassportCommand
         {
-            get => addPassportCommand ??= new RelayCommand(_ => Passports.Insert(0, new Passport(Employee.Id)));
+            get => addPassportCommand ??= new RelayCommand(AddPassport, _ => accessRights.Write && Employee.Id != null);
+        }
+
+        private void AddPassport(object obj)
+        {
+            Passports.Insert(0, new Passport(Employee.Id));
+            SelectedPassport = Passports[0];
         }
 
         public RelayCommand AddEduDocumentCommand
         {
-            get => addEduDocumentCommand ??= new RelayCommand(_ => EduDocuments.Insert(0, new EduDocument(Employee.Id)));
+            get => addEduDocumentCommand ??= new RelayCommand(AddEduDocument, _ => accessRights.Write && Employee.Id != null);
+        }
+
+        private void AddEduDocument(object obj)
+        {
+            EduDocuments.Insert(0, new EduDocument(Employee.Id));
+            SelectedEduDocument = EduDocuments[0];
         }
 
         public RelayCommand AddWorkplaceCommand
         {
-            get => addWorkplaceCommand ??= new RelayCommand(_ => Workplaces.Insert(0, new Workplace(Employee.Id)));
+            get => addWorkplaceCommand ??= new RelayCommand(AddWorkplace, _ => accessRights.Write && Employee.Id != null);
+        }
+
+        private void AddWorkplace(object obj)
+        {
+            Workplaces.Insert(0, new Workplace(Employee.Id));
+            SelectedWorkplace = Workplaces[0];
         }
 
         public RelayCommand DeletePassportCommand
@@ -96,6 +117,7 @@ namespace EmployeesPage
             {
                 employeeRepository.DeletePassport((long)SelectedPassport.Id);
                 Passports.Remove(SelectedPassport);
+                OnPropertyChanged(nameof(Passports));
             }
         }
 
@@ -128,6 +150,62 @@ namespace EmployeesPage
             {
                 employeeRepository.DeleteWorkplace((long)SelectedWorkplace.Id);
                 Workplaces.Remove(SelectedWorkplace);
+            }
+        }
+
+        public RelayCommand DeleteEmployeeCommand
+        {
+            get => deleteEmployeeCommand ??= new RelayCommand(DeleteEmployee, (obj) => accessRights.Delete && Employee.Id != null);
+        }
+
+        private void DeleteEmployee(object obj)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить информацию о сотруднике?\nЭтот действие необратимо!", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                if (Passports.Count != 0 && MessageBox.Show("Удалить данные паспортов?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    foreach (Passport passport in Passports)
+                    {
+                        if (passport.Id != null)
+                            employeeRepository.DeletePassport((long)passport.Id);
+                    }
+                    Passports.Clear();
+                    SelectedPassport = new Passport(Employee.Id);
+                    OnPropertyChanged(nameof(Passports));
+                }
+
+                if (EduDocuments.Count != 0 && MessageBox.Show("Удалить данные о документах об образовании?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    foreach (EduDocument eduDocument in EduDocuments)
+                    {
+                        if (eduDocument.Id != null)
+                            employeeRepository.DeleteEduDocument((long)eduDocument.Id);
+                    }
+                    EduDocuments.Clear();
+                    SelectedEduDocument = new EduDocument(Employee.Id);
+                }
+
+                if (Workplaces.Count != 0 && MessageBox.Show("Удалить данные о местах работы?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    foreach (Workplace workplace in Workplaces)
+                    {
+                        if (workplace.Id != null)
+                            employeeRepository.DeleteWorkplace((long)workplace.Id);
+                    }
+                    Workplaces.Clear();
+                    SelectedWorkplace = new Workplace(Employee.Id);
+                }
+
+                if (MessageBox.Show("Удалить личное дело сотрудника?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    employeeRepository.DeleteEmployee((long)Employee.Id);
+                    Employee = new Employee();
+                    OnPropertyChanged(nameof(Employee));
+                }
+
+                MessageBox.Show("Данные о работнике были успешно удалены из базы данных.", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -367,10 +445,11 @@ namespace EmployeesPage
             }
         }
 
-        public EditEmployeeInfoViewModel(Employee employee)
+        public EditEmployeeInfoViewModel(Employee employee, IAccessRights accessRights)
         {
             DBContext = new DBContext();
 
+            this.accessRights = accessRights;
             Employee = employee;
 
             AcademicDegree = EnumHelper.GetDescription(employee.AcademicDegree);

@@ -39,7 +39,7 @@ namespace Employees
 
         private void AddNewEmployee(Employee employee)
         {
-            EditEmployeeInfo editEmployeeInfoPage = new EditEmployeeInfo(employee);
+            EditEmployeeInfo editEmployeeInfoPage = new EditEmployeeInfo(employee, accessRights);
             NavigationService.Navigate(editEmployeeInfoPage);
         }
     }

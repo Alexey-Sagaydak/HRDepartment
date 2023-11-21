@@ -23,10 +23,10 @@ namespace Employees
     /// </summary>
     public partial class EditEmployeeInfo : Page
     {
-        public EditEmployeeInfo(Employee employee)
+        public EditEmployeeInfo(Employee employee, IAccessRights accessRights)
         {
             InitializeComponent();
-            DataContext = new EditEmployeeInfoViewModel(employee);
+            DataContext = new EditEmployeeInfoViewModel(employee, accessRights);
         }
 
         private void specialtyComboBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)

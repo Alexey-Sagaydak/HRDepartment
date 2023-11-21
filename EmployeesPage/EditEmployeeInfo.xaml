@@ -91,7 +91,7 @@
                         </StackPanel>
 
                         <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="10 0" HorizontalAlignment="Center">
-                            <Button Margin="5" Content="Удалить сотрудника" Background="#FFB73A3A" BorderBrush="#FFB73A3A"/>
+                            <Button Margin="5" Content="Удалить сотрудника" Command="{Binding DeleteEmployeeCommand}" Background="#FFB73A3A" BorderBrush="#FFB73A3A"/>
                             <Button Margin="5" Content="Сохранить" Command="{Binding SaveMainDataCommand}"/>
                         </StackPanel>
                     </Grid>

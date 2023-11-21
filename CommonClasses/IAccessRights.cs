@@ -7,6 +7,6 @@
         int MenuItemId { get; set; }
         bool Read { get; set; }
         int UserId { get; set; }
-        bool Wright { get; set; }
+        bool Write { get; set; }
     }
 }

@@ -202,6 +202,18 @@ namespace Employees
             }
         }
 
+        public void DeleteEmployee(long employeeId)
+        {
+            var employeeToDelete = DBContext.employees
+                .SingleOrDefault(p => p.Id == employeeId);
+
+            if (employeeToDelete != null)
+            {
+                DBContext.employees.Remove(employeeToDelete);
+                DBContext.SaveChanges();
+            }
+        }
+
         public List<Passport> GetPassportsForEmployee(long employeeId)
         {
             var passports = DBContext.passports
