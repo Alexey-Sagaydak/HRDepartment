@@ -11,7 +11,7 @@ namespace CommonClasses
     {
         public EduDocument() { }
 
-        public EduDocument(long employeeId)
+        public EduDocument(long? employeeId)
         {
             Id = null;
             EmployeeId = employeeId;
@@ -32,7 +32,7 @@ namespace CommonClasses
         public long? Id { get; set; }
 
         [Column("employee_id")]
-        public long EmployeeId { get; set; }
+        public long? EmployeeId { get; set; }
 
         [Column("edu_document_type_id")]
         public long? EduDocumentTypeId { get; set; }

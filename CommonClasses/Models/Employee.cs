@@ -37,7 +37,7 @@ namespace CommonClasses
     public class Employee
     {
         [Column("id")]
-        public long Id { get; set; }
+        public long? Id { get; set; }
 
         [Column("fiasguid")]
         public long FiasGuid { get; set; }
@@ -69,6 +69,7 @@ namespace CommonClasses
 
         public Employee()
         {
+            Id = null;
             Passports = new List<Passport>();
             Workplaces = new List<Workplace>();
             EduDocuments = new List<EduDocument>();

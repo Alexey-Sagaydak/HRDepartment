@@ -21,7 +21,7 @@ namespace CommonClasses
     
     public class Passport
     {
-        public Passport(long employeeId)
+        public Passport(long? employeeId)
         {
             Id = null;
             EmployeeId = employeeId;
@@ -40,7 +40,7 @@ namespace CommonClasses
         public long? Id { get; set; }
 
         [Column("employee_id")]
-        public long EmployeeId { get; set; }
+        public long? EmployeeId { get; set; }
 
         [Column("name")]
         public string Name { get; set; }

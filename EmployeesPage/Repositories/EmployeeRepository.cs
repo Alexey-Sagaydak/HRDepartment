@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Employees
 {
@@ -142,15 +143,27 @@ namespace Employees
             var existingEmployee = DBContext.employees
                 .SingleOrDefault(e => e.Id == employee.Id);
 
-            existingEmployee.Email = employee.Email;
-            existingEmployee.PhoneNumber = employee.PhoneNumber;
-            existingEmployee.Snils = employee.Snils;
-            existingEmployee.Inn = employee.Inn;
-            existingEmployee.FiasGuid = employee.FiasGuid;
-            existingEmployee.AcademicDegree = employee.AcademicDegree;
-            existingEmployee.AcademicTitle = employee.AcademicTitle;
+            if (existingEmployee != null)
+            {
+                existingEmployee.Email = employee.Email;
+                existingEmployee.PhoneNumber = employee.PhoneNumber;
+                existingEmployee.Snils = employee.Snils;
+                existingEmployee.Inn = employee.Inn;
+                existingEmployee.FiasGuid = employee.FiasGuid;
+                existingEmployee.AcademicDegree = employee.AcademicDegree;
+                existingEmployee.AcademicTitle = employee.AcademicTitle;
 
-            DBContext.SaveChanges();
+                DBContext.SaveChanges();
+            }
+            else
+            {
+                long? maxId = DBContext.employees.Any() ? DBContext.employees.Max(s => s.Id) : 0;
+                employee.Id = maxId + 1;
+
+                DBContext.employees.Add(employee);
+
+                DBContext.SaveChanges();
+            }
         }
 
         public void DeletePassport(long passportId)
@@ -236,9 +249,9 @@ namespace Employees
 
             foreach (Employee employee in employees)
             {
-                employee.Passports = GetPassportsForEmployee(employee.Id);
-                employee.EduDocuments = GetEduDocumentsForEmployee(employee.Id);
-                employee.Workplaces = GetPlacesOfWorkForEmployee(employee.Id);
+                employee.Passports = GetPassportsForEmployee((long)employee.Id);
+                employee.EduDocuments = GetEduDocumentsForEmployee((long)employee.Id);
+                employee.Workplaces = GetPlacesOfWorkForEmployee((long)employee.Id);
             }
 
             return employees;

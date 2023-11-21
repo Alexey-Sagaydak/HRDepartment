@@ -9,7 +9,7 @@ namespace CommonClasses
 {
     public class Workplace
     {
-        public Workplace(long employeeId)
+        public Workplace(long? employeeId)
         {
             Id = null;
             EmployeeId = employeeId;
@@ -28,7 +28,7 @@ namespace CommonClasses
         public long? Id { get; set; }
 
         [Column("employee_id")]
-        public long EmployeeId { get; set; }
+        public long? EmployeeId { get; set; }
 
         [Column("organization_id")]
         public long OrganizationId { get; set; }
