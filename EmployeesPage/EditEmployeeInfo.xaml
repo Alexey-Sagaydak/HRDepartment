@@ -392,6 +392,9 @@
 
                                 <TextBlock Margin="10 5 10 0" Text="Приказ" Style="{StaticResource MaterialDesignHeadline6TextBlock}" VerticalAlignment="Center"/>
 
+                                <TextBlock Margin="10 5 10 0" Text="Тип: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="orderTypeComboBox" HorizontalAlignment="Stretch" Margin="10 0 10 5" FontSize="15" materialDesign:HintAssist.Hint="Выберите тип приказа" IsEditable="False" ItemsSource="{Binding OrderTypes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedOrderType, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name"/>
+                                
                                 <Grid Grid.Row="0" Margin="10 0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>

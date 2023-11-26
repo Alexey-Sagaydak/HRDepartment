@@ -24,6 +24,7 @@ namespace EmployeesPage
         private IPositionsRepository positionsRepository;
         private IOrganizationNamesRepository organizationNamesRepository;
         private IEmployeeRepository employeeRepository;
+        private IOrderTypeRepository orderTypeRepository;
 
         private Passport selectedPassport;
         private EduDocument selectedEduDocument;
@@ -34,6 +35,7 @@ namespace EmployeesPage
         private Division selectedDivision;
         private Position selectedPosition;
         private OrganizationName selectedOrganizationName;
+        private OrderType selectedOrderType;
 
         private string gender;
         private string academicDegree;
@@ -63,6 +65,7 @@ namespace EmployeesPage
         public ObservableCollection<Division> Divisions { get; set; }
         public ObservableCollection<Position> Positions { get; set; }
         public ObservableCollection<OrganizationName> OrganizationNames { get; set; }
+        public ObservableCollection<OrderType> OrderTypes { get; set; }
 
         public ObservableCollection<string> Genders { get; set; }
         public ObservableCollection<string> AcademicDegrees { get; set; }
@@ -341,6 +344,7 @@ namespace EmployeesPage
                 SelectedDivision = Divisions.FirstOrDefault(i => i.Id == value.DivisionId);
                 SelectedPosition = Positions.FirstOrDefault(i => i.Id == value.PositionId);
                 SelectedOrganizationName = OrganizationNames.FirstOrDefault(i => i.Id == value.OrganizationId);
+                SelectedOrderType = OrderTypes.FirstOrDefault(i => i.Id == value.Order.TypeOfOrderId);
                 OnPropertyChanged(nameof(SelectedWorkplace));
             }
         }
@@ -386,6 +390,17 @@ namespace EmployeesPage
                 selectedDivision = value;
                 SelectedWorkplace.DivisionId = value.Id;
                 OnPropertyChanged(nameof(SelectedDivision));
+            }
+        }
+        
+        public OrderType SelectedOrderType
+        {
+            get => selectedOrderType;
+            set
+            {
+                selectedOrderType = value;
+                SelectedWorkplace.Order.TypeOfOrderId = value.Id;
+                OnPropertyChanged(nameof(SelectedOrderType));
             }
         }
 
@@ -469,6 +484,7 @@ namespace EmployeesPage
             positionsRepository = new PositionsRepository(DBContext);
             organizationNamesRepository = new OrganizationNamesRepository(DBContext);
             employeeRepository = new EmployeeRepository(DBContext);
+            orderTypeRepository = new OrderTypeRepository(DBContext);
 
             Specialties = new ObservableCollection<Specialty>(specialtyRepository.GetSpecialties());
             EduInstitutions = new ObservableCollection<EduInstitution>(eduInstitutionsRepository.GetEduInstitutions());
@@ -476,6 +492,7 @@ namespace EmployeesPage
             Divisions = new ObservableCollection<Division>(divisionsRepository.GetDivisions());
             Positions = new ObservableCollection<Position>(positionsRepository.GetPositions());
             OrganizationNames = new ObservableCollection<OrganizationName>(organizationNamesRepository.GetOrganizationNames());
+            OrderTypes = new ObservableCollection<OrderType>(orderTypeRepository.GetOrderTypes());
         }
     }
 }

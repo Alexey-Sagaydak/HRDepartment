@@ -120,6 +120,7 @@ namespace Employees
 
             if (existingOrder != null)
             {
+                existingOrder.TypeOfOrderId = order.TypeOfOrderId;
                 existingOrder.DateOfSigning = order.DateOfSigning;
                 existingOrder.EffectiveDate = order.EffectiveDate;
                 existingOrder.NumberOfOrder = order.NumberOfOrder;
@@ -130,7 +131,6 @@ namespace Employees
             {
                 long? maxId = DBContext.orders.Any() ? DBContext.orders.Max(s => s.Id) : 0;
                 order.Id = maxId + 1;
-                order.TypeOfOrderId = 1;
 
                 DBContext.orders.Add(order);
 

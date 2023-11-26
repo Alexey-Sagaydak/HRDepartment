@@ -13,7 +13,7 @@ namespace CommonClasses
         {
             Id = null;
             EmployeeId = null;
-            TypeOfOrderId = null;
+            TypeOfOrderId = 1;
             DateOfSigning = null;
             EffectiveDate = null;
             NumberOfOrder = string.Empty;
