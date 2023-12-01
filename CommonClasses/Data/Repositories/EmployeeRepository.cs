@@ -268,5 +268,32 @@ namespace Employees
 
             return employees;
         }
+
+        public List<Employee> GetEmployeesWithoutQualificationIncreaseLastYearOrNoHigherEducation()
+        {
+            string sqlQuery = @"
+                SELECT employee_id, surname, name, middle_name
+                FROM passports
+                WHERE (employee_id, date_of_issue) IN (
+                    SELECT employee_id, MAX(date_of_issue) AS max_date
+                    FROM passports
+                    WHERE employee_id NOT IN (
+                            SELECT DISTINCT employee_id
+                            FROM edu_documents
+                            INNER JOIN edu_document_types ON edu_documents.edu_document_type_id = edu_document_types.id
+                            WHERE edu_document_types.name = 'Повышение квалификации' AND EXTRACT(YEAR FROM edu_documents.date_of_issue) = EXTRACT(YEAR FROM current_date) - 1
+                        )
+                    OR
+                        employee_id NOT IN (
+                            SELECT DISTINCT employee_id
+                            FROM edu_documents
+                            INNER JOIN edu_document_types ON edu_documents.edu_document_type_id = edu_document_types.id
+                            WHERE edu_document_types.name = 'Диплом бакалавра' OR edu_document_types.name = 'Диплом магистра' OR edu_document_types.name = 'Диплом аспиранта'
+                        )
+                    GROUP BY employee_id
+                )";
+
+            return DBContext.employees.FromSqlRaw(sqlQuery).ToList();
+        }
     }
 }

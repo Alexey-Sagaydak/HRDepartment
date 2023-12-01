@@ -29,7 +29,7 @@ namespace HRDepartment
             {
                 menuItemsInfo = new List<MenuItemInfo>
                 {
-                    new MenuItemInfo(5, 3, "Паспорта", "Documents.dll", "Documents.PassportsPage", 0),
+                    new MenuItemInfo(5, 3, "Отчет №1", "Documents.dll", "Documents.PassportsPage", 0),
                     new MenuItemInfo(6, 3, "Документы об образовании", "Documents.dll", "Documents.EduDocsPage", 1)
                 };
             }
