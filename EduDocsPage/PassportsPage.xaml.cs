@@ -17,7 +17,7 @@ using CommonClasses;
 namespace Documents
 {
     /// <summary>
-    /// Логика взаимодействия для ImposedPenaltiesPage.xaml
+    /// Логика взаимодействия для PassportsPage.xaml
     /// </summary>
     public partial class PassportsPage : Page
     {
@@ -27,6 +27,7 @@ namespace Documents
         {
             InitializeComponent();
             accessRights = DataStore.AccessRightsData;
+            DataContext = new QueriesViewModel(new DBContext());
         }
     }
 }

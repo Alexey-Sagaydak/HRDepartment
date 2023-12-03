@@ -20,6 +20,6 @@ namespace Employees
         void UpdateOrder(Order order);
         void DeleteWorkplace(long workplaceId);
         void DeleteEmployee(long employeeId);
-        List<Employee> GetEmployeesWithoutQualificationIncreaseLastYearOrNoHigherEducation();
+        List<Person> GetEmployeesWithoutQualificationIncreaseLastYearOrNoHigherEducation();
     }
 }

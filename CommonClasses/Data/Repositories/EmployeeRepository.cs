@@ -269,7 +269,7 @@ namespace Employees
             return employees;
         }
 
-        public List<Employee> GetEmployeesWithoutQualificationIncreaseLastYearOrNoHigherEducation()
+        public List<Person> GetEmployeesWithoutQualificationIncreaseLastYearOrNoHigherEducation()
         {
             string sqlQuery = @"
                 SELECT employee_id, surname, name, middle_name
@@ -293,7 +293,7 @@ namespace Employees
                     GROUP BY employee_id
                 )";
 
-            return DBContext.employees.FromSqlRaw(sqlQuery).ToList();
+            return DBContext.persons.FromSqlRaw(sqlQuery).ToList();
         }
     }
 }

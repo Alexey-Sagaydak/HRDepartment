@@ -27,7 +27,9 @@ namespace CommonClasses
         public virtual DbSet<EduDocument> edu_documents { get; set; }
         public virtual DbSet<Workplace> places_of_work { get; set; }
         public virtual DbSet<Order> orders { get; set; }
+        public virtual DbSet<Person> persons { get; set; }
         public virtual DbSet<OrderType> types_of_orders { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

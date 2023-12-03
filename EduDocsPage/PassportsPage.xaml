@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Documents" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ImposedPenaltiesPage">
@@ -37,14 +37,14 @@
 
         <StackPanel Grid.Row="0" Grid.Column="2">
             <TextBlock Margin="10" Grid.Row="0" Text="Сведения о сотрудниках, не проходивших повышение квалификации в течение прошедшего года или не имеющих высшего образования." FontSize="15" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" TextAlignment="Justify"/>
-            <Button Command="{Binding AddPassportCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button Command="{Binding Query3Command}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <materialDesign:PackIcon Kind="SqlQuery" Width="24" Height="24" />
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBlock Margin="0 3 10 3" Text="Меню" Padding="0" FontSize="17" VerticalAlignment="Center"/>
-            <Button Command="{Binding AddPassportCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button Command="{Binding Query3Command}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <materialDesign:PackIcon Kind="ContentSaveOutline" Width="24" Height="24" />
             </Button>
         </StackPanel>
@@ -52,9 +52,9 @@
         <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Auto">
             <DataGrid Name="dataGrid" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" Foreground="#000000">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Passports[0].Surname}" />
-                    <DataGridTextColumn Header="Имя" Binding="{Binding Passports[0].Name}" />
-                    <DataGridTextColumn Header="Отчество" Binding="{Binding Passports[0].MiddleName}" />
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" />
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" />
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
