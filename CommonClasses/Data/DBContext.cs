@@ -28,6 +28,7 @@ namespace CommonClasses
         public virtual DbSet<Workplace> places_of_work { get; set; }
         public virtual DbSet<Order> orders { get; set; }
         public virtual DbSet<Person> persons { get; set; }
+        public virtual DbSet<PersonWithHours> persons_and_hours { get; set; }
         public virtual DbSet<OrderType> types_of_orders { get; set; }
         
 

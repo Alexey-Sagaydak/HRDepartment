@@ -9,32 +9,102 @@
       Title="ImposedPenaltiesPage">
     
     <Grid Background="WhiteSmoke">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <TabControl Width="Auto">
+            <TabItem Header="Отчет№1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Margin="5" Text="Сведения о сотрудниках, не проходивших повышение квалификации в течение прошедшего года или не имеющих высшего образования." FontSize="16" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" TextAlignment="Justify"/>
+                    <TextBlock Grid.Row="0" Margin="5" Text="Сведения о трудовом стаже сотрудников на текущую дату." FontSize="16" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" TextAlignment="Justify"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBlock Margin="5 3 10 3" Text="Меню" Padding="0" FontSize="17" VerticalAlignment="Center"/>
-            <Button Command="{Binding CreateQuery3DocumentCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <materialDesign:PackIcon Kind="ContentSaveOutline" Width="24" Height="24" />
-            </Button>
-            <Button Command="{Binding Query3Command}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <materialDesign:PackIcon Kind="SqlQuery" Width="24" Height="24" />
-            </Button>
-        </StackPanel>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock Margin="5 3 10 3" Text="Меню" Padding="0" FontSize="17" VerticalAlignment="Center"/>
+                        <Button Command="{Binding CreateQuery1DocumentCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="ContentSaveOutline" Width="24" Height="24" />
+                        </Button>
+                        <Button Command="{Binding Query1Command}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="SqlQuery" Width="24" Height="24" />
+                        </Button>
+                    </StackPanel>
 
-        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-            <DataGrid Name="dataGrid" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" Foreground="#000000">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" />
-                    <DataGridTextColumn Header="Имя" Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </ScrollViewer>
+                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                        <DataGrid IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding EmployeesQ1}" AutoGenerateColumns="False" Foreground="#000000">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" />
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" />
+                                <DataGridTextColumn Header="Трудовой стаж (дн)" Binding="{Binding Hours}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Отчет№2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Margin="5" Text="Сведения о сотрудниках которые должны быть направлены в отпуск в декабре." FontSize="16" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" TextAlignment="Justify"/>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock Margin="5 3 10 3" Text="Меню" Padding="0" FontSize="17" VerticalAlignment="Center"/>
+                        <Button Command="{Binding CreateQuery2DocumentCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="ContentSaveOutline" Width="24" Height="24" />
+                        </Button>
+                        <Button Command="{Binding Query2Command}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="SqlQuery" Width="24" Height="24" />
+                        </Button>
+                    </StackPanel>
+
+                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                        <DataGrid IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding EmployeesQ2}" AutoGenerateColumns="False" Foreground="#000000">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" />
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Отчет№3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Margin="5" Text="Сведения о сотрудниках, не проходивших повышение квалификации в течение прошедшего года или не имеющих высшего образования." FontSize="16" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" TextAlignment="Justify"/>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock Margin="5 3 10 3" Text="Меню" Padding="0" FontSize="17" VerticalAlignment="Center"/>
+                        <Button Command="{Binding CreateQuery3DocumentCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="ContentSaveOutline" Width="24" Height="24" />
+                        </Button>
+                        <Button Command="{Binding Query3Command}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="SqlQuery" Width="24" Height="24" />
+                        </Button>
+                    </StackPanel>
+
+                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                        <DataGrid Name="dataGrid" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding EmployeesQ3}" AutoGenerateColumns="False" Foreground="#000000">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" />
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
     </Grid>
 </Page>

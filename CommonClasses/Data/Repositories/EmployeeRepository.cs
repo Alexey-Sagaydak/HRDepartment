@@ -295,5 +295,48 @@ namespace Employees
 
             return DBContext.persons.FromSqlRaw(sqlQuery).ToList();
         }
+
+        public List<Person> GetDecemberVacationDetails()
+        {
+            string sqlQuery = @"
+                SELECT employee_id, surname, name, middle_name
+                FROM passports
+                WHERE (employee_id, date_of_issue) IN (
+	                SELECT employee_id, MAX(date_of_issue) AS max_date
+	                FROM passports
+	                WHERE employee_id IN ( 
+			                SELECT DISTINCT employee_order.employee_id
+			                FROM employee_order
+			                INNER JOIN orders ON employee_order.order_id = orders.id
+			                INNER JOIN types_of_orders ON types_of_orders.id = orders.type_of_order_id
+			                WHERE types_of_orders.name = 'Отпуск' AND EXTRACT(MONTH FROM effective_date) = 12 AND EXTRACT(YEAR FROM effective_date) = 2023
+			                )
+                        OR
+                        employee_id NOT IN ( 
+			                SELECT DISTINCT employee_order.employee_id
+			                FROM employee_order
+			                INNER JOIN orders ON employee_order.order_id = orders.id
+			                INNER JOIN types_of_orders ON types_of_orders.id = orders.type_of_order_id
+			                WHERE types_of_orders.name = 'Отпуск' AND EXTRACT(MONTH FROM effective_date) < 12 AND EXTRACT(YEAR FROM effective_date) = 2023
+			                )
+	                GROUP BY employee_id
+	                )";
+
+            return DBContext.persons.FromSqlRaw(sqlQuery).ToList();
+        }
+
+        public List<PersonWithHours> GetCurrentWorkExperience()
+        {
+            string sqlQuery = @"
+                SELECT p.employee_id, p.name, p.surname, p.middle_name, SUM(w.end_of_work - w.start_of_work) as total_work_duration
+                FROM places_of_work AS w
+                JOIN (
+                    SELECT employee_id, name, surname, middle_name, ROW_NUMBER() OVER (PARTITION BY employee_id ORDER BY date_of_issue DESC) AS rn
+                    FROM passports
+                ) AS p ON w.employee_id = p.employee_id AND p.rn = 1
+                GROUP BY p.employee_id, p.name, p.surname, p.middle_name";
+
+            return DBContext.persons_and_hours.FromSqlRaw(sqlQuery).ToList();
+        }
     }
 }

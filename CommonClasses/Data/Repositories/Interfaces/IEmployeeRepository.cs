@@ -21,5 +21,7 @@ namespace Employees
         void DeleteWorkplace(long workplaceId);
         void DeleteEmployee(long employeeId);
         List<Person> GetEmployeesWithoutQualificationIncreaseLastYearOrNoHigherEducation();
+        List<Person> GetDecemberVacationDetails();
+        List<PersonWithHours> GetCurrentWorkExperience();
     }
 }
