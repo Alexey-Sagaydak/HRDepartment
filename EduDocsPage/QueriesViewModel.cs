@@ -14,6 +14,8 @@ namespace Documents
     {
         private IEmployeeRepository employeeRepository;
         private RelayCommand query3Command;
+        private RelayCommand createQuery3DocumentCommand;
+        private DocumentCreator creator;
 
         public ObservableCollection<Person> Employees { get; set;}
 
@@ -34,10 +36,30 @@ namespace Documents
             }
         }
 
+        public RelayCommand CreateQuery3DocumentCommand
+        {
+            get => createQuery3DocumentCommand ??= new RelayCommand(CreateQuery3Document);
+        }
+
+        private void CreateQuery3Document(object obj)
+        {
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+
+            saveFileDialog.Filter = "Документ Word (*.docx)|*.docx";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                creator.Query3Document(Employees, filePath);
+            }
+        }
+
         public QueriesViewModel(DBContext dBContext)
         {
             employeeRepository = new EmployeeRepository(dBContext);
             Employees = new ObservableCollection<Person>();
+            creator = new DocumentCreator();
         }
     }
 }

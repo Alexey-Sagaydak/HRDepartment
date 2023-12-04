@@ -15,41 +15,19 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.25*"/>
-            <ColumnDefinition Width="0.35*"/>
-            <ColumnDefinition Width="0.55*"/>
-        </Grid.ColumnDefinitions>
-
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <TextBlock Margin="10" Grid.Row="0" Text="Сведения о трудовом стаже сотрудников на текущую дату." FontSize="15" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" TextAlignment="Justify"/>
-            <Button Command="{Binding AddPassportCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <materialDesign:PackIcon Kind="SqlQuery" Width="24" Height="24" />
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBlock Margin="10" Grid.Row="0" Text="Сведения о сотрудниках которые должны быть направлены в отпуск в декабре." FontSize="15" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" TextAlignment="Justify"/>
-            <Button Command="{Binding AddPassportCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <materialDesign:PackIcon Kind="SqlQuery" Width="24" Height="24" />
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="0" Grid.Column="2">
-            <TextBlock Margin="10" Grid.Row="0" Text="Сведения о сотрудниках, не проходивших повышение квалификации в течение прошедшего года или не имеющих высшего образования." FontSize="15" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" TextAlignment="Justify"/>
-            <Button Command="{Binding Query3Command}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <materialDesign:PackIcon Kind="SqlQuery" Width="24" Height="24" />
-            </Button>
-        </StackPanel>
+        <TextBlock Grid.Row="0" Margin="5" Text="Сведения о сотрудниках, не проходивших повышение квалификации в течение прошедшего года или не имеющих высшего образования." FontSize="16" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" TextAlignment="Justify"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBlock Margin="0 3 10 3" Text="Меню" Padding="0" FontSize="17" VerticalAlignment="Center"/>
-            <Button Command="{Binding Query3Command}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Margin="5 3 10 3" Text="Меню" Padding="0" FontSize="17" VerticalAlignment="Center"/>
+            <Button Command="{Binding CreateQuery3DocumentCommand}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <materialDesign:PackIcon Kind="ContentSaveOutline" Width="24" Height="24" />
+            </Button>
+            <Button Command="{Binding Query3Command}" Width="24" Height="24" Margin="5 2" Padding="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <materialDesign:PackIcon Kind="SqlQuery" Width="24" Height="24" />
             </Button>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <DataGrid Name="dataGrid" IsReadOnly="True" BorderBrush="LightGray" FontSize="15" ItemsSource="{Binding Employees}" AutoGenerateColumns="False" Foreground="#000000">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" />

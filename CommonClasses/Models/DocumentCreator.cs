@@ -1,51 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Office.Interop.Word;
+using Xceed.Words.NET;
 using System.Text;
 using System.Threading.Tasks;
+using Xceed.Document.NET;
+using System.Reflection.Metadata;
 
 namespace CommonClasses
 {
-    public class HiringDocumentCreator
+    public class DocumentCreator
     {
-        public void FillAndSaveDocument(string templatePath, string outputPath, string lastName, string firstName, string middleName)
+        public void Query3Document(IEnumerable<Person> people, string outPath)
         {
-            // Создаем объект приложения Word
-            var wordApp = new Application();
-
-            try
+            using (var doc = DocX.Create(outPath))
             {
-                // Открываем существующий документ
-                var document = wordApp.Documents.Open(templatePath);
+                var title = doc.InsertParagraph();
+                title.Alignment = Alignment.center;
+                title.Append("Сведения о сотрудниках, не проходивших повышение квалификации в течение прошедшего года или не имеющих высшего образования.\n")
+                    .FontSize(14)
+                    .Bold()
+                    .Font(new Xceed.Document.NET.Font("Times New Roman"));
 
-                // Заменяем метки на реальные данные
-                ReplaceText(document, "[LastName]", lastName);
-                ReplaceText(document, "[FirstName]", firstName);
-                ReplaceText(document, "[MiddleName]", middleName);
+                var table = doc.AddTable(1, 3);
+                table.Alignment = Alignment.center;
+                table.Rows[0].Cells[0].Paragraphs.First().Append("Фамилия").FontSize(12).Bold().Font(new Xceed.Document.NET.Font("Times New Roman"));
+                table.Rows[0].Cells[1].Paragraphs.First().Append("Имя").FontSize(12).Bold().Font(new Xceed.Document.NET.Font("Times New Roman"));
+                table.Rows[0].Cells[2].Paragraphs.First().Append("Отчество").FontSize(12).Bold().Font(new Xceed.Document.NET.Font("Times New Roman"));
 
-                // Сохраняем документ
-                document.SaveAs2(outputPath);
-                document.Close();
+                foreach (var person in people)
+                {
+                    var row = table.InsertRow();
+                    row.Cells[0].Paragraphs.First().Append(person.Surname).FontSize(12).Font(new Xceed.Document.NET.Font("Times New Roman"));
+                    row.Cells[1].Paragraphs.First().Append(person.Name).FontSize(12).Font(new Xceed.Document.NET.Font("Times New Roman"));
+                    row.Cells[2].Paragraphs.First().Append(person.MiddleName).FontSize(12).Font(new Xceed.Document.NET.Font("Times New Roman"));
+                }
+                doc.InsertTable(table);
+
+                doc.InsertParagraph().Append($"\n\n\nДата: {DateTime.Now.ToShortDateString()}\t\t\t\t\tПодпись: ________________").FontSize(12).Font(new Xceed.Document.NET.Font("Times New Roman"));
+
+                doc.Save();
             }
-            finally
-            {
-                // Закрываем приложение Word
-                wordApp.Quit();
-            }
-
-            Console.WriteLine($"Документ успешно создан и сохранен по пути: {outputPath}");
-        }
-
-        private static void ReplaceText(Document doc, string placeholder, string value)
-        {
-            // Используем Find and Replace для замены текста в документе
-            var find = doc.Content.Find;
-            find.Text = placeholder;
-            find.Replacement.Text = value;
-
-            // Выполняем замену
-            find.Execute(Replace: WdReplace.wdReplaceAll);
         }
     }
 }
